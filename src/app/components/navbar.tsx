@@ -1,10 +1,11 @@
 // src/app/components/Navbar.tsx
 'use client';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 import Link from 'next/link';
 import Asset1 from './Asset1';
+import { NavbarProps } from '../types';
 
-export default function Navbar({ show }: { show: boolean }) {
+const Navbar: React.FC<NavbarProps> = ({ show }) => {
     return (
         <motion.nav
             initial={{ y: -80, opacity: 0 }}
@@ -18,25 +19,26 @@ export default function Navbar({ show }: { show: boolean }) {
                 background: '#b19a8b', // lighter brown for navbar
                 color: '#2e1a13',
                 zIndex: 100,
-                padding: '0.75rem 2rem',
+                padding: '0.75rem 1rem',
                 display: 'flex',
-                justifyContent: 'space-between',
+                justifyContent: 'flex-start',
                 alignItems: 'center',
                 fontFamily: "erstoria",
-                fontSize: '1.4rem',
-            }}
+                fontSize: '1.2rem',
+            } as HTMLMotionProps<"nav">["style"]}
         >
-            <div className="logo" style={{ top: 20, left: 20, zIndex: 10 }}>
-                <Asset1 width={50} height={50} />
-
+            <div className="logo" style={{ top: 20, left: 20, zIndex: 10, marginRight: '2.5rem', marginLeft: '1rem' }}>
+                <Asset1 width={55} height={55} />
             </div>
-            <div style={{ display: 'flex', gap: '2rem' }}>
-                <Link href="/">Home</Link>
-                <Link href="/Our Story">Our story</Link>
-                <Link href="/Services">Services</Link>
-                <Link href="/Members">Members</Link>
-                <Link href="/Contact Us">Contact us</Link>
+            <div style={{ display: 'flex', gap: '1.1rem', marginLeft: '60rem' }}>
+                <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
+                <Link href="/Our Story" style={{ color: 'inherit', textDecoration: 'none' }}>Our story</Link>
+                <Link href="/Services" style={{ color: 'inherit', textDecoration: 'none' }}>Services</Link>
+                <Link href="/Members" style={{ color: 'inherit', textDecoration: 'none' }}>Members</Link>
+                <Link href="/Contact Us" style={{ color: 'inherit', textDecoration: 'none' }}>Contact us</Link>
             </div>
         </motion.nav>
     );
 }
+
+export default Navbar;
