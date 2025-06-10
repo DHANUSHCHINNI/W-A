@@ -5,6 +5,10 @@
       .cls-1 {
         fill: #bbb1ab;
       }
+
+      .cls-2 {
+        fill: #83351b;
+      }
     </style>
   </defs>
   <g id="Layer_1-2" data-name="Layer 1">
