@@ -8,6 +8,7 @@ import Asset3 from "./components/Asset3";
 import Asset4 from "./components/Asset4";
 import Asset5 from "./components/Asset5";
 import Asset6 from './components/Asset6';
+import buttonStyles from './components/Button.module.css';
 
 export default function LandingPage() {
   const [scrolled, setScrolled] = useState(false);
@@ -85,7 +86,7 @@ export default function LandingPage() {
         <Asset3 width={800} height={400} />
       </motion.div>
 
-      {/* Center main text (Asset6) */}
+      {/* Center main text (Asset6/Asset4) and buttons */}
       <div
         style={{
           position: "relative",
@@ -93,6 +94,10 @@ export default function LandingPage() {
           textAlign: "center",
           color: "#d1c1b2",
           minHeight: 300,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <AnimatePresence mode="wait">
@@ -104,10 +109,8 @@ export default function LandingPage() {
               exit={{ opacity: 0.5 }}
               transition={{ duration: 0.2 }}
               style={{
-                position: "absolute",
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "700px", // or "100%" if you want it responsive
+                width: "700px",
+                maxWidth: "100%",
               }}
             >
               <Asset6 width={700} height={300} style={{ fill: "#d1c1b2" }} />
@@ -120,18 +123,43 @@ export default function LandingPage() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               style={{
-                position: "absolute",
-                left: "50%",
-                transform: "translateX(-50%)",
-                width: "700px", // or "100%" if you want it responsive
+                width: "700px",
+                maxWidth: "100%",
               }}
             >
               <Asset4 width={700} height={300} style={{ fill: "#d1c1b2" }} />
             </motion.div>
           )}
+          {scrolled && (
+            <motion.div
+              key="buttons"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.4 }}
+              style={{
+                display: "flex",
+                gap: "2rem",
+                justifyContent: "center",
+                marginTop: 60,
+                zIndex: 6,
+                position: "relative",
+              }}
+            >
+              <button
+                className={buttonStyles.myButton}
+              >
+                Book consultation
+              </button>
+              <button
+                className={buttonStyles.myButton}
+              >
+                Community events
+              </button>
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
-
 
       {/* Discover us button (hide after scroll) */}
       <motion.div
