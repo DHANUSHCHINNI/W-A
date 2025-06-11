@@ -19,12 +19,12 @@ export default function LandingPage() {
     "At Well-being & Arts Hub, we make noise, make art, make space for all the parts of you that don't fit the script.",
     "Come, celebrate the wild, weird and wonderful ways of being human. Say it messy, say it loud, however it shows up. We'll meet you there."
   ];
-  const maxPage = 2 + paragraphs.length; // 2: last main page, 3: para 1, 4: para 2, 5: para 3
+  const maxPage = 1 + paragraphs.length; // 1: transition, 2: para 1, 3: para 2, 4: para 3
 
   // Brush stroke rotation values for each paragraph
   const topBrushRotations = [210, 205, 200];    // Asset2
   const bottomBrushRotations = [210, 190, 180]; // Asset3
-  const paraIndex = Math.max(0, Math.min(pageState - 3, 2));
+  const paraIndex = Math.max(0, Math.min(pageState - 2, 2));
 
   useEffect(() => {
     function onWheel(e: WheelEvent) {
@@ -170,34 +170,7 @@ export default function LandingPage() {
               </motion.div>
             </>
           )}
-          {pageState === 2 && (
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '2.5rem',
-                marginTop: 0,
-              }}
-            >
-              <div
-                style={{
-                  color: '#fff',
-                  padding: '2.2rem 2.5rem',
-                  width: '90%',
-                  maxWidth: 1100,
-                  textAlign: 'center',
-                  fontSize: 40,
-                  fontFamily: 'Erstoria',
-                  fontWeight: 400,
-                }}
-              >
-                We refuse to believe that being well means being quiet. We're here for your real self – the tired one, the curious one, the one who still dances in the kitchen.
-              </div>
-            </div>
-          )}
-          {pageState > 2 && pageState <= maxPage && (
+          {pageState > 1 && pageState <= maxPage && (
             <div
               style={{
                 width: '100%',
@@ -226,7 +199,7 @@ export default function LandingPage() {
                     fontWeight: 400,
                   } as React.CSSProperties}
                 >
-                  {paragraphs[pageState - 3]}
+                  {paragraphs[pageState - 2]}
                 </motion.div>
               </AnimatePresence>
             </div>
