@@ -7,10 +7,14 @@ import Asset2 from "./components/Asset2";
 import Asset3 from "./components/Asset3";
 import Asset4 from "./components/Asset4";
 import Asset6 from './components/Asset6';
+import hubs3 from './components/hubs3';
+import hubs1 from './components/hubs1';
+import hubs2 from './components/hubs2';
+
 import buttonStyles from './components/Button.module.css';
 import Link from 'next/link';
 
-function ServiceHubButton({ label, href, style }: { label: string, href: string, style: React.CSSProperties }) {
+function ServiceHubButton({ label, href, style, BrushAsset }: { label: string, href: string, style: React.CSSProperties, BrushAsset: React.ComponentType<any> }) {
   return (
     <Link href={href} style={{ textDecoration: 'none' }}>
       <div style={{
@@ -29,13 +33,13 @@ function ServiceHubButton({ label, href, style }: { label: string, href: string,
           left: 0, top: 0, width: '100%', height: '100%',
           zIndex: 1,
         }}>
-          <Asset2 width={200} height={70} />
+          <BrushAsset width={200} height={70} />
         </div>
         <span style={{
           position: 'relative',
           zIndex: 2,
           color: '#fff',
-          fontFamily: 'Playfair Display, serif',
+          fontFamily: 'Erstoria',
           fontSize: 24,
           fontWeight: 500,
           textAlign: 'center',
@@ -92,7 +96,7 @@ export default function LandingPage() {
         background: "#2e1a13",
         position: "relative",
         overflow: "hidden",
-        fontFamily: "'Playfair Display', serif",
+        fontFamily: "Erstoria",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -116,7 +120,7 @@ export default function LandingPage() {
           transformOrigin: "center",
         } as React.CSSProperties}
         animate={{
-          opacity: 0.7,
+          opacity: pageState === maxPage ? 0 : 0.7,
           rotate: pageState > 2 ? topBrushRotations[paraIndex] : 210,
           scale: 1.9
         }}
@@ -135,7 +139,7 @@ export default function LandingPage() {
           transformOrigin: "center",
         } as React.CSSProperties}
         animate={{
-          opacity: 0.7,
+          opacity: pageState === maxPage ? 0 : 0.7,
           rotate: pageState > 2 ? bottomBrushRotations[paraIndex] : 210,
           scale: 2.4
         }}
@@ -260,92 +264,102 @@ export default function LandingPage() {
                 color: '#fff',
               }}
             >
-              <div style={{ width: '100%', maxWidth: 900, marginLeft: 40 }}>
-                <h1 style={{
-                  fontFamily: 'Erstoria',
-                  fontSize: 56,
-                  color: '#d1c1b2',
-                  marginBottom: 40,
-                  marginTop: 40,
-                  letterSpacing: 1,
-                  textAlign: 'left',
+              <div style={{ marginTop: 100, width: '100%' }}>
+                {/* Center logo */}
+                <div style={{
+                  position: 'absolute',
+                  left: '50%',
+                  top: '55%',
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 2,
+                } as React.CSSProperties}>
+                  <Asset1 width={140} height={140} />
+                </div>
+                {/* Hubs */}
+                <div style={{
+                  width: '100%',
+                  maxWidth: 900,
+                  height: 500,
+                  position: 'relative',
+                  margin: '0 auto',
                 }}>
+                  {/* Top center */}
+                  <ServiceHubButton
+                    label="Therapy Hub"
+                    href="/services/therapy"
+                    style={{
+                      position: 'absolute',
+                      left: '50%',
+                      top: '5%',
+                      transform: 'translate(-50%, 0)',
+                    } as React.CSSProperties}
+                    BrushAsset={Asset2}
+                  />
+                  {/* Top left */}
+                  <ServiceHubButton
+                    label="R&D Hub"
+                    href="/services/rd"
+                    style={{
+                      position: 'absolute',
+                      left: '-55%',
+                      top: '20%',
+                      transform: 'translate(-50%, 0)',
+                    } as React.CSSProperties}
+                    BrushAsset={hubs2}
+                  />
+                  {/* Top right */}
+                  <ServiceHubButton
+                    label="Corporate Hub"
+                    href="/services/corporate"
+                    style={{
+                      position: 'absolute',
+                      right: '-65%',
+                      top: '10%',
+                      transform: 'translate(50%, 0)',
+                    } as React.CSSProperties}
+                    BrushAsset={hubs1}
+                  />
+                  {/* Bottom left */}
+                  <ServiceHubButton
+                    label="Innovation Lab"
+                    href="/services/innovation"
+                    style={{
+                      position: 'absolute',
+                      left: '-15%',
+                      bottom: '-30%',
+                      transform: 'translate(-50%, 0)',
+                    } as React.CSSProperties}
+                    BrushAsset={hubs3}
+                  />
+                  {/* Bottom right */}
+                  <ServiceHubButton
+                    label="Training Hub"
+                    href="/services/training"
+                    style={{
+                      position: 'absolute',
+                      right: '-15%',
+                      bottom: '-20%',
+                      transform: 'translate(50%, 0)',
+                    } as React.CSSProperties}
+                    BrushAsset={Asset2}
+                  />
+                </div>
+                {/* Services text at top left for services page */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 80,
+                    left: -500,
+                    zIndex: 10,
+                    color: '#d1c1b2',
+                    fontFamily: 'Erstoria',
+                    fontSize: 40,
+                    fontWeight: 600,
+                    letterSpacing: 1,
+                  } as React.CSSProperties}
+                >
                   Services
-                </h1>
-              </div>
-              {/* Center logo */}
-              <div style={{
-                position: 'absolute',
-                left: '50%',
-                top: '50%',
-                transform: 'translate(-50%, -50%)',
-                zIndex: 2,
-              } as React.CSSProperties}>
-                <Asset1 width={140} height={140} />
-              </div>
-              {/* Hubs */}
-              <div style={{
-                width: '100%',
-                maxWidth: 900,
-                height: 500,
-                position: 'relative',
-                margin: '0 auto',
-              }}>
-                {/* Top center */}
-                <ServiceHubButton
-                  label="Therapy Hub"
-                  href="/services/therapy"
-                  style={{
-                    position: 'absolute',
-                    left: '50%',
-                    top: '-5%',
-                    transform: 'translate(-50%, 0)',
-                  } as React.CSSProperties}
-                />
-                {/* Top left */}
-                <ServiceHubButton
-                  label="R&D Hub"
-                  href="/services/rd"
-                  style={{
-                    position: 'absolute',
-                    left: '-55%',
-                    top: '10%',
-                    transform: 'translate(-50%, 0)',
-                  } as React.CSSProperties}
-                />
-                {/* Top right */}
-                <ServiceHubButton
-                  label="Corporate Hub"
-                  href="/services/corporate"
-                  style={{
-                    position: 'absolute',
-                    right: '-65%',
-                    top: '-5%',
-                    transform: 'translate(50%, 0)',
-                  } as React.CSSProperties}
-                />
-                {/* Bottom left */}
-                <ServiceHubButton
-                  label="Innovation Lab"
-                  href="/services/innovation"
-                  style={{
-                    position: 'absolute',
-                    left: '-15%',
-                    bottom: '-20%',
-                    transform: 'translate(-50%, 0)',
-                  } as React.CSSProperties}
-                />
-                {/* Bottom right */}
-                <ServiceHubButton
-                  label="Training Hub"
-                  href="/services/training"
-                  style={{
-                    position: 'absolute',
-                    right: '-15%',
-                    bottom: '-10%',
-                    transform: 'translate(50%, 0)',
-                  } as React.CSSProperties}
-                />
+                </div>
               </div>
             </div>
           )}
