@@ -8,39 +8,82 @@ import Asset3 from "./components/Asset3";
 import Asset4 from "./components/Asset4";
 import Asset6 from './components/Asset6';
 import buttonStyles from './components/Button.module.css';
+import Link from 'next/link';
+
+function ServiceHubButton({ label, href, style }: { label: string, href: string, style: React.CSSProperties }) {
+  return (
+    <Link href={href} style={{ textDecoration: 'none' }}>
+      <div style={{
+        ...style,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+        position: 'relative',
+        width: 200,
+        height: 70,
+      }}>
+        {/* Brush stroke as background */}
+        <div style={{
+          position: 'absolute',
+          left: 0, top: 0, width: '100%', height: '100%',
+          zIndex: 1,
+        }}>
+          <Asset2 width={200} height={70} />
+        </div>
+        <span style={{
+          position: 'relative',
+          zIndex: 2,
+          color: '#fff',
+          fontFamily: 'Playfair Display, serif',
+          fontSize: 24,
+          fontWeight: 500,
+          textAlign: 'center',
+          width: '100%',
+        }}>
+          {label}
+        </span>
+      </div>
+    </Link>
+  );
+}
 
 export default function LandingPage() {
   const [pageState, setPageState] = useState(0); // 0: landing, 1: nav+asset+buttons, 2: nav only
   const scrollAccumulator = useRef(0);
-  const SCROLL_THRESHOLD = 200; // You can adjust this value
+  const SCROLL_THRESHOLD = 80; // Lowered threshold for easier scrolling
 
   const paragraphs = [
     "We refuse to believe that being well means being quiet. We're here for your real self – the tired one, the curious one, the one who still dances in the kitchen.",
     "At Well-being & Arts Hub, we make noise, make art, make space for all the parts of you that don't fit the script.",
     "Come, celebrate the wild, weird and wonderful ways of being human. Say it messy, say it loud, however it shows up. We'll meet you there."
   ];
-  const maxPage = 1 + paragraphs.length; // 1: transition, 2: para 1, 3: para 2, 4: para 3
+  const maxPage = 1 + paragraphs.length + 1; // 1: transition, 2: para 1, 3: para 2, 4: para 3, 5: services
 
   // Brush stroke rotation values for each paragraph
   const topBrushRotations = [210, 205, 200];    // Asset2
   const bottomBrushRotations = [210, 190, 180]; // Asset3
   const paraIndex = Math.max(0, Math.min(pageState - 2, 2));
 
+  const pageStateRef = useRef(pageState);
+  useEffect(() => {
+    pageStateRef.current = pageState;
+  }, [pageState]);
+
   useEffect(() => {
     function onWheel(e: WheelEvent) {
       scrollAccumulator.current += e.deltaY;
-
-      if (scrollAccumulator.current > SCROLL_THRESHOLD && pageState < maxPage) {
-        setPageState(pageState + 1);
+      if (scrollAccumulator.current > SCROLL_THRESHOLD && pageStateRef.current < maxPage) {
+        setPageState(pageStateRef.current + 1);
         scrollAccumulator.current = 0;
-      } else if (scrollAccumulator.current < -SCROLL_THRESHOLD && pageState > 0) {
-        setPageState(pageState - 1);
+      } else if (scrollAccumulator.current < -SCROLL_THRESHOLD && pageStateRef.current > 0) {
+        setPageState(pageStateRef.current - 1);
         scrollAccumulator.current = 0;
       }
     }
     window.addEventListener("wheel", onWheel, { passive: true });
     return () => window.removeEventListener("wheel", onWheel);
-  }, [pageState, maxPage]);
+  }, []);
 
   return (
     <main
@@ -170,7 +213,7 @@ export default function LandingPage() {
               </motion.div>
             </>
           )}
-          {pageState > 1 && pageState <= maxPage && (
+          {pageState > 1 && pageState <= maxPage - 1 && (
             <div
               style={{
                 width: '100%',
@@ -202,6 +245,108 @@ export default function LandingPage() {
                   {paragraphs[pageState - 2]}
                 </motion.div>
               </AnimatePresence>
+            </div>
+          )}
+          {pageState === maxPage && (
+            <div
+              style={{
+                width: '100%',
+                minHeight: '80vh',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                color: '#fff',
+              }}
+            >
+              <div style={{ width: '100%', maxWidth: 900, marginLeft: 40 }}>
+                <h1 style={{
+                  fontFamily: 'Erstoria',
+                  fontSize: 56,
+                  color: '#d1c1b2',
+                  marginBottom: 40,
+                  marginTop: 40,
+                  letterSpacing: 1,
+                  textAlign: 'left',
+                }}>
+                  Services
+                </h1>
+              </div>
+              {/* Center logo */}
+              <div style={{
+                position: 'absolute',
+                left: '50%',
+                top: '50%',
+                transform: 'translate(-50%, -50%)',
+                zIndex: 2,
+              } as React.CSSProperties}>
+                <Asset1 width={140} height={140} />
+              </div>
+              {/* Hubs */}
+              <div style={{
+                width: '100%',
+                maxWidth: 900,
+                height: 500,
+                position: 'relative',
+                margin: '0 auto',
+              }}>
+                {/* Top center */}
+                <ServiceHubButton
+                  label="Therapy Hub"
+                  href="/services/therapy"
+                  style={{
+                    position: 'absolute',
+                    left: '50%',
+                    top: '-5%',
+                    transform: 'translate(-50%, 0)',
+                  } as React.CSSProperties}
+                />
+                {/* Top left */}
+                <ServiceHubButton
+                  label="R&D Hub"
+                  href="/services/rd"
+                  style={{
+                    position: 'absolute',
+                    left: '-55%',
+                    top: '10%',
+                    transform: 'translate(-50%, 0)',
+                  } as React.CSSProperties}
+                />
+                {/* Top right */}
+                <ServiceHubButton
+                  label="Corporate Hub"
+                  href="/services/corporate"
+                  style={{
+                    position: 'absolute',
+                    right: '-65%',
+                    top: '-5%',
+                    transform: 'translate(50%, 0)',
+                  } as React.CSSProperties}
+                />
+                {/* Bottom left */}
+                <ServiceHubButton
+                  label="Innovation Lab"
+                  href="/services/innovation"
+                  style={{
+                    position: 'absolute',
+                    left: '-15%',
+                    bottom: '-20%',
+                    transform: 'translate(-50%, 0)',
+                  } as React.CSSProperties}
+                />
+                {/* Bottom right */}
+                <ServiceHubButton
+                  label="Training Hub"
+                  href="/services/training"
+                  style={{
+                    position: 'absolute',
+                    right: '-15%',
+                    bottom: '-10%',
+                    transform: 'translate(50%, 0)',
+                  } as React.CSSProperties}
+                />
+              </div>
             </div>
           )}
         </AnimatePresence>
