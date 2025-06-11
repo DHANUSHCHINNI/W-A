@@ -24,13 +24,13 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
                 justifyContent: 'flex-start',
                 alignItems: 'center',
                 fontFamily: "erstoria",
-                fontSize: '1.2rem',
+                fontSize: '1.4rem',
             } as HTMLMotionProps<"nav">["style"]}
         >
-            <div className="logo" style={{ top: 20, left: 20, zIndex: 10, marginRight: '2.5rem', marginLeft: '1rem' }}>
+            <div className="logo" style={{ top: 20, left: 20, zIndex: 10, marginRight: '1.5rem', marginLeft: '1rem' }}>
                 <Asset1 width={55} height={55} />
             </div>
-            <div style={{ display: 'flex', gap: '1.1rem', marginLeft: '60rem' }}>
+            <div style={{ display: 'flex', gap: '1.1rem', marginLeft: '57rem' }}>
                 <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
                 <Link href="/Our Story" style={{ color: 'inherit', textDecoration: 'none' }}>Our story</Link>
                 <Link href="/Services" style={{ color: 'inherit', textDecoration: 'none' }}>Services</Link>

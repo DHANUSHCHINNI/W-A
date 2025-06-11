@@ -14,11 +14,23 @@ export default function LandingPage() {
   const scrollAccumulator = useRef(0);
   const SCROLL_THRESHOLD = 200; // You can adjust this value
 
+  const paragraphs = [
+    "We refuse to believe that being well means being quiet. We're here for your real self – the tired one, the curious one, the one who still dances in the kitchen.",
+    "At Well-being & Arts Hub, we make noise, make art, make space for all the parts of you that don't fit the script.",
+    "Come, celebrate the wild, weird and wonderful ways of being human. Say it messy, say it loud, however it shows up. We'll meet you there."
+  ];
+  const maxPage = 2 + paragraphs.length; // 2: last main page, 3: para 1, 4: para 2, 5: para 3
+
+  // Brush stroke rotation values for each paragraph
+  const topBrushRotations = [210, 205, 200];    // Asset2
+  const bottomBrushRotations = [210, 190, 180]; // Asset3
+  const paraIndex = Math.max(0, Math.min(pageState - 3, 2));
+
   useEffect(() => {
     function onWheel(e: WheelEvent) {
       scrollAccumulator.current += e.deltaY;
 
-      if (scrollAccumulator.current > SCROLL_THRESHOLD && pageState < 2) {
+      if (scrollAccumulator.current > SCROLL_THRESHOLD && pageState < maxPage) {
         setPageState(pageState + 1);
         scrollAccumulator.current = 0;
       } else if (scrollAccumulator.current < -SCROLL_THRESHOLD && pageState > 0) {
@@ -28,7 +40,7 @@ export default function LandingPage() {
     }
     window.addEventListener("wheel", onWheel, { passive: true });
     return () => window.removeEventListener("wheel", onWheel);
-  }, [pageState]);
+  }, [pageState, maxPage]);
 
   return (
     <main
@@ -58,10 +70,13 @@ export default function LandingPage() {
           top: -100,
           right: -200,
           zIndex: 1,
-          transform: "rotate(210deg) scale(1.7)",
           transformOrigin: "center",
         } as React.CSSProperties}
-        animate={{ opacity: 0.7 }}
+        animate={{
+          opacity: 0.7,
+          rotate: pageState > 2 ? topBrushRotations[paraIndex] : 210,
+          scale: 1.9
+        }}
         transition={{ duration: 0.7 }}
       >
         <Asset2 width={800} height={400} />
@@ -74,10 +89,13 @@ export default function LandingPage() {
           bottom: -280,
           left: 0,
           zIndex: 1,
-          transform: "rotate(210deg) scale(2.4)",
           transformOrigin: "center",
         } as React.CSSProperties}
-        animate={{ opacity: 0.7 }}
+        animate={{
+          opacity: 0.7,
+          rotate: pageState > 2 ? bottomBrushRotations[paraIndex] : 210,
+          scale: 2.4
+        }}
         transition={{ duration: 0.7 }}
       >
         <Asset3 width={800} height={400} />
@@ -165,55 +183,52 @@ export default function LandingPage() {
             >
               <div
                 style={{
-                  background: '#b19a8b',
                   color: '#fff',
-                  borderRadius: 30,
                   padding: '2.2rem 2.5rem',
                   width: '90%',
-                  maxWidth: 900,
-                  textAlign: 'left',
-                  fontSize: 22,
+                  maxWidth: 1100,
+                  textAlign: 'center',
+                  fontSize: 40,
                   fontFamily: 'Erstoria',
                   fontWeight: 400,
-                  boxShadow: 'none',
                 }}
               >
                 We refuse to believe that being well means being quiet. We're here for your real self – the tired one, the curious one, the one who still dances in the kitchen.
               </div>
-              <div
-                style={{
-                  background: '#b19a8b',
-                  color: '#fff',
-                  borderRadius: 30,
-                  padding: '2.2rem 2.5rem',
-                  width: '90%',
-                  maxWidth: 900,
-                  textAlign: 'left',
-                  fontSize: 22,
-                  fontFamily: 'Erstoria',
-                  fontWeight: 400,
-                  boxShadow: 'none',
-                }}
-              >
-                At Well-being & Arts Hub, we make noise, make art, make space for all the parts of you that don't fit the script.
-              </div>
-              <div
-                style={{
-                  background: '#b19a8b',
-                  color: '#fff',
-                  borderRadius: 30,
-                  padding: '2.2rem 2.5rem',
-                  width: '90%',
-                  maxWidth: 900,
-                  textAlign: 'left',
-                  fontSize: 22,
-                  fontFamily: 'Erstoria',
-                  fontWeight: 400,
-                  boxShadow: 'none',
-                }}
-              >
-                Come, celebrate the wild, weird and wonderful ways of being human. Say it messy, say it loud, however it shows up. We'll meet you there.
-              </div>
+            </div>
+          )}
+          {pageState > 2 && pageState <= maxPage && (
+            <div
+              style={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '2.5rem',
+                marginTop: 0,
+              }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={pageState}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7 }}
+                  style={{
+                    color: '#fff',
+                    padding: '2.2rem 2.5rem',
+                    width: '90%',
+                    maxWidth: 1100,
+                    textAlign: 'center',
+                    fontSize: 40,
+                    fontFamily: 'Erstoria',
+                    fontWeight: 400,
+                  } as React.CSSProperties}
+                >
+                  {paragraphs[pageState - 3]}
+                </motion.div>
+              </AnimatePresence>
             </div>
           )}
         </AnimatePresence>
