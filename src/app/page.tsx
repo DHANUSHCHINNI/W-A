@@ -124,7 +124,7 @@ export default function LandingPage() {
           transformOrigin: "center",
         } as React.CSSProperties}
         animate={{
-          opacity: pageState === maxPage ? 0 : 0.7,
+          opacity: (pageState === maxPage || pageState === maxPage + 1) ? 0 : 0.7,
           rotate: pageState > 2 ? topBrushRotations[paraIndex] : 210,
           scale: 1.9
         }}
@@ -143,7 +143,7 @@ export default function LandingPage() {
           transformOrigin: "center",
         } as React.CSSProperties}
         animate={{
-          opacity: pageState === maxPage ? 0 : 0.7,
+          opacity: (pageState === maxPage || pageState === maxPage + 1) ? 0 : 0.7,
           rotate: pageState > 2 ? bottomBrushRotations[paraIndex] : 210,
           scale: 2.4
         }}
@@ -378,7 +378,7 @@ export default function LandingPage() {
                 justifyContent: 'center',
                 position: 'relative',
                 color: '#2e1a13',
-              }}
+              } as React.CSSProperties}
             >
               {/* Heading absolutely positioned at top left of the website */}
               <div
@@ -413,7 +413,7 @@ export default function LandingPage() {
                   flexDirection: 'column',
                   alignItems: 'center',
                   position: 'relative',
-                }}
+                } as React.CSSProperties}
               >
                 <div style={{
                   display: 'flex',
@@ -435,7 +435,7 @@ export default function LandingPage() {
                         padding: '1.2rem 0.5rem',
                         transition: 'background 0.2s, box-shadow 0.2s',
                         background: '#b19a8b',
-                      }}
+                      } as React.CSSProperties}
                       onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
                       onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
                     >
@@ -456,7 +456,7 @@ export default function LandingPage() {
                         padding: '1.2rem 0.5rem',
                         transition: 'background 0.2s, box-shadow 0.2s',
                         background: '#b19a8b',
-                      }}
+                      } as React.CSSProperties}
                       onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
                       onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
                     >
@@ -477,7 +477,7 @@ export default function LandingPage() {
                         padding: '1.2rem 0.5rem',
                         transition: 'background 0.2s, box-shadow 0.2s',
                         background: '#b19a8b',
-                      }}
+                      } as React.CSSProperties}
                       onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
                       onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
                     >
@@ -498,7 +498,7 @@ export default function LandingPage() {
                         padding: '1.2rem 0.5rem',
                         transition: 'background 0.2s, box-shadow 0.2s',
                         background: '#b19a8b',
-                      }}
+                      } as React.CSSProperties}
                       onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
                       onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
                     >
