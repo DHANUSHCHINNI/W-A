@@ -10,6 +10,10 @@ import Asset6 from './components/Asset6';
 import hubs3 from './components/hubs3';
 import hubs1 from './components/hubs1';
 import hubs2 from './components/hubs2';
+import Rahaat from './components/Rahaat';
+import Retreat from './components/Retreat';
+import Sukoon from './components/Sukoon';
+import Fillcup from './components/Fillcup';
 
 import buttonStyles from './components/Button.module.css';
 import Link from 'next/link';
@@ -65,8 +69,8 @@ export default function LandingPage() {
   const maxPage = 1 + paragraphs.length + 1; // 1: transition, 2: para 1, 3: para 2, 4: para 3, 5: services
 
   // Brush stroke rotation values for each paragraph
-  const topBrushRotations = [210, 205, 200];    // Asset2
-  const bottomBrushRotations = [210, 190, 180]; // Asset3
+  const topBrushRotations = [210, 210, 210];    // Asset2
+  const bottomBrushRotations = [210, 210, 210]; // Asset3
   const paraIndex = Math.max(0, Math.min(pageState - 2, 2));
 
   const pageStateRef = useRef(pageState);
@@ -77,7 +81,7 @@ export default function LandingPage() {
   useEffect(() => {
     function onWheel(e: WheelEvent) {
       scrollAccumulator.current += e.deltaY;
-      if (scrollAccumulator.current > SCROLL_THRESHOLD && pageStateRef.current < maxPage) {
+      if (scrollAccumulator.current > SCROLL_THRESHOLD && pageStateRef.current < maxPage + 1) {
         setPageState(pageStateRef.current + 1);
         scrollAccumulator.current = 0;
       } else if (scrollAccumulator.current < -SCROLL_THRESHOLD && pageStateRef.current > 0) {
@@ -241,7 +245,7 @@ export default function LandingPage() {
                     width: '90%',
                     maxWidth: 1100,
                     textAlign: 'center',
-                    fontSize: 40,
+                    fontSize: 50,
                     fontFamily: 'Erstoria',
                     fontWeight: 400,
                   } as React.CSSProperties}
@@ -359,6 +363,151 @@ export default function LandingPage() {
                   } as React.CSSProperties}
                 >
                   Services
+                </div>
+              </div>
+            </div>
+          )}
+          {pageState === maxPage + 1 && (
+            <div
+              style={{
+                width: '100%',
+                minHeight: '80vh',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                color: '#2e1a13',
+              }}
+            >
+              {/* Heading absolutely positioned at top left of the website */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 75, // adjust as needed
+                  left: 170, // adjust as needed
+                  fontFamily: 'Erstoria',
+                  fontSize: 40,
+                  fontWeight: 500,
+                  color: '#d1c1b2',
+                  letterSpacing: 1,
+                  textAlign: 'left',
+                  zIndex: 20,
+                } as React.CSSProperties}
+              >
+                Key offerings
+              </div>
+              {/* The gray box with only the icons row */}
+              <div
+                style={{
+                  marginTop: 60,
+                  width: '100vw',
+                  maxWidth: '100vw',
+                  marginLeft: 0,
+                  marginRight: 0,
+                  background: '#b19a8b',
+                  borderRadius: 0, // sharp corners
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
+                  padding: '3.5rem 2.5rem 3.5rem 2.5rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  position: 'relative',
+                }}
+              >
+                <div style={{
+                  display: 'flex',
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: '100%',
+                  maxWidth: 1000,
+                  gap: '2.5rem',
+                }}>
+                  <Link href="/offerings/sukoon" style={{ textDecoration: 'none', flex: 1 }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        cursor: 'pointer',
+                        borderRadius: 10,
+                        padding: '1.2rem 0.5rem',
+                        transition: 'background 0.2s, box-shadow 0.2s',
+                        background: '#b19a8b',
+                      }}
+                      onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
+                      onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
+                    >
+                      <Sukoon width={90} height={90} />
+                      <div style={{ marginTop: 18, fontFamily: 'Erstoria', fontSize: 20, color: '#83351b', fontWeight: 500, textAlign: 'center' }}>
+                        Sukoon Subscription
+                      </div>
+                    </div>
+                  </Link>
+                  <Link href="/offerings/rahaat" style={{ textDecoration: 'none', flex: 1 }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        cursor: 'pointer',
+                        borderRadius: 10,
+                        padding: '1.2rem 0.5rem',
+                        transition: 'background 0.2s, box-shadow 0.2s',
+                        background: '#b19a8b',
+                      }}
+                      onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
+                      onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
+                    >
+                      <Rahaat width={90} height={90} />
+                      <div style={{ marginTop: 18, fontFamily: 'Erstoria', fontSize: 20, color: '#83351b', fontWeight: 500, textAlign: 'center' }}>
+                        Rahaat Subscription
+                      </div>
+                    </div>
+                  </Link>
+                  <Link href="/offerings/filling-your-cup" style={{ textDecoration: 'none', flex: 1 }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        cursor: 'pointer',
+                        borderRadius: 10,
+                        padding: '1.2rem 0.5rem',
+                        transition: 'background 0.2s, box-shadow 0.2s',
+                        background: '#b19a8b',
+                      }}
+                      onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
+                      onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
+                    >
+                      <Fillcup width={90} height={90} />
+                      <div style={{ marginTop: 18, fontFamily: 'Erstoria', fontSize: 20, color: '#83351b', fontWeight: 500, textAlign: 'center' }}>
+                        Filling your cup
+                      </div>
+                    </div>
+                  </Link>
+                  <Link href="/offerings/retreats" style={{ textDecoration: 'none', flex: 1 }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        cursor: 'pointer',
+                        borderRadius: 10,
+                        padding: '1.2rem 0.5rem',
+                        transition: 'background 0.2s, box-shadow 0.2s',
+                        background: '#b19a8b',
+                      }}
+                      onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
+                      onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
+                    >
+                      <Retreat width={90} height={90} />
+                      <div style={{ marginTop: 18, fontFamily: 'Erstoria', fontSize: 20, color: '#83351b', fontWeight: 500, textAlign: 'center' }}>
+                        Well-being Retreats
+                      </div>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
