@@ -14,6 +14,7 @@ import Rahaat from './components/Rahaat';
 import Retreat from './components/Retreat';
 import Sukoon from './components/Sukoon';
 import Fillcup from './components/Fillcup';
+import ColorLogoFin from './components/ColorLogoFin';
 
 import buttonStyles from './components/Button.module.css';
 import Link from 'next/link';
@@ -164,7 +165,7 @@ export default function LandingPage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-        }}
+        } as React.CSSProperties}
       >
         <AnimatePresence mode="wait">
           {pageState === 0 && (
@@ -185,7 +186,7 @@ export default function LandingPage() {
           {pageState === 1 && (
             <>
               <motion.div
-                key="asset4"
+                key="colorLogoFin"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -195,7 +196,7 @@ export default function LandingPage() {
                   maxWidth: "100%",
                 } as React.CSSProperties}
               >
-                <Asset4 width={700} height={300} style={{ fill: "#d1c1b2" }} />
+                <ColorLogoFin width={700} height={300} style={{ fill: "#d1c1b2" }} />
               </motion.div>
               <motion.div
                 key="buttons"
@@ -230,7 +231,7 @@ export default function LandingPage() {
                 alignItems: 'center',
                 gap: '2.5rem',
                 marginTop: 0,
-              }}
+              } as React.CSSProperties}
             >
               <AnimatePresence mode="wait">
                 <motion.div
@@ -266,7 +267,7 @@ export default function LandingPage() {
                 justifyContent: 'center',
                 position: 'relative',
                 color: '#fff',
-              }}
+              } as React.CSSProperties}
             >
               <div style={{ marginTop: 100, width: '100%' }}>
                 {/* Center logo */}

@@ -1,0 +1,69 @@
+.storyContainer {
+    min-height: 100vh;
+    background: #2e1a13;
+    padding: 120px 32px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    width: 100%;
+}
+
+.heading {
+    position: absolute;
+    top: 135px;
+    left: 130px;
+    font-family: 'Erstoria';
+    font-size: 40px;
+    font-weight: 500;
+    color: #d1c1b2;
+    letter-spacing: 1px;
+    text-align: left;
+    z-index: 20;
+}
+
+.contentWrapper {
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    align-items: flex-start;
+    margin-top: 100px;
+}
+
+.contentWrapper+.contentWrapper {
+    margin-top: 100px;
+}
+
+.contentWrapper+.contentWrapper .textSection {
+    margin-top: -40px;
+}
+
+.textSection {
+    flex: 1;
+    color: #d1c1b2;
+    font-family: 'Erstoria';
+    font-size: 24px;
+    line-height: 1.625;
+    text-align: left;
+    padding-left: 40px;
+}
+
+.textSection p {
+    margin-bottom: 1rem;
+}
+
+.imageSection {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}

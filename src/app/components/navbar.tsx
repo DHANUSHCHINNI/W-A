@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
             </div>
             <div style={{ display: 'flex', gap: '1.1rem', marginLeft: '57rem' }}>
                 <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
-                <Link href="/Our Story" style={{ color: 'inherit', textDecoration: 'none' }}>Our story</Link>
+                <Link href="/story" style={{ color: 'inherit', textDecoration: 'none' }}>Our story</Link>
                 <Link href="/Services" style={{ color: 'inherit', textDecoration: 'none' }}>Services</Link>
                 <Link href="/Members" style={{ color: 'inherit', textDecoration: 'none' }}>Members</Link>
                 <Link href="/Contact Us" style={{ color: 'inherit', textDecoration: 'none' }}>Contact us</Link>
