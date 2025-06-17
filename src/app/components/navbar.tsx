@@ -1,9 +1,11 @@
-// src/app/components/Navbar.tsx
 'use client';
 import { motion, HTMLMotionProps } from 'framer-motion';
 import Link from 'next/link';
 import Asset1 from './Asset1';
 import { NavbarProps } from '../types';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Box from '@mui/material/Box';
 
 const Navbar: React.FC<NavbarProps> = ({ show }) => {
     return (
@@ -16,27 +18,34 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
                 top: 0,
                 left: 0,
                 width: '100%',
-                background: '#b19a8b', // lighter brown for navbar
-                color: '#2e1a13',
                 zIndex: 100,
-                padding: '0.75rem 1rem',
-                display: 'flex',
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-                fontFamily: "erstoria",
-                fontSize: '1.4rem',
             } as HTMLMotionProps<"nav">["style"]}
         >
-            <div className="logo" style={{ top: 20, left: 20, zIndex: 10, marginRight: '1.5rem', marginLeft: '1rem' }}>
-                <Asset1 width={55} height={55} />
-            </div>
-            <div style={{ display: 'flex', gap: '1.1rem', marginLeft: '57rem' }}>
-                <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
-                <Link href="/story" style={{ color: 'inherit', textDecoration: 'none' }}>Our story</Link>
-                <Link href="/Services" style={{ color: 'inherit', textDecoration: 'none' }}>Services</Link>
-                <Link href="/Members" style={{ color: 'inherit', textDecoration: 'none' }}>Members</Link>
-                <Link href="/Contact Us" style={{ color: 'inherit', textDecoration: 'none' }}>Contact us</Link>
-            </div>
+            <AppBar
+                position="static"
+                elevation={0}
+                sx={{
+                    background: '#b19a8b',
+                    color: '#2e1a13',
+                    fontFamily: 'erstoria',
+                    fontSize: '1.4rem',
+                    boxShadow: 'none',
+                    padding:'5px'
+                }}
+            >
+                <Toolbar sx={{ minHeight: '64px', px: 2, display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
+                    <Box className="logo" sx={{ mr: 3, ml: 2, zIndex: 10 }}>
+                        <Asset1 width={55} height={55} />
+                    </Box>
+                    <Box sx={{ display: 'flex', gap: '1.1rem', ml: 'auto' }}>
+                        <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
+                        <Link href="/story" style={{ color: 'inherit', textDecoration: 'none' }}>Our story</Link>
+                        <Link href="/Services" style={{ color: 'inherit', textDecoration: 'none' }}>Services</Link>
+                        <Link href="/Members" style={{ color: 'inherit', textDecoration: 'none' }}>Members</Link>
+                        <Link href="/Contact Us" style={{ color: 'inherit', textDecoration: 'none' }}>Contact us</Link>
+                    </Box>
+                </Toolbar>
+            </AppBar>
         </motion.nav>
     );
 }
