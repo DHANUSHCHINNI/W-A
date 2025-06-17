@@ -5,30 +5,20 @@ import Navbar from "./components/navbar";
 import Asset1 from "./components/Asset1";
 import Asset2 from "./components/Asset2";
 import Asset3 from "./components/Asset3";
-import Asset4 from "./components/Asset4";
 import Asset6 from './components/Asset6';
-// import hubs3 from './components/hubs3';
-// import hubs1 from './components/hubs1';
-// import hubs2 from './components/hubs2';
-import Rahaat from './components/Rahaat';
-import Retreat from './components/Retreat';
-import Sukoon from './components/Sukoon';
-import Fillcup from './components/Fillcup';
 import SecondPage from "./components/SecondPage";
-// import ColorLogoFin from './components/ColorLogoFin';
-// import ServiceHubButton from "./components/ServiceHubButton";
-// import buttonStyles from './components/Button.module.css';
-import Link from 'next/link';
 import Services from "./components/Services";
 import KeyOfferings from "./components/KeyOfferings";
 import Paragraphs from "./components/Paragraphs";
+import HamburgerNavbar from "./components/HamburgerNavbar";
 
 
 export default function LandingPage() {
   const [pageState, setPageState] = useState(0); // 0: landing, 1: nav+asset+buttons, 2: nav only
   const scrollAccumulator = useRef(0);
   const SCROLL_THRESHOLD = 80; // Lowered threshold for easier scrolling
-
+  const [isMobile, setIsMobile] = useState(false);
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const paragraphs = [
     "We refuse to believe that being well means being quiet. We're here for your real self – the tired one, the curious one, the one who still dances in the kitchen.",
     "At Well-being & Arts Hub, we make noise, make art, make space for all the parts of you that don't fit the script.",
@@ -45,6 +35,14 @@ export default function LandingPage() {
   useEffect(() => {
     pageStateRef.current = pageState;
   }, [pageState]);
+
+   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
 
   useEffect(() => {
     function onWheel(e: WheelEvent) {
@@ -75,7 +73,11 @@ export default function LandingPage() {
       }}
     >
       {/* Navbar */}
-      <Navbar show={pageState > 0} />
+      {isMobile ? (
+        <HamburgerNavbar show={pageState > 0} open={hamburgerOpen} setOpen={setHamburgerOpen} />
+      ) : (
+        <Navbar show={pageState > 0} />
+      )}
 
       {/* Top left logo */}
       <div style={{ position: "absolute", top: 20, left: 32, zIndex: 10 }}>
