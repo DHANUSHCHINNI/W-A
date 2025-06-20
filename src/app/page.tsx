@@ -27,8 +27,8 @@ export default function LandingPage() {
   const maxPage = 1 + paragraphs.length + 1; // 1: transition, 2: para 1, 3: para 2, 4: para 3, 5: services
 
   // Brush stroke rotation values for each paragraph
-  const topBrushRotations = [210, 210, 210];    // Asset2
-  const bottomBrushRotations = [210, 210, 210]; // Asset3
+  const topBrushRotations = [210, 205, 210]; // Asset2
+  const bottomBrushRotations = [210, 200, 205]; // Asset3
   const paraIndex = Math.max(0, Math.min(pageState - 2, 2));
 
   const pageStateRef = useRef(pageState);
@@ -36,7 +36,7 @@ export default function LandingPage() {
     pageStateRef.current = pageState;
   }, [pageState]);
 
-   useEffect(() => {
+  useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
@@ -153,16 +153,16 @@ export default function LandingPage() {
             </motion.div>
           )}
           {pageState === 1 && (
-            <SecondPage/>
+            <SecondPage />
           )}
           {pageState > 1 && pageState <= maxPage - 1 && (
-           <Paragraphs pageState={pageState} paragraphs={paragraphs}/>
+            <Paragraphs pageState={pageState} paragraphs={paragraphs} />
           )}
           {pageState === maxPage && (
-            <Services/>
-              )}
+            <Services />
+          )}
           {pageState === maxPage + 1 && (
-          <KeyOfferings/>
+            <KeyOfferings />
           )}
         </AnimatePresence>
       </div>

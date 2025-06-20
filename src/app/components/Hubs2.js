@@ -1,6 +1,8 @@
 import * as React from "react";
-const SvgHubs2 = (props) => (
+const SvgHubs2 = ({ width = 300, height = 100, ...props }) => (
   <svg
+    width={width}
+    height={height}
     xmlns="http://www.w3.org/2000/svg"
     data-name="Layer 2"
     viewBox="0 0 743.58 530.13"

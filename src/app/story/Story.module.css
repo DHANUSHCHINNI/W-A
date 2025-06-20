@@ -12,7 +12,7 @@
 
 .heading {
     position: absolute;
-    top: 135px;
+    top: 100px;
     left: 130px;
     font-family: 'Erstoria';
     font-size: 40px;
@@ -21,6 +21,27 @@
     letter-spacing: 1px;
     text-align: left;
     z-index: 20;
+    margin-top: 40px;
+}
+
+.subheading {
+    text-align: left;
+    font-family: 'Erstoria';
+    font-size: 32px;
+    font-weight: 500;
+    color: #d1c1b2;
+    margin: 48px 0 8px 0;
+    margin-left: 48px;
+}
+
+.smallerSubheading {
+    text-align: left;
+    font-family: 'Erstoria';
+    font-size: 20px;
+    font-weight: 400;
+    color: #d1c1b2;
+    margin: 0 0 24px 0;
+    margin-left: 48px;
 }
 
 .contentWrapper {
@@ -30,7 +51,7 @@
     flex-direction: row;
     gap: 48px;
     align-items: flex-start;
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 .contentWrapper+.contentWrapper {
@@ -66,4 +87,12 @@
     max-width: 100%;
     height: auto;
     border-radius: 8px;
+}
+
+.subheadingWrapper {
+    width: 100%;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
 }

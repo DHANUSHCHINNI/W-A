@@ -5,6 +5,8 @@ import Image from "next/image";
 import styles from './Story.module.css';
 import ourStoryImage from '../assets/ourstory2.jpeg';
 import ourStoryImage2 from '../assets/ourstory3.jpeg';
+import { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4 } from './storyText';
+
 
 export default function StoryPage() {
     return (
@@ -13,15 +15,7 @@ export default function StoryPage() {
             <h1 className={styles.heading}>Our Story</h1>
             <div className={styles.contentWrapper}>
                 <div className={styles.textSection}>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                    <p>
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p>
-                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                    </p>
+                    {storyTextSection1}
                 </div>
                 <div className={styles.imageSection}>
                     <Image
@@ -34,7 +28,6 @@ export default function StoryPage() {
                 </div>
             </div>
 
-
             <div className={styles.contentWrapper}>
                 <div className={styles.imageSection}>
                     <Image
@@ -46,15 +39,47 @@ export default function StoryPage() {
                     />
                 </div>
                 <div className={styles.textSection}>
-                    <p>
-                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                    </p>
-                    <p>
-                        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
-                    </p>
-                    <p>
-                        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.
-                    </p>
+                    {storyTextSection2}
+                </div>
+            </div>
+
+            <div className={styles.subheadingWrapper}>
+                <h2 className={styles.subheading}>Meet Amruta Huddar (she/her)</h2>
+                <h3 className={styles.smallerSubheading}>[Co-founder | Drama & Movement Psychotherapist | Embodied Psychotherapist | Disability Justice Advocate
+                    ]</h3>
+            </div>
+            <div className={styles.contentWrapper}>
+                <div className={styles.imageSection}>
+                    <Image
+                        src={ourStoryImage}
+                        alt="Amruta Huddar"
+                        width={500}
+                        height={300}
+                        className={styles.image}
+                    />
+                </div>
+                <div className={styles.textSection}>
+                    {storyTextSection3}
+                </div>
+            </div>
+
+            <div className={styles.subheadingWrapper}>
+                <h2 className={styles.subheading}>Meet Kritija Saxena (she/her)</h2>
+                <h3 className={styles.smallerSubheading}>[Co-founder | Drama & Movement Psychotherapist | Psychologist | Forensic Dramatherapist
+                    ]</h3>
+            </div>
+            <div className={styles.contentWrapper}>
+                <div className={styles.imageSection}>
+                    <Image
+                        src={ourStoryImage2}
+                        alt="Kritija Saxena"
+                        width={500}
+                        height={300}
+                        className={styles.image}
+                    />
+                </div>
+                <div className={styles.textSection}>
+                    {storyTextSection4}
                 </div>
             </div>
         </main>

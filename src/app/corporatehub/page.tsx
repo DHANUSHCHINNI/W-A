@@ -1,0 +1,18 @@
+import React from 'react';
+import Navbar from '../components/navbar';
+import styles from './corporate.module.css';
+import { corporateTextsection1 } from './corporateText';
+
+export default function CorporateHubPage() {
+    return (
+        <div className={styles.rndBackground}>
+            <Navbar show={true} />
+            <div className={styles.rndContainer}>
+                <h1 className={styles.rndHeading}>Corporate Hub</h1>
+                <div className={styles.textSection}>
+                    {corporateTextsection1}
+                </div>
+            </div>
+        </div>
+    );
+} 

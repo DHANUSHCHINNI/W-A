@@ -9,7 +9,7 @@ body {
   width: 100vw;
   height: 100vh;
   box-sizing: border-box;
-  background: #2e1a13;
+  background: #291812;
   overflow-x: hidden;
 }
 
@@ -22,7 +22,7 @@ body {
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #291812;
 }
 
 @theme inline {

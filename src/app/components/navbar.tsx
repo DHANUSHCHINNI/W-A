@@ -25,12 +25,12 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
                 position="static"
                 elevation={0}
                 sx={{
-                    background: '#b19a8b',
+                    background: '#BAB1AB',
                     color: '#2e1a13',
                     fontFamily: 'erstoria',
                     fontSize: '1.4rem',
                     boxShadow: 'none',
-                    padding:'5px'
+                    padding: '5px'
                 }}
             >
                 <Toolbar sx={{ minHeight: '64px', px: 2, display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
