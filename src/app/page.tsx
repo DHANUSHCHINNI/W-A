@@ -93,6 +93,11 @@ export default function LandingPage() {
           zIndex: 1,
           transformOrigin: "center",
         } as React.CSSProperties}
+        initial={{
+          opacity: (pageState === maxPage || pageState === maxPage + 1) ? 0 : 0.7,
+          rotate: pageState > 2 ? topBrushRotations[paraIndex] : 210,
+          scale: 1.9
+        }}
         animate={{
           opacity: (pageState === maxPage || pageState === maxPage + 1) ? 0 : 0.7,
           rotate: pageState > 2 ? topBrushRotations[paraIndex] : 210,
@@ -112,6 +117,11 @@ export default function LandingPage() {
           zIndex: 1,
           transformOrigin: "center",
         } as React.CSSProperties}
+        initial={{
+          opacity: (pageState === maxPage || pageState === maxPage + 1) ? 0 : 0.7,
+          rotate: pageState > 2 ? bottomBrushRotations[paraIndex] : 210,
+          scale: 2.4
+        }}
         animate={{
           opacity: (pageState === maxPage || pageState === maxPage + 1) ? 0 : 0.7,
           rotate: pageState > 2 ? bottomBrushRotations[paraIndex] : 210,
