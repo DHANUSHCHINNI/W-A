@@ -1,0 +1,26 @@
+.carouselWrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    border-radius: 12px;
+    padding: 8px;
+}
+
+.carouselWrapper :global(.slick-slide > div) {
+    height: 500px;
+}
+
+.imageContainer {
+    height: 100%;
+    position: relative;
+}
+
+.carouselWrapper :global(.slick-slide) {
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    transform: scale(0.8);
+    opacity: 0.6;
+}
+
+.carouselWrapper :global(.slick-center) {
+    transform: scale(1);
+    opacity: 1;
+}

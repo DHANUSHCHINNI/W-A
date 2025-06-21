@@ -47,29 +47,26 @@
 .contentWrapper {
     max-width: 1400px;
     width: 100%;
-    display: flex;
-    flex-direction: row;
-    gap: 48px;
-    align-items: flex-start;
     margin-top: 70px;
+}
+
+.contentWrapper::after {
+    content: "";
+    clear: both;
+    display: table;
 }
 
 .contentWrapper+.contentWrapper {
     margin-top: 100px;
 }
 
-.contentWrapper+.contentWrapper .textSection {
-    margin-top: -40px;
-}
-
 .textSection {
-    flex: 1;
     color: #d1c1b2;
     font-family: 'Erstoria';
     font-size: 24px;
     line-height: 1.625;
     text-align: left;
-    padding-left: 40px;
+    padding-left: 0;
 }
 
 .textSection p {
@@ -77,10 +74,19 @@
 }
 
 .imageSection {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    width: 45%;
+    max-width: 500px;
+    margin-bottom: 1rem;
+}
+
+.imageOnLeft {
+    float: left;
+    margin-right: 48px;
+}
+
+.imageOnRight {
+    float: right;
+    margin-left: 48px;
 }
 
 .image {

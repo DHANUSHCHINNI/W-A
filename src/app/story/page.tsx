@@ -6,7 +6,8 @@ import styles from './Story.module.css';
 import ourStoryImage from '../assets/ourstory2.jpeg';
 import ourStoryImage2 from '../assets/ourstory3.jpeg';
 import { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4 } from './storyText';
-
+import kritijaImage from '../assets/KritijaHeadshot.jpg';
+import amrutaImage from '../assets/AHHeadshot.jpg';
 
 export default function StoryPage() {
     return (
@@ -14,10 +15,7 @@ export default function StoryPage() {
             <Navbar show={true} />
             <h1 className={styles.heading}>Our Story</h1>
             <div className={styles.contentWrapper}>
-                <div className={styles.textSection}>
-                    {storyTextSection1}
-                </div>
-                <div className={styles.imageSection}>
+                <div className={`${styles.imageSection} ${styles.imageOnRight}`}>
                     <Image
                         src={ourStoryImage}
                         alt="Our Story"
@@ -26,10 +24,13 @@ export default function StoryPage() {
                         className={styles.image}
                     />
                 </div>
+                <div className={styles.textSection}>
+                    {storyTextSection1}
+                </div>
             </div>
 
             <div className={styles.contentWrapper}>
-                <div className={styles.imageSection}>
+                <div className={`${styles.imageSection} ${styles.imageOnLeft}`}>
                     <Image
                         src={ourStoryImage2}
                         alt="Our Story Part 2"
@@ -45,13 +46,12 @@ export default function StoryPage() {
 
             <div className={styles.subheadingWrapper}>
                 <h2 className={styles.subheading}>Meet Amruta Huddar (she/her)</h2>
-                <h3 className={styles.smallerSubheading}>[Co-founder | Drama & Movement Psychotherapist | Embodied Psychotherapist | Disability Justice Advocate
-                    ]</h3>
+                <h3 className={styles.smallerSubheading}>[Co-founder | Drama & Movement Psychotherapist | Embodied Psychotherapist | Disability Justice Advocate]</h3>
             </div>
             <div className={styles.contentWrapper}>
-                <div className={styles.imageSection}>
+                <div className={`${styles.imageSection} ${styles.imageOnLeft}`}>
                     <Image
-                        src={ourStoryImage}
+                        src={amrutaImage}
                         alt="Amruta Huddar"
                         width={500}
                         height={300}
@@ -65,13 +65,12 @@ export default function StoryPage() {
 
             <div className={styles.subheadingWrapper}>
                 <h2 className={styles.subheading}>Meet Kritija Saxena (she/her)</h2>
-                <h3 className={styles.smallerSubheading}>[Co-founder | Drama & Movement Psychotherapist | Psychologist | Forensic Dramatherapist
-                    ]</h3>
+                <h3 className={styles.smallerSubheading}>[Co-founder | Drama & Movement Psychotherapist | Psychologist | Forensic Dramatherapist]</h3>
             </div>
             <div className={styles.contentWrapper}>
-                <div className={styles.imageSection}>
+                <div className={`${styles.imageSection} ${styles.imageOnLeft}`}>
                     <Image
-                        src={ourStoryImage2}
+                        src={kritijaImage}
                         alt="Kritija Saxena"
                         width={500}
                         height={300}
