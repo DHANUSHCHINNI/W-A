@@ -17,7 +17,7 @@
     font-family: 'Erstoria';
     font-size: 40px;
     font-weight: 500;
-    color: #d1c1b2;
+    color: #BAB1AB;
     letter-spacing: 1px;
     text-align: left;
     z-index: 20;
@@ -29,7 +29,7 @@
     font-family: 'Erstoria';
     font-size: 32px;
     font-weight: 500;
-    color: #d1c1b2;
+    color: #BAB1AB;
     margin: 48px 0 8px 0;
     margin-left: 48px;
 }
@@ -39,7 +39,7 @@
     font-family: 'Erstoria';
     font-size: 20px;
     font-weight: 400;
-    color: #d1c1b2;
+    color: #BAB1AB;
     margin: 0 0 24px 0;
     margin-left: 48px;
 }
@@ -61,7 +61,7 @@
 }
 
 .textSection {
-    color: #d1c1b2;
+    color: #BAB1AB;
     font-family: 'Erstoria';
     font-size: 24px;
     line-height: 1.625;

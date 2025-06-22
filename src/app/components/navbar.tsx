@@ -42,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
                         <Link href="/story" style={{ color: 'inherit', textDecoration: 'none' }}>Our story</Link>
                         <Link href="/Services" style={{ color: 'inherit', textDecoration: 'none' }}>Services</Link>
                         <Link href="/Members" style={{ color: 'inherit', textDecoration: 'none' }}>Members</Link>
-                        <Link href="/Contact Us" style={{ color: 'inherit', textDecoration: 'none' }}>Contact us</Link>
+                        <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact us</Link>
                     </Box>
                 </Toolbar>
             </AppBar>
