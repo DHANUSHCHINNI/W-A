@@ -11,12 +11,12 @@ import Services from "./components/Services";
 import KeyOfferings from "./components/KeyOfferings";
 import Paragraphs from "./components/Paragraphs";
 import HamburgerNavbar from "./components/HamburgerNavbar";
+//import Testimonials from "./components/Testimonials";
 
 
 export default function LandingPage() {
   const [pageState, setPageState] = useState(0); // 0: landing, 1: nav+asset+buttons, 2: nav only
-  const scrollAccumulator = useRef(0);
-  const SCROLL_THRESHOLD = 80; // Lowered threshold for easier scrolling
+  const scrollingRef = useRef(false);
   const [isMobile, setIsMobile] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const paragraphs = [
@@ -24,7 +24,7 @@ export default function LandingPage() {
     "At Well-being & Arts Hub, we make noise, make art, make space for all the parts of you that don't fit the script.",
     "Come, celebrate the wild, weird and wonderful ways of being human. Say it messy, say it loud, however it shows up. We'll meet you there."
   ];
-  const maxPage = 1 + paragraphs.length + 1; // 1: transition, 2: para 1, 3: para 2, 4: para 3, 5: services
+  const maxPage = 7; // 0: landing, 1: SecondPage, 2-4: Paragraphs, 5: Services, 6: Key Offerings, 7: Testimonials
 
   // Brush stroke rotation values for each paragraph
   const topBrushRotations = [210, 205, 210]; // Asset2
@@ -46,13 +46,15 @@ export default function LandingPage() {
 
   useEffect(() => {
     function onWheel(e: WheelEvent) {
-      scrollAccumulator.current += e.deltaY;
-      if (scrollAccumulator.current > SCROLL_THRESHOLD && pageStateRef.current < maxPage + 1) {
+      if (scrollingRef.current) return;
+      if (e.deltaY > 0 && pageStateRef.current < maxPage) {
         setPageState(pageStateRef.current + 1);
-        scrollAccumulator.current = 0;
-      } else if (scrollAccumulator.current < -SCROLL_THRESHOLD && pageStateRef.current > 0) {
+        scrollingRef.current = true;
+        setTimeout(() => { scrollingRef.current = false; }, 800);
+      } else if (e.deltaY < 0 && pageStateRef.current > 0) {
         setPageState(pageStateRef.current - 1);
-        scrollAccumulator.current = 0;
+        scrollingRef.current = true;
+        setTimeout(() => { scrollingRef.current = false; }, 800);
       }
     }
     window.addEventListener("wheel", onWheel, { passive: true });
@@ -94,13 +96,13 @@ export default function LandingPage() {
           transformOrigin: "center",
         } as React.CSSProperties}
         initial={{
-          opacity: (pageState === maxPage || pageState === maxPage + 1) ? 0 : 0.7,
-          rotate: pageState > 2 ? topBrushRotations[paraIndex] : 210,
+          opacity: pageState >= 5 ? 0 : 0.7,
+          rotate: (pageState >= 2 && pageState <= 4) ? topBrushRotations[paraIndex] : 210,
           scale: 1.9
         }}
         animate={{
-          opacity: (pageState === maxPage || pageState === maxPage + 1) ? 0 : 0.7,
-          rotate: pageState > 2 ? topBrushRotations[paraIndex] : 210,
+          opacity: pageState >= 5 ? 0 : 0.7,
+          rotate: (pageState >= 2 && pageState <= 4) ? topBrushRotations[paraIndex] : 210,
           scale: 1.9
         }}
         transition={{ duration: 0.7 }}
@@ -118,13 +120,13 @@ export default function LandingPage() {
           transformOrigin: "center",
         } as React.CSSProperties}
         initial={{
-          opacity: (pageState === maxPage || pageState === maxPage + 1) ? 0 : 0.7,
-          rotate: pageState > 2 ? bottomBrushRotations[paraIndex] : 210,
+          opacity: pageState >= 5 ? 0 : 0.7,
+          rotate: (pageState >= 2 && pageState <= 4) ? bottomBrushRotations[paraIndex] : 210,
           scale: 2.4
         }}
         animate={{
-          opacity: (pageState === maxPage || pageState === maxPage + 1) ? 0 : 0.7,
-          rotate: pageState > 2 ? bottomBrushRotations[paraIndex] : 210,
+          opacity: pageState >= 5 ? 0 : 0.7,
+          rotate: (pageState >= 2 && pageState <= 4) ? bottomBrushRotations[paraIndex] : 210,
           scale: 2.4
         }}
         transition={{ duration: 0.7 }}
@@ -165,15 +167,18 @@ export default function LandingPage() {
           {pageState === 1 && (
             <SecondPage />
           )}
-          {pageState > 1 && pageState <= maxPage - 1 && (
+          {pageState >= 2 && pageState <= 4 && (
             <Paragraphs pageState={pageState} paragraphs={paragraphs} />
           )}
-          {pageState === maxPage && (
+          {pageState === 5 && (
             <Services />
           )}
-          {pageState === maxPage + 1 && (
+          {pageState === 6 && (
             <KeyOfferings />
           )}
+          {/* {pageState === 7 && (
+            <Testimonials />
+          )}*/}
         </AnimatePresence>
       </div>
     </main>

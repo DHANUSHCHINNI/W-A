@@ -28,3 +28,16 @@
     line-height: 1.5;
     text-align: left;
 }
+
+.centerImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.image {
+    border-radius: 12px;
+    max-width: 100%;
+    height: auto;
+}

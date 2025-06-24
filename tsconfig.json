@@ -32,10 +32,6 @@
       "react-dom",
       "node"
     ],
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/app/types"
-    ]
   },
   "include": [
     "next-env.d.ts",

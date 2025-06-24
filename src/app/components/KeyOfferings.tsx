@@ -15,7 +15,7 @@ export default function KeyOfferings() {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
-        color: '#2e1a13',
+        color: '#B1ABAB',
       } as React.CSSProperties}
     >
       {/* Heading absolutely positioned at top left of the website */}
@@ -43,7 +43,7 @@ export default function KeyOfferings() {
           maxWidth: '100vw',
           marginLeft: 0,
           marginRight: 0,
-          background: '#b19a8b',
+          background: '#B1ABAB',
           borderRadius: 0, // sharp corners
           boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
           padding: '3.5rem 2.5rem 3.5rem 2.5rem',
@@ -72,10 +72,10 @@ export default function KeyOfferings() {
                 borderRadius: 10,
                 padding: '1.2rem 0.5rem',
                 transition: 'background 0.2s, box-shadow 0.2s',
-                background: '#b19a8b',
+                background: '#B1ABAB',
               } as React.CSSProperties}
               onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
-              onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
+              onMouseOut={e => e.currentTarget.style.background = '#B1ABAB'}
             >
               <Sukoon width={90} height={90} />
               <div style={{ marginTop: 18, fontFamily: 'Erstoria', fontSize: 20, color: '#83351b', fontWeight: 500, textAlign: 'center' }}>
@@ -93,10 +93,10 @@ export default function KeyOfferings() {
                 borderRadius: 10,
                 padding: '1.2rem 0.5rem',
                 transition: 'background 0.2s, box-shadow 0.2s',
-                background: '#b19a8b',
+                background: '#B1ABAB',
               } as React.CSSProperties}
               onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
-              onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
+              onMouseOut={e => e.currentTarget.style.background = '#B1ABAB'}
             >
               <Rahaat width={90} height={90} />
               <div style={{ marginTop: 18, fontFamily: 'Erstoria', fontSize: 20, color: '#83351b', fontWeight: 500, textAlign: 'center' }}>
@@ -114,10 +114,10 @@ export default function KeyOfferings() {
                 borderRadius: 10,
                 padding: '1.2rem 0.5rem',
                 transition: 'background 0.2s, box-shadow 0.2s',
-                background: '#b19a8b',
+                background: '#B1ABAB',
               } as React.CSSProperties}
               onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
-              onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
+              onMouseOut={e => e.currentTarget.style.background = '#B1ABAB'}
             >
               <Fillcup width={90} height={90} />
               <div style={{ marginTop: 18, fontFamily: 'Erstoria', fontSize: 20, color: '#83351b', fontWeight: 500, textAlign: 'center' }}>
@@ -135,10 +135,10 @@ export default function KeyOfferings() {
                 borderRadius: 10,
                 padding: '1.2rem 0.5rem',
                 transition: 'background 0.2s, box-shadow 0.2s',
-                background: '#b19a8b',
+                background: '#B1ABAB',
               } as React.CSSProperties}
               onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
-              onMouseOut={e => e.currentTarget.style.background = '#b19a8b'}
+              onMouseOut={e => e.currentTarget.style.background = '#B1ABAB'}
             >
               <Retreat width={90} height={90} />
               <div style={{ marginTop: 18, fontFamily: 'Erstoria', fontSize: 20, color: '#83351b', fontWeight: 500, textAlign: 'center' }}>

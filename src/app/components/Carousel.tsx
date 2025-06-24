@@ -11,9 +11,12 @@ import corporatehub1 from '../assets/corporatehub1.jpg';
 import corporatehub2 from '../assets/corporatehub2.jpg';
 import corporatehub3 from '../assets/corporatehub3.jpg';
 
-const images = [corporatehub1, corporatehub2, corporatehub3];
+interface CarouselProps {
+    images: any[];
+    altPrefix?: string;
+}
 
-export default function Carousel() {
+export default function Carousel({ images, altPrefix = 'Image' }: CarouselProps) {
     const settings = {
         dots: true,
         infinite: true,
@@ -34,7 +37,7 @@ export default function Carousel() {
                     <div key={idx} className={styles.imageContainer}>
                         <Image
                             src={img}
-                            alt={`Corporate Hub Image ${idx + 1}`}
+                            alt={`${altPrefix} ${idx + 1}`}
                             fill
                             style={{
                                 objectFit: 'cover',
