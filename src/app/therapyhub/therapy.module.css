@@ -22,9 +22,36 @@
 }
 
 .textSection {
-    max-width: 1200px;
-    margin: 0 auto 2rem auto;
+    color: #BAB1AB;
+    font-family: 'Erstoria';
     font-size: 1.7rem;
     line-height: 1.5;
     text-align: left;
+    padding-left: 0;
+}
+
+.contentWrapper {
+    max-width: 1400px;
+    width: 100%;
+    margin-top: 70px;
+}
+
+.contentWrapper::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.imageSection {
+    width: 45%;
+    max-width: 500px;
+    float: left;
+    margin-right: 48px;
+    margin-bottom: 1rem;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
 }

@@ -3,8 +3,8 @@ import React from "react";
 import Navbar from "../components/navbar";
 import Image from "next/image";
 import styles from './Story.module.css';
-import ourStoryImage from '../assets/ourstory2.jpeg';
-import ourStoryImage2 from '../assets/ourstory3.jpeg';
+import OurStoryfin1 from '../assets/OurStoryfin1.jpg';
+import OurStoryfin2 from '../assets/OurStoryfin2.jpg';
 import { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4 } from './storyText';
 import kritijaImage from '../assets/KritijaHeadshot.jpg';
 import amrutaImage from '../assets/AHHeadshot.jpg';
@@ -18,7 +18,7 @@ export default function StoryPage() {
                 <FlightAnimation/>
                 <div className={`${styles.imageSection} ${styles.imageOnRight}`}>
                     <Image
-                        src={ourStoryImage}
+                        src={OurStoryfin1}
                         alt="Our Story"
                         width={500}
                         height={300}
@@ -33,7 +33,7 @@ export default function StoryPage() {
             <div className={styles.contentWrapper}>
                 <div className={`${styles.imageSection} ${styles.imageOnLeft}`}>
                     <Image
-                        src={ourStoryImage2}
+                        src={OurStoryfin2}
                         alt="Our Story Part 2"
                         width={500}
                         height={300}
