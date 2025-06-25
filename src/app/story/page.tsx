@@ -8,13 +8,14 @@ import ourStoryImage2 from '../assets/ourstory3.jpeg';
 import { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4 } from './storyText';
 import kritijaImage from '../assets/KritijaHeadshot.jpg';
 import amrutaImage from '../assets/AHHeadshot.jpg';
-
+import FlightAnimation from "@/app/story/PlaneAnimation";
 export default function StoryPage() {
     return (
         <main className={styles.storyContainer}>
             <Navbar show={true} />
             <h1 className={styles.heading}>Our Story</h1>
             <div className={styles.contentWrapper}>
+                <FlightAnimation/>
                 <div className={`${styles.imageSection} ${styles.imageOnRight}`}>
                     <Image
                         src={ourStoryImage}
