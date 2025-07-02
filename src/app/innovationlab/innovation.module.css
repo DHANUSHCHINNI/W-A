@@ -7,7 +7,7 @@
 
 .rndContainer {
     max-width: 100%;
-    margin: 100px auto 0 auto;
+    margin: 32px auto 0 auto;
     padding: 32px;
     color: #BAB1AB;
     font-family: 'Erstoria', serif;
@@ -27,4 +27,31 @@
     font-size: 1.7rem;
     line-height: 1.5;
     text-align: left;
+}
+
+.heroBgSection {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroBgImage {
+    z-index: 1;
+}
+
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    background: rgba(46, 26, 19, 0.3);
 }

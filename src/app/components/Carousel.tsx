@@ -2,9 +2,10 @@
 import React from 'react';
 import Slider from 'react-slick';
 import Image from 'next/image';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import styles from './Carousel.module.css'; // Import the CSS module
+import defaultStyles from './Carousel.module.css'; // Default CSS module
 
 // Import your corporate hub images
 import corporatehub1 from '../assets/corporatehub1.jpg';
@@ -14,9 +15,36 @@ import corporatehub3 from '../assets/corporatehub3.jpg';
 interface CarouselProps {
     images: any[];
     altPrefix?: string;
+    styles?: { [key: string]: string };
 }
 
-export default function Carousel({ images, altPrefix = 'Image' }: CarouselProps) {
+function NextArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            style={{ ...style, display: 'block', right: 10, zIndex: 2 }}
+            onClick={onClick}
+        >
+            <FaChevronRight size={32} color="#fff" />
+        </div>
+    );
+}
+
+function PrevArrow(props: any) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            style={{ ...style, display: 'block', left: 10, zIndex: 2 }}
+            onClick={onClick}
+        >
+            <FaChevronLeft size={32} color="#fff" />
+        </div>
+    );
+}
+
+export default function Carousel({ images, altPrefix = 'Image', styles = defaultStyles }: CarouselProps) {
     const settings = {
         dots: true,
         infinite: true,
@@ -27,7 +55,9 @@ export default function Carousel({ images, altPrefix = 'Image' }: CarouselProps)
         autoplaySpeed: 3000,
         cssEase: "linear",
         centerMode: true,
-        centerPadding: '150px'
+        centerPadding: '300px',
+        nextArrow: <NextArrow />,
+        prevArrow: <PrevArrow />,
     };
 
     return (

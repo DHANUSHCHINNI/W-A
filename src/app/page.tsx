@@ -11,7 +11,8 @@ import Services from "./components/Services";
 import KeyOfferings from "./components/KeyOfferings";
 import Paragraphs from "./components/Paragraphs";
 import HamburgerNavbar from "./components/HamburgerNavbar";
-//import Testimonials from "./components/Testimonials";
+import Testimonials from "./testimonials/page";
+import Footer from "./components/Footer";
 
 
 export default function LandingPage() {
@@ -43,6 +44,7 @@ export default function LandingPage() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  const testimonialsScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function onWheel(e: WheelEvent) {
@@ -52,6 +54,16 @@ export default function LandingPage() {
         scrollingRef.current = true;
         setTimeout(() => { scrollingRef.current = false; }, 800);
       } else if (e.deltaY < 0 && pageStateRef.current > 0) {
+        // Custom logic for testimonials scroll lock
+        if (pageStateRef.current === 7 && testimonialsScrollRef.current) {
+          const el = testimonialsScrollRef.current;
+          if (el.scrollTop > 0) {
+            el.scrollTo({ top: 0, behavior: 'smooth' });
+            scrollingRef.current = true;
+            setTimeout(() => { scrollingRef.current = false; }, 400);
+            return;
+          }
+        }
         setPageState(pageStateRef.current - 1);
         scrollingRef.current = true;
         setTimeout(() => { scrollingRef.current = false; }, 800);
@@ -176,9 +188,23 @@ export default function LandingPage() {
           {pageState === 6 && (
             <KeyOfferings />
           )}
-          {/* {pageState === 7 && (
-            <Testimonials />
-          )}*/}
+          {pageState === 7 && (
+            <div
+              ref={testimonialsScrollRef}
+              style={{
+                background: "url('/brownlight.svg') center center / cover no-repeat",
+                maxHeight: 'calc(100vh - 60px)',
+                minHeight: '100vh',
+                overflowY: 'auto',
+                width: '100vw',
+                position: 'relative',
+                zIndex: 1,
+              }}
+            >
+              <Testimonials />
+              <Footer />
+            </div>
+          )}
         </AnimatePresence>
       </div>
     </main>

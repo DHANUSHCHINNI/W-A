@@ -1,26 +1,19 @@
 export const trainingTextsection1 = [
-    <p key="1">
-        The Training Hub is a space where creativity and emotional resilience intersect, offering programs that harness the mind-body connection to unlock potential and foster growth. We collaborate with schools, colleges, and educational institutions to empower students and educators. By integrating art-based methodologies and somatic practices, we help individuals navigate the creative and emotional demands of their academic and professional journeys.
-    </p>,
-    <p key="2">
-        Our approach bridges the creative and emotional realms, enabling students and educators to deepen their connection with themselves, their work and their environment.
-    </p>,
-    <p key="3">
-        <b>Format of Engagement</b>
-    </p>,
-    <p key="4">
-        <b>Mind-Body Connection Workshops</b>
-    </p>,
-    <p key="5">
-        <b>Flow and Creativity Labs:</b> Immersive programs designed to help participants overcome creative blocks and access their inner flow through embodied practices.
-    </p>,
-    <p key="6">
-        <b>Stress and Performance Support</b>
-    </p>,
-    <p key="7">
-        <b>Collaborative Creativity Programs:</b> Facilitate experiences that nurture teamwork, communication, and innovation through creative mediums (drama, movement, storytelling)
-    </p>,
-    <p key="8">
-        <b>Programs for Educators:</b> Training sessions equipping educators with tools to foster well-being, creativity, and effective collaboration in their classrooms and teams.
+    <div key="1" style={{ fontFamily: 'Erstoria, serif', fontSize: '2.3rem', color: '#BAB1AB', marginBottom: '1.2rem' }}>
+        The Training Hub by Well-being & Arts Hub is a creative learning platform that offers workshops, training programs, and experiential learning spaces focused on emotional resilience, creativity, and mind-body well-being.
+    </div>
+];
+
+export const trainingTextsection1b = [
+    <div key="2" style={{ fontFamily: 'PT Serif, serif', fontSize: '1.7rem', color: '#BAB1AB' }}>
+        We specialize in art-based learning, somatic education, and mental health workshops for students, educators, therapists, and organizations. Our programs combine the latest in neuroscience, creative practices, and emotional support to help individuals thrive in academic, professional, and community settings.<br />
+        We collaborate with schools, colleges, NGOs, and corporate teams across India and beyond—offering both in-person and online formats.
+    </div>
+];
+
+export const trainingTextsection2 = [
+    <p>
+        Looking to bring arts-based mental health workshops, creative facilitation training, or student well-being programs to your space?<br />
+        Explore how the Training Hub can support your learning journey.
     </p>
 ]; 

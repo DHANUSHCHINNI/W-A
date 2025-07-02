@@ -2,16 +2,22 @@ import React from "react";
 
 const storyTextSection1 = [
     <p key="1">Two friends. One question:</p>,
-    <p key="2">What does it mean to care — deeply, creatively, collectively?</p>,
+    <p key="2">What does it mean to care — deeply, creatively, collectively?</p>
+]
+
+const storyTextSection2 = [
     <p key="3">From late-night walks in London to community circles in India, our story begins with a return —To rhythm. To roots. To each other.</p>,
     <p key="4">We were therapists in the UK, working across NHS wards and grassroots spaces — Our friendship grew through shared work, big questions, and even bigger laughter. In that space of trust, a vision and a dream began to form.</p>,
-    <p key="5">One of our earliest collaborations was <b>Project Bhava </b> — an immersive, multidisciplinary performance series in Brighton, UK. Through <b>nine evocative performances </b>, we explored the spectrum of human emotion, inspired by the Indian aesthetic of Navarasas. Rasa by rasa, we sparked dialogue, built connection, and watched strangers come alive through shared feeling.</p>,
+    <p key="5">One of our earliest collaborations was <b>Project Bhava </b> — an immersive, multidisciplinary performance series in Brighton, UK. Through <b>nine evocative performances </b>, we explored the spectrum of human emotion, inspired by the Indian aesthetic of Navarasas. Rasa by rasa, we sparked dialogue, built connection, and watched strangers come alive through shared feeling.</p>
+]
+
+const storyTextSection3 = [
     <p key="6"><b> We dreamt of changing the landscape of mental health in India </b> — Not just for those seeking support, but for those offering it.</p>,
     <p key="7">We wanted to transform how care is held, how therapy is taught, and how mental health is imagined altogether.</p>,
     <p key="8">It was a dream rooted in justice, joy, and imagination. A dream where arts are not an add-on, but a form of medicine—  a part of a global movement recognising the role of creative expression in healthcare and human flourishing.</p>
 ];
 
-const storyTextSection2 = [
+const storyTextSection4 = [
     <p key="1">It was a dream rooted in justice, joy, and imagination. A dream where arts are not an add-on, but a form of medicine—  a part of a global movement recognising the role of creative expression in healthcare and human flourishing.</p>,
     <p key="2">That dream became the <b>Well-being & Arts Hub</b> — A living, breathing space for creative connection.</p>,
     <p key="3">We are artists, therapists, listeners, wanderers. We hold spaces where the personal meets the political, and the playful meets the profound. We're building a modular ecosystem of creative care.</p>,
@@ -20,7 +26,7 @@ const storyTextSection2 = [
     <p key="6">Because care, like art, was never meant to be solitary.</p>
 ];
 
-const storyTextSection3 = [
+const storyTextSection5 = [
     <p key="1">
         Amruta Huddar doesn’t just work with the body—she listens to it. In every tremor, gesture, or pause, she sees a story waiting to be honoured. A trained Bharatanatyam and Odissi dancer, her earliest language was movement. Long before therapy rooms and academic accolades, it was the stage where she first learned how bodies hold memory, resistance, and power.
     </p>,
@@ -37,7 +43,7 @@ const storyTextSection3 = [
     </p>
 ];
 
-const storyTextSection4 = [
+const storyTextSection6 = [
     <p key="1">Kritija Saxena knows how to hold complexity. As a Drama & Movement Psychotherapist, Psychologist, and lifelong Kuchipudi dancer, she works at the powerful intersection of art, identity, and psychological depth.
         <br />
         Her specialty lies in working with complex trauma, especially in contexts where pain and power collide. She was the first Arts Psychotherapist appointed by East London NHS Foundation Trust’s Women’s Forensic Services, where she worked with survivors of severe sexual trauma and individuals navigating extreme behavioural and relational challenges. Her clinical insight is matched by her fierce compassion—and a steady hand in the most volatile therapeutic terrains.
@@ -49,4 +55,4 @@ const storyTextSection4 = [
     </p>
 ];
 
-export { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4 }; 
+export { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4, storyTextSection5, storyTextSection6 }; 

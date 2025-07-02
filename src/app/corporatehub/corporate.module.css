@@ -7,7 +7,7 @@
 
 .rndContainer {
     max-width: 100%;
-    margin: 100px auto 0 auto;
+    margin: 0 auto 0 auto;
     padding: 32px;
     color: #BAB1AB;
     font-family: 'Erstoria', serif;
@@ -21,10 +21,20 @@
     text-align: center;
 }
 
-.textSection {
+.contentWrapper {
     max-width: 1200px;
-    margin: 0 auto 2rem auto;
+    width: 100%;
+    margin: 8px auto 0 auto;
+}
+
+.textSection {
+    width: 100%;
+    max-width: 100%;
+    color: #BAB1AB;
     font-size: 1.7rem;
     line-height: 1.5;
     text-align: left;
+    font-family: 'PT Serif', serif;
+    padding-left: 0;
+    margin: 0;
 }

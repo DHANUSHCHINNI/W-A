@@ -7,7 +7,7 @@
 
 .rndContainer {
     max-width: 100%;
-    margin: 100px auto 0 auto;
+    margin: 0 auto 0 auto;
     padding: 32px;
     color: #BAB1AB;
     font-family: 'Erstoria', serif;
@@ -22,8 +22,10 @@
 }
 
 .textSection {
+    width: 100%;
+    max-width: 100%;
     color: #BAB1AB;
-    font-family: 'Erstoria';
+    font-family: 'PT Serif', serif;
     font-size: 1.7rem;
     line-height: 1.5;
     text-align: left;
@@ -31,9 +33,75 @@
 }
 
 .contentWrapper {
-    max-width: 1400px;
+    max-width: 1200px;
     width: 100%;
-    margin-top: 70px;
+    margin: 8px auto 0 auto;
+}
+
+.imageSection {
+    float: right;
+    width: 300px;
+    max-width: 100%;
+    margin-left: 32px;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.heroBgSection {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroBgImage {
+    z-index: 1;
+}
+
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    background: rgba(46, 26, 19, 0.3);
+    /* subtle overlay for readability */
+}
+
+.flexRow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+    margin-top: 24px;
+    min-width: 0;
+    width: 100%;
+}
+
+.textSection2 {
+    color: #BAB1AB;
+    font-family: 'PT Serif', serif;
+    font-size: 1.7rem;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.imageOnLeft {
+    float: left;
+    margin-right: 32px;
 }
 
 .contentWrapper::after {
@@ -42,16 +110,35 @@
     display: table;
 }
 
-.imageSection {
-    width: 45%;
-    max-width: 500px;
-    float: left;
-    margin-right: 48px;
-    margin-bottom: 1rem;
-}
+@media (max-width: 900px) {
+    .contentWrapper {
+        /* No flex, just stack */
+    }
 
-.image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
+    .textSection,
+    .imageSection {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto 1rem auto;
+        float: none;
+        justify-content: center;
+        display: block;
+    }
+
+    .imageSection {
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
+
+    .flexRow {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .imageSection {
+        max-width: 100%;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
 }

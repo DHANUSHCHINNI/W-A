@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from './Story.module.css';
 import OurStoryfin1 from '../assets/OurStoryfin1.jpg';
 import OurStoryfin2 from '../assets/OurStoryfin2.jpg';
-import { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4 } from './storyText';
+import { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4, storyTextSection5, storyTextSection6 } from './storyText';
 import kritijaImage from '../assets/KritijaHeadshot.jpg';
 import amrutaImage from '../assets/AHHeadshot.jpg';
 import FlightAnimation from "@/app/story/PlaneAnimation";
@@ -13,38 +13,46 @@ export default function StoryPage() {
     return (
         <main className={styles.storyContainer}>
             <Navbar show={true} />
-            <h1 className={styles.heading}>Our Story</h1>
-            <div className={styles.contentWrapper}>
-                <FlightAnimation/>
-                <div className={`${styles.imageSection} ${styles.imageOnRight}`}>
+            <div className={styles.centeredOnceUponSection}>
+                <h2 className={styles.storyIntro}>Once upon a Time...</h2>
+                <div className={styles.centeredTextSection}>{storyTextSection1}</div>
+            </div>
+            <div className={styles.sideBySideRow} style={{ marginTop: '16px' }}>
+                <div className={styles.sideBySideText}>{storyTextSection2}</div>
+                <div className={styles.sideBySideImgWrap}>
                     <Image
                         src={OurStoryfin1}
-                        alt="Our Story"
-                        width={500}
-                        height={300}
-                        className={styles.image}
+                        alt="Our Story 1"
+                        width={350}
+                        height={210}
+                        className={styles.sideBySideImg}
                     />
-                </div>
-                <div className={styles.textSection}>
-                    {storyTextSection1}
                 </div>
             </div>
 
-            <div className={styles.contentWrapper}>
-                <div className={`${styles.imageSection} ${styles.imageOnLeft}`}>
+            {/* Plane animation left, text right (fixed size animation) */}
+            <div className={styles.twoColRow}>
+                <div className={styles.colLeftPlaneFixed}><FlightAnimation /></div>
+                <div className={styles.colRight}>{storyTextSection3}</div>
+            </div>
+
+            {/* Image left, text right (text wraps around image) */}
+            <div className={styles.wrapRow}>
+                <div className={styles.wrapTextImageSection}>
                     <Image
                         src={OurStoryfin2}
-                        alt="Our Story Part 2"
+                        alt="Our Story 2"
                         width={500}
                         height={300}
-                        className={styles.image}
+                        className={`${styles.image} ${styles.imageOnLeft}`}
                     />
-                </div>
-                <div className={styles.textSection}>
-                    {storyTextSection2}
+                    <div className={styles.textWrapSection}>
+                        {storyTextSection4}
+                    </div>
                 </div>
             </div>
 
+            {/* Amruta section */}
             <div className={styles.subheadingWrapper}>
                 <h2 className={styles.subheading}>Meet Amruta Huddar (she/her)</h2>
                 <h3 className={styles.smallerSubheading}>[Co-founder | Drama & Movement Psychotherapist | Embodied Psychotherapist | Disability Justice Advocate]</h3>
@@ -60,10 +68,11 @@ export default function StoryPage() {
                     />
                 </div>
                 <div className={styles.textSection}>
-                    {storyTextSection3}
+                    {storyTextSection5}
                 </div>
             </div>
 
+            {/* Kritija section */}
             <div className={styles.subheadingWrapper}>
                 <h2 className={styles.subheading}>Meet Kritija Saxena (she/her)</h2>
                 <h3 className={styles.smallerSubheading}>[Co-founder | Drama & Movement Psychotherapist | Psychologist | Forensic Dramatherapist]</h3>
@@ -79,7 +88,7 @@ export default function StoryPage() {
                     />
                 </div>
                 <div className={styles.textSection}>
-                    {storyTextSection4}
+                    {storyTextSection6}
                 </div>
             </div>
         </main>

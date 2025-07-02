@@ -62,7 +62,7 @@ export default function KeyOfferings() {
           maxWidth: 1000,
           gap: '2.5rem',
         }}>
-          <Link href="/offerings/sukoon" style={{ textDecoration: 'none', flex: 1 }}>
+          <Link href="/sukoon" style={{ textDecoration: 'none', flex: 1 }}>
             <div
               style={{
                 display: 'flex',
@@ -104,7 +104,7 @@ export default function KeyOfferings() {
               </div>
             </div>
           </Link>
-          <Link href="/offerings/filling-your-cup" style={{ textDecoration: 'none', flex: 1 }}>
+          <Link href="/offerings/fillingyourcup" style={{ textDecoration: 'none', flex: 1 }}>
             <div
               style={{
                 display: 'flex',
@@ -125,7 +125,7 @@ export default function KeyOfferings() {
               </div>
             </div>
           </Link>
-          <Link href="/offerings/retreats" style={{ textDecoration: 'none', flex: 1 }}>
+          <Link href="/wellbeingretreats" style={{ textDecoration: 'none', flex: 1 }}>
             <div
               style={{
                 display: 'flex',

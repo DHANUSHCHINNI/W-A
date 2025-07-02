@@ -45,6 +45,7 @@ function ServiceHubButton({
           fontWeight: 500,
           textAlign: 'center',
           width: '100%',
+          whiteSpace: 'nowrap',
         }}>
           {label}
         </span>

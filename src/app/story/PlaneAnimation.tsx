@@ -7,7 +7,9 @@ import {
     Marker,
     ProjectionConfig,
     Point,
-} from 'react-simple-maps';
+}
+
+    from 'react-simple-maps';
 import { motion, useMotionValue, useAnimationFrame } from 'framer-motion';
 import { geoEqualEarth } from 'd3-geo';
 import { FaPlane } from 'react-icons/fa';
@@ -18,7 +20,7 @@ const UK_COORDS: [number, number] = [-3.435973, 55.378051];
 // ✅ Correct file path (served from public/)
 const geoUrl = '/world-countries.json';
 
-const projectionConfig: ProjectionConfig = { scale: 180 };
+const projectionConfig: ProjectionConfig = { scale: 230 };
 
 const FlightAnimation: React.FC = () => {
     const x = useMotionValue(0);
@@ -32,7 +34,7 @@ const FlightAnimation: React.FC = () => {
     const [screenEnd, setScreenEnd] = useState<Point | null>(null);
 
     useEffect(() => {
-        const projection = geoEqualEarth().scale(180).translate([400, 250]);
+        const projection = geoEqualEarth().scale(230).translate([500, 300]);
         const start = projection(INDIA_COORDS);
         const end = projection(UK_COORDS);
         if (start && end) {
@@ -57,12 +59,13 @@ const FlightAnimation: React.FC = () => {
     if (!screenStart || !screenEnd) return null;
 
     return (
-        <div style={{ width: '100%', height: '100%', background: '#2e1a13' }}>
+        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#2e1a13' }}>
             <ComposableMap
                 projection="geoEqualEarth"
                 projectionConfig={projectionConfig}
-                width={800}
-                height={500}
+                width={undefined}
+                height={undefined}
+                style={{ width: '100%', height: '100%' }}
             >
                 <Geographies geography={geoUrl}>
                     {({ geographies }: { geographies: any[] }) =>

@@ -1,0 +1,84 @@
+.testimonialsBg {
+    min-height: 100vh;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.carouselWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    max-width: 1800px;
+    padding: 0 32px;
+}
+
+.arrowBtn {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    width: 48px;
+    height: 48px;
+    font-size: 2.5rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: none;
+}
+
+.arrowBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.cardsRow {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    overflow: hidden;
+}
+
+.card {
+    background: #2e1a13;
+    border: 2px solid #BAB1AB;
+    border-radius: 8px;
+    width: 600px;
+    min-height: 220px;
+    padding: 32px 32px 24px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.text {
+    font-size: 1.25rem;
+    color: #ffffff;
+    font-family: 'Inter', Arial, sans-serif;
+    margin-bottom: 32px;
+}
+
+.icon {
+    position: absolute;
+    left: 24px;
+    bottom: 24px;
+    font-size: 2.2rem;
+}
+
+.name {
+    display: block;
+    font-size: 1.05rem;
+    color: #ffffff;
+    font-family: 'Inter', Arial, sans-serif;
+    margin-top: 16px;
+    text-align: left;
+}

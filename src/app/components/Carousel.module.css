@@ -24,3 +24,17 @@
     transform: scale(1);
     opacity: 1;
 }
+
+.carouselWrapper :global(.slick-arrow::before) {
+    display: none;
+}
+
+.carouselWrapper :global(.slick-prev) {
+    left: -40px !important;
+    z-index: 3;
+}
+
+.carouselWrapper :global(.slick-next) {
+    right: -30px !important;
+    z-index: 3;
+}

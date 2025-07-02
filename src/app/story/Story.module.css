@@ -22,6 +22,7 @@
     text-align: left;
     z-index: 20;
     margin-top: 40px;
+    margin-bottom: 32px;
 }
 
 .subheading {
@@ -97,8 +98,215 @@
 
 .subheadingWrapper {
     width: 100%;
-    align-self: flex-start;
+    text-align: left;
     display: flex;
     flex-direction: column;
     margin-left: 40px;
+}
+
+.topRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1400px;
+    margin-top: 70px;
+    gap: 48px;
+}
+
+.topImageSection {
+    flex: 1 1 50%;
+    max-width: 500px;
+}
+
+.topPlaneSection {
+    flex: 1 1 50%;
+    min-width: 350px;
+    max-width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.storyTextSection {
+    width: 100%;
+    max-width: 900px;
+    margin: 48px auto 0 auto;
+    color: #BAB1AB;
+    font-family: 'Erstoria';
+    font-size: 24px;
+    line-height: 1.625;
+    text-align: left;
+    padding-left: 0;
+}
+
+.storyIntro {
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 8px;
+    color: #BAB1AB;
+    font-family: 'Erstoria';
+}
+
+.centeredHeaderSection {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 32px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.centeredTextSection {
+    width: 100%;
+    text-align: center;
+    color: #BAB1AB;
+    font-family: 'Erstoria';
+    font-size: 24px;
+    line-height: 1.625;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.twoColRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 48px auto 0 auto;
+    gap: 48px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.colLeft,
+.colRight,
+.colLeftPlane,
+.colRightImgWrap,
+.colLeftImgWrap {
+    width: 50%;
+    padding: 0 32px;
+    box-sizing: border-box;
+}
+
+.colLeft,
+.colRight {
+    color: #BAB1AB;
+    font-family: 'Erstoria';
+    font-size: 26px;
+    line-height: 1.7;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.colLeftPlane {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 600px;
+}
+
+.colRightImgWrap,
+.colLeftImgWrap {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.wrapRow {
+    width: 100%;
+    max-width: 1200px;
+    margin: 48px auto 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.wrapTextImageSection {
+    width: 100%;
+    display: block;
+    position: relative;
+}
+
+.textWrapSection {
+    width: 100%;
+    color: #BAB1AB;
+    font-family: 'Erstoria';
+    font-size: 26px;
+    line-height: 1.7;
+    text-align: left;
+}
+
+.colLeftPlaneFixed {
+    width: 900px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageOnLeft {
+    float: left;
+    margin-right: 40px;
+    margin-bottom: 24px;
+    max-width: 45%;
+}
+
+.imageOnRight {
+    float: right;
+    margin-left: 40px;
+    margin-bottom: 24px;
+    max-width: 45%;
+}
+
+.sideBySideRow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 16px auto 0 auto;
+    gap: 48px;
+}
+
+.sideBySideText {
+    flex: 1;
+    color: #BAB1AB;
+    font-family: 'Erstoria';
+    font-size: 26px;
+    line-height: 1.7;
+    text-align: left;
+}
+
+.sideBySideImgWrap {
+    width: 350px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.sideBySideImg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.centeredOnceUponSection {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 16px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }

@@ -1,0 +1,138 @@
+.rndBackground {
+    position: relative;
+    min-height: 100vh;
+    background: #2e1a13;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.rndContainer {
+    max-width: 100%;
+    margin: 0 auto 0 auto;
+    padding: 32px;
+    color: #BAB1AB;
+    font-family: 'Erstoria', serif;
+    position: relative;
+    z-index: 2;
+}
+
+.contentWrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 8px auto 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.rndHeading {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    margin-top: 80px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.textSection {
+    width: 100%;
+    max-width: 100%;
+    color: #ffffff;
+    font-family: 'Erstoria';
+    font-size: 1.7rem;
+    line-height: 1.5;
+    text-align: center;
+    padding-left: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.heroBgSection {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroBgImage {
+    z-index: 1;
+}
+
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    background: rgba(26, 46, 33, 0.3);
+}
+
+.contentWrapper::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+@media (max-width: 900px) {
+    .contentWrapper {
+        /* No flex, just stack */
+    }
+
+    .textSection {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto 1rem auto;
+        float: none;
+        justify-content: center;
+        display: block;
+    }
+
+    .imageSection {
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
+
+    .flexRow {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .imageSection {
+        max-width: 100%;
+        width: 100%;
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+.videoBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.videoOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(30, 20, 20, 0.55);
+    z-index: 1;
+    pointer-events: none;
+}
