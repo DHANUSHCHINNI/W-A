@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from './LogoCarousel.module.css';
 import gsahw from '../assets/gsahw.png';
@@ -22,15 +23,13 @@ const logos = [
 ];
 
 export default function LogoCarousel() {
-    // Duplicate logos for seamless infinite scroll
-    const allLogos = [...logos, ...logos];
     return (
-        <div className={styles.carouselWrapper}>
-            <div className={styles.carouselTrack}>
-                {allLogos.map((logo, idx) => (
-                    <div className={styles.logoItem} key={idx}>
+        <div className={styles.logos}>
+            <div className={styles.logosTrack}>
+                {logos.concat(logos).map((logo, idx) => (
+                    <span className={styles.logoItem} key={idx}>
                         <Image src={logo.src} alt={logo.alt} height={60} style={{ width: 'auto', objectFit: 'contain' }} />
-                    </div>
+                    </span>
                 ))}
             </div>
         </div>
