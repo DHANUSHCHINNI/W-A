@@ -18,7 +18,7 @@ export default function CorporateHubPage() {
             {/* Video header section */}
             <div style={{ position: 'relative', width: '100%', height: '400px', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' } as React.CSSProperties}>
                 <video
-                    src="/painting.mp4"
+                    src="/work.mp4"
                     autoPlay
                     loop
                     muted

@@ -24,4 +24,9 @@ export const testimonials = [
         text: `The activity was very grounding and the training session was informative - how much the creative medicines can help us understand the inner communications of the child, how the vastness of this area seems endless`,
         name: 'Disha Vaish, Counselling Psychologist at VIMHANS'
     },
+    {
+        id: 6,
+        text: `Embodied ease has been a great way to connect to my body and calm my mind.. it felt like a real release! Definitely recommended. \nThe facilitator Amruta had a very warm and holding presence. Would like to do more of these along with We are Hub! ✨`,
+        name: 'Juvena Ajwani, Person-Centred Psychotherapist (MBACP)'
+    },
 ]; 

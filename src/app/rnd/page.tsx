@@ -5,6 +5,7 @@ import styles from './rnd.module.css';
 import anchorImg from '../assets/anchor.jpg';
 import RnDImage from '../assets/R&DHub1.jpg';
 import { rndTextsection1, rndTextsection2 } from './rndText';
+import LogoCarousel from '../components/LogoCarousel';
 
 export default function RnDPage() {
     return (
@@ -22,7 +23,7 @@ export default function RnDPage() {
                     className={styles.heroBgImage}
                 />
                 <div className={styles.heroOverlay}>
-                    <h1 className={styles.rndHeading}>R&amp;D Hub</h1>
+                    <h1 className={styles.rndHeading}>Research&amp; Development Hub</h1>
                 </div>
             </div>
             <div className={styles.rndContainer}>
@@ -41,6 +42,7 @@ export default function RnDPage() {
                     />
                 </div>
             </div>
+            <LogoCarousel />
         </div>
     );
 } 

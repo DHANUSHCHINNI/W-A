@@ -67,3 +67,46 @@
 .footerBottom a:hover {
     text-decoration: underline;
 }
+
+.footerPolicies {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.policyLink {
+    color: #ffb6c1;
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 4px 10px;
+    border-radius: 4px;
+}
+
+.policyLink:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.policyDivider {
+    color: #bdbdbd;
+    font-size: 1.1rem;
+    user-select: none;
+}
+
+.footerLink {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footerLink:hover {
+    color: #ffb6c1;
+    text-decoration: underline;
+}
