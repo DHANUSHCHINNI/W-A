@@ -1,0 +1,56 @@
+.revolvingContainer {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    z-index: 1;
+    left: -160px;
+    top: -80px;
+}
+
+.revolvingButtons {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.serviceButton {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: 0 0;
+    animation: orbit 48s linear infinite;
+}
+
+.serviceButton:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.serviceButton:nth-child(2) {
+    animation-delay: -9.6s;
+}
+
+.serviceButton:nth-child(3) {
+    animation-delay: -19.2s;
+}
+
+.serviceButton:nth-child(4) {
+    animation-delay: -28.8s;
+}
+
+.serviceButton:nth-child(5) {
+    animation-delay: -38.4s;
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg) translateX(260px) rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(260px) rotate(-360deg);
+    }
+}

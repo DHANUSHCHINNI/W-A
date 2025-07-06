@@ -1,0 +1,140 @@
+.communityBackground {
+    min-height: 100vh;
+    background: #2e1a13;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+.communityContainer {
+    max-width: 900px;
+    margin: 60px auto 0 auto;
+    padding: 32px;
+    border-radius: 24px;
+    background: #82341A;
+    box-shadow: 0 4px 32px 0 rgba(217, 217, 218, 0.08);
+    position: relative;
+    z-index: 2;
+}
+
+.subheading {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1C1610;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+}
+
+.cardsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    background: rgba(46, 26, 19, 0.55);
+    /* glassy brown */
+    border-radius: 18px;
+    box-shadow: 0 2px 12px 0 rgba(0, 32, 128, 0.06);
+    padding: 1.5rem 2rem;
+    gap: 2rem;
+    transition: box-shadow 0.2s;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(46, 26, 19, 0.18);
+}
+
+.card:hover {
+    box-shadow: 0 6px 24px 0 rgba(0, 32, 128, 0.12);
+}
+
+.cardImage {
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 220px;
+    height: 180px;
+    background: #e0e7ef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image {
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.cardContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cardTitle {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #BAB1AB;
+    margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+    font-size: 1.05rem;
+    color: #ffffff;
+    margin-bottom: 1.2rem;
+    font-family: 'PT Serif', serif;
+}
+
+.cardMeta {
+    font-size: 0.98rem;
+    color: #000000;
+    font-style: italic;
+}
+
+.silhouetteLeft {
+    position: fixed;
+    left: 0;
+    top: -50px;
+    height: 100vh;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.silhouetteRight {
+    position: fixed;
+    right: -80px;
+    top: 200px;
+    height: 500vh;
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.silhouette {
+    opacity: 0.13;
+    width: 180px;
+    max-width: 90vw;
+    margin: 1.5rem 0;
+    filter: blur(0.5px);
+}

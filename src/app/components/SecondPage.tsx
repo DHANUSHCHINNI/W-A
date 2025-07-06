@@ -1,11 +1,14 @@
+"use client";
 import ColorLogoFin from './ColorLogoFin';
 import ServiceHubButton from "./ServiceHubButton";
 import buttonStyles from './Button.module.css';
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useRouter } from 'next/navigation';
 
 export default function SecondPage() {
   const [isMobile, setIsMobile] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
@@ -59,6 +62,7 @@ export default function SecondPage() {
             fontSize: isMobile ? "0.95rem" : undefined,
             padding: isMobile ? "0.5rem 1.2rem" : undefined,
           }}
+          onClick={() => router.push('/community')}
         >
           Community events
         </button>

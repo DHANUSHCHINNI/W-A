@@ -1,13 +1,25 @@
-export const wellbeingRetreatsTextSection1 = [
-    <p key="1">
-        Immersive retreats blending somatics, creative arts, and nature—designed to support rest, reflection, play, and inner renewal.<br /><br />
-        Whether you're an individual or part of a team, each retreat offers space to slow down, reconnect with the body, and rediscover creative flow—together, and with ease.<br /><br />
-        Perfect for those seeking meaningful offsites, team well-being retreats, or personal healing journeys.<br /><br />
-        If you're a venue partner or looking to curate a retreat for your community or organization, reach out to collaborate.<br /><br />
-        Watch this space for upcoming retreats.<br /><br />
-        Looking for arts-based wellness retreats, body-mind healing spaces, or nature-led mental health experiences? You're in the right place.
-    </p>
-];
+import styles from './wellbeingretreats.module.css';
+
+export const wellbeingRetreatsTextSection1 = (
+    <div>
+        <div className={styles.animatedHeading}>
+            Immersive retreats blending somatics, creative arts, and nature—designed to support rest, reflection, play, and inner renewal.
+        </div>
+        <div className={styles.animatedHeading} style={{ fontSize: '2rem', marginBottom: '1.2rem', animationDelay: '0.3s' }}>
+            Rediscover creative flow—together, and with ease.
+        </div>
+        <div className={styles.animatedHeading} style={{ fontSize: '2rem', marginBottom: '1.2rem', animationDelay: '0.6s' }}>
+            You're in the right place.
+        </div>
+        <div className={styles.bodyText}>
+            Whether you're an individual or part of a team, each retreat offers space to slow down, reconnect with the body, and <span className={styles.highlight}>rediscover creative flow</span>—together, and with ease.<br /><br />
+            Perfect for those seeking <span className={styles.highlight}>meaningful offsites</span>, team well-being retreats, or personal healing journeys.<br /><br />
+            If you're a venue partner or looking to curate a retreat for your community or organization, <span className={styles.highlight}>reach out to collaborate</span>.<br /><br />
+            Watch this space for <span className={styles.highlight}>upcoming retreats</span>.<br /><br />
+            Looking for arts-based wellness retreats, body-mind healing spaces, or nature-led mental health experiences? <span className={styles.highlight}>You're in the right place.</span>
+        </div>
+    </div>
+);
 
 export const wellbeingRetreatsTextSection2 = [
     <p key="2">

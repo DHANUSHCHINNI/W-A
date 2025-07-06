@@ -144,3 +144,48 @@
     z-index: 1;
     pointer-events: none;
 }
+
+.animatedHeading {
+    font-size: 2.5rem;
+    font-family: 'Erstoria', serif;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    letter-spacing: 1.5px;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bodyText {
+    font-family: 'PT Serif', serif;
+    font-size: 1.25rem;
+    color: #fff;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.highlight {
+    font-family: 'Erstoria', serif;
+    font-size: 1.4rem;
+    color: #BAB1AB;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 0.2em;
+    transition: color 0.3s;
+}
+
+.bodyText .highlight {
+    font-size: 1.35rem;
+}
