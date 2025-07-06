@@ -7,6 +7,7 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import { useState, useRef, useEffect } from 'react';
+import AuthButton from "@/app/components/AuthButton";
 
 const HUBS = [
     { label: 'Therapy Hub', href: '/therapyhub' },
@@ -108,6 +109,7 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
                         </div>
                         <Link href="/Members" style={{ color: 'inherit', textDecoration: 'none' }}>Members</Link>
                         <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact us</Link>
+                        <AuthButton/>
                     </Box>
                 </Toolbar>
             </AppBar>
