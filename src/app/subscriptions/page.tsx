@@ -11,6 +11,7 @@ export default function SubscriptionsPage() {
     const [loading, setLoading] = useState(true);
 
     // 🔐 Admin emails (lowercase recommended for consistency)
+
     const adminEmails = [
         'admin@example.com',
         'syedhamadanahmad@gmail.com',
@@ -29,16 +30,17 @@ export default function SubscriptionsPage() {
     if (!user) return <div>You must be logged in to view this page.</div>;
 
     const isAdmin = user.email && adminEmails.includes(user.email.toLowerCase());
-
+    const userEmail = user!.email || ""
     return (
         <div style={{ padding: '2rem' }}>
             {isAdmin ? (
+
                 <div>
-                <RegisterPayee/>
-                <PaymentDetailsDashboard/>
+                    <RegisterPayee />
+                    <PaymentDetailsDashboard />
                 </div>
             ) : (
-            <UserPayments uid={user.uid}/>
+                <UserPayments email={userEmail} />
             )}
         </div>
     );

@@ -1,8 +1,8 @@
 import Rahaat from './Rahaat';
 import Retreat from './Retreat';
-import Sukoon from './Sukoon';
 import Fillcup from './Fillcup';
 import Link from 'next/link';
+import SukoonLogo from './SukoonLogo';
 
 export default function KeyOfferings() {
   return (
@@ -77,7 +77,7 @@ export default function KeyOfferings() {
               onMouseOver={e => e.currentTarget.style.background = '#d1c1b2'}
               onMouseOut={e => e.currentTarget.style.background = '#B1ABAB'}
             >
-              <Sukoon width={90} height={90} />
+              <SukoonLogo width={90} height={90} />
               <div style={{ marginTop: 18, fontFamily: 'Erstoria', fontSize: 20, color: '#83351b', fontWeight: 500, textAlign: 'center' }}>
                 Sukoon Subscription
               </div>

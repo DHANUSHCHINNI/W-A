@@ -7,7 +7,7 @@ export default function SukoonPage() {
     return (
         <div className={styles.rndBackground}>
             <video autoPlay loop muted playsInline className={styles.videoBackground}>
-                <source src="/moon.mp4" type="video/mp4" />
+                <source src="/flower.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <div className={styles.videoOverlay}></div>

@@ -121,7 +121,7 @@
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    object-position: center top;
+    object-position: center -50%;
     z-index: 0;
     pointer-events: none;
 }
@@ -132,18 +132,18 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(30, 20, 20, 0.55);
+    background: rgba(30, 20, 20, 0.7);
     z-index: 1;
     pointer-events: none;
 }
 
 .animatedHeading {
-    font-size: 2.2rem;
+    font-size: 2.7rem;
     font-family: 'Erstoria', serif;
     font-weight: bold;
     color: #fff;
     text-align: center;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
     letter-spacing: 1.2px;
 }
@@ -162,10 +162,11 @@
 
 .bodyText {
     font-family: 'PT Serif', serif;
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     color: #fff;
     text-align: center;
     line-height: 1.7;
+    margin-top: 1rem;
 }
 
 .bodyText br {
@@ -182,7 +183,7 @@
 .highlight {
     font-family: 'Erstoria', serif;
     font-size: 1.25rem;
-    color: #BAB1AB;
+    color: #82341A;
     font-weight: 600;
     display: inline-block;
     margin: 0 0.2em;
@@ -191,4 +192,14 @@
 
 .bodyText .highlight {
     font-size: 1.18rem;
+}
+
+.gradientBrownText {
+    background: linear-gradient(90deg, #a9744f 20%, #c9a074 0%, #ab1c1c 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 2.7rem;
 }

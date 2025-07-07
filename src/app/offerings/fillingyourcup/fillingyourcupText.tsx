@@ -2,13 +2,13 @@ import styles from './fillingyourcup.module.css';
 
 export const fillingyourcupTextsection1 = (
     <div>
-        <div className={styles.animatedHeading}>
+        <div className={styles.animatedHeading} style={{ marginBottom: '6rem', fontSize: '2.7rem' }}>
             A Creative Well-being Experience for High-Performing Teams
         </div>
-        <div className={styles.animatedHeading} style={{ fontSize: '2rem', marginBottom: '1.1rem', animationDelay: '0.3s' }}>
+        <div className={styles.animatedHeading} style={{ fontSize: '2.7rem', marginBottom: '4.5rem', animationDelay: '0.3s' }}>
             Filling Your Cup helps you protect and nurture your greatest asset.
         </div>
-        <div className={styles.animatedHeading} style={{ fontSize: '2rem', marginBottom: '1.1rem', animationDelay: '0.6s' }}>
+        <div className={`${styles.animatedHeading} ${styles.gradientBrownText}`} style={{ fontSize: '2.7rem', marginBottom: '3rem', animationDelay: '0.6s' }}>
             Give your best without burning out.
         </div>
         <div className={styles.bodyText}>

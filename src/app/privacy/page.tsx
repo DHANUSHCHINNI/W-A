@@ -1,3 +1,4 @@
+'use client'
 import styles from './privacy.module.css';
 import PrivacyText from './text';
 

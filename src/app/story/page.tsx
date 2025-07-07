@@ -14,8 +14,9 @@ export default function StoryPage() {
         <main className={styles.storyContainer}>
             <Navbar show={true} />
             <div className={styles.centeredOnceUponSection}>
-                <h2 className={styles.storyIntro}>Once upon a Time...</h2>
-                <div className={styles.centeredTextSection}>{storyTextSection1}</div>
+                <h2 className={styles.onceUponIntro}>Once upon a Time...</h2>
+                <div className={styles.bigErstoria}>Two friends. One question:</div>
+                <div className={styles.centeredTextSection}>{storyTextSection1.slice(1)}</div>
             </div>
             <div className={styles.sideBySideRow} style={{ marginTop: '16px' }}>
                 <div className={styles.sideBySideText}>{storyTextSection2}</div>

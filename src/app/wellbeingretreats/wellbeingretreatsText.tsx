@@ -1,14 +1,14 @@
 import styles from './wellbeingretreats.module.css';
 
-export const wellbeingRetreatsTextSection1 = (
+export const wellbeingretreatsTextsection1 = (
     <div>
-        <div className={styles.animatedHeading}>
+        <div className={styles.animatedHeading} style={{ marginTop: '4rem', marginBottom: '4rem', fontSize: '2.7rem' }}>
             Immersive retreats blending somatics, creative arts, and nature—designed to support rest, reflection, play, and inner renewal.
         </div>
-        <div className={styles.animatedHeading} style={{ fontSize: '2rem', marginBottom: '1.2rem', animationDelay: '0.3s' }}>
+        <div className={styles.animatedHeading} style={{ fontSize: '2.7rem', marginBottom: '5.3rem', animationDelay: '0.3s' }}>
             Rediscover creative flow—together, and with ease.
         </div>
-        <div className={styles.animatedHeading} style={{ fontSize: '2rem', marginBottom: '1.2rem', animationDelay: '0.6s' }}>
+        <div className={`${styles.animatedHeading} ${styles.gradientBrownText}`} style={{ fontSize: '2.7rem', marginBottom: '3rem', animationDelay: '0.6s' }}>
             You're in the right place.
         </div>
         <div className={styles.bodyText}>

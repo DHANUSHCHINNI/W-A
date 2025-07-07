@@ -1,7 +1,8 @@
+"use client"
 import React from 'react';
 import Navbar from '../components/navbar';
 import styles from './wellbeingretreats.module.css';
-import { wellbeingRetreatsTextSection1 } from './wellbeingretreatsText';
+import { wellbeingretreatsTextsection1 } from './wellbeingretreatsText';
 
 export default function WellbeingRetreatsPage() {
     return (
@@ -16,7 +17,7 @@ export default function WellbeingRetreatsPage() {
                 <div className={styles.contentWrapper}>
                     <h1 className={styles.rndHeading}>Well-being Retreats</h1>
                     <div className={styles.textSection}>
-                        {wellbeingRetreatsTextSection1}
+                        {wellbeingretreatsTextsection1}
                     </div>
                 </div>
             </div>

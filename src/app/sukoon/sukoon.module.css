@@ -67,7 +67,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(30, 20, 20, 0.8);
+    background: rgba(30, 20, 20, 0.9);
     z-index: 1;
     pointer-events: none;
 }
@@ -101,7 +101,7 @@
 
 .bodyText {
     font-family: 'PT Serif', serif;
-    font-size: 1.15rem;
+    font-size: 1.75rem;
     color: #fff;
     text-align: center;
     line-height: 1.7;
@@ -119,16 +119,12 @@
 
 .highlight {
     font-family: 'Erstoria', serif;
-    font-size: 1.25rem;
-    color: #BAB1AB;
+    font-size: 1.75rem;
+    color: #82341A;
     font-weight: 600;
     display: inline-block;
     margin: 0 0.2em;
-    transition: color 0.3s;
-}
-
-.bodyText .highlight {
-    font-size: 1.18rem;
+    transition: color 0.7s;
 }
 
 .husshhhAnimated {
@@ -177,4 +173,15 @@
     margin: 1.2em 0 0.7em 0;
     display: block;
     text-align: center;
+}
+
+.introText {
+    font-size: 1.5rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 1.5em;
+}
+
+.introText .highlight {
+    font-size: 2rem;
 }

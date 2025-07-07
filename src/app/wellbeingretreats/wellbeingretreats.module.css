@@ -146,14 +146,43 @@
 }
 
 .animatedHeading {
-    font-size: 2.5rem;
+    font-size: 2.7rem;
     font-family: 'Erstoria', serif;
     font-weight: bold;
     color: #fff;
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
+}
+
+.gradientBrownText {
+    background: linear-gradient(90deg, #a9744f 20%, #c9a074 0%, #ab1c1c 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 2.7rem;
+}
+
+.bodyText {
+    font-family: 'PT Serif', serif;
+    font-size: 1.35rem;
+    color: #fff;
+    text-align: center;
+    line-height: 1.7;
+    margin-top: 1rem;
+}
+
+.highlight {
+    font-family: 'Erstoria', serif;
+    font-size: 1.25rem;
+    color: #82341A;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 0.2em;
+    transition: color 0.3s;
 }
 
 @keyframes fadeInUp {
@@ -166,26 +195,4 @@
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.bodyText {
-    font-family: 'PT Serif', serif;
-    font-size: 1.25rem;
-    color: #fff;
-    text-align: center;
-    line-height: 1.7;
-}
-
-.highlight {
-    font-family: 'Erstoria', serif;
-    font-size: 1.4rem;
-    color: #BAB1AB;
-    font-weight: 600;
-    display: inline-block;
-    margin: 0 0.2em;
-    transition: color 0.3s;
-}
-
-.bodyText .highlight {
-    font-size: 1.35rem;
 }

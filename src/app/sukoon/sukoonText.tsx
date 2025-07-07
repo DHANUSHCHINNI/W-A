@@ -13,7 +13,10 @@ export const sukoonTextSection1 = (
         </div>
         <div style={{ marginBottom: '3.5rem' }} />
         <div className={styles.bodyText}>
-            A monthly subscription for emotional well-being — where art, reflection, and community come together to help you pause, feel, and reconnect. Instead of one-off sessions, <span className={styles.highlight}>Sukoon</span> offers a steady rhythm of care through live, creative gatherings.<br /><br />
+            <span className={styles.introText}>
+                A monthly subscription for emotional well-being — where art, reflection, and community come together to help you pause, feel, and reconnect. Instead of one-off sessions, <span className={styles.highlight}>Sukoon</span> offers a steady rhythm of care through live, creative gatherings.
+            </span>
+            <br /><br />
             <span className={styles.question}>Why a Subscription?</span><br />
             Because care needs consistency.<br />
             <span className={styles.highlight}>Sukoon</span> gives you:<br />
