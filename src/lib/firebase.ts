@@ -1,17 +1,22 @@
-// lib/firebase.ts
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: "AIzaSyCKmKqZA2kPBtOuz6DCH-mJ_AzXhx546nY",
-    authDomain: "wa-auth-3b39d.firebaseapp.com",
-    projectId: "wa-auth-3b39d",
-    storageBucket: "wa-auth-3b39d.firebasestorage.app",
-    messagingSenderId: "1073667664022",
-    appId: "1:1073667664022:web:6db6d2daa8796d75ec3ab7",
-    measurementId: "G-JQ6YY5KWZM"
+    apiKey: "AIzaSyCvcMTcDK-zRUSBDtOfg_Fwx7oFDndAPNE",
+    authDomain: "wanda-262f1.firebaseapp.com",
+    projectId: "wanda-262f1",
+    storageBucket: "wanda-262f1.firebasestorage.app",
+    messagingSenderId: "807566996136",
+    appId: "1:807566996136:web:49c3e82c7bf1054265089d",
+    measurementId: "G-KDCEQF9HGW"
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 

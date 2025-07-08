@@ -1,16 +1,15 @@
 import Link from 'next/link';
+import BlackGrungeBorder from './BlackGrungeBorder';
 
 function ServiceHubButton({
   label,
   href,
   style,
-  BrushAsset,
   customSize
 }: {
   label: string,
   href: string,
   style: React.CSSProperties,
-  BrushAsset: React.ComponentType<any>,
   customSize?: { width: number, height: number }
 }) {
   const width = customSize?.width || 300;
@@ -28,13 +27,13 @@ function ServiceHubButton({
         width,
         height,
       }}>
-        {/* Brush stroke as background */}
+        {/* Black grunge border as background */}
         <div style={{
           position: 'absolute',
           left: 0, top: 0, width: '100%', height: '100%',
           zIndex: 1,
         }}>
-          <BrushAsset width={width} height={height} />
+          <BlackGrungeBorder width={width} height={height} />
         </div>
         <span style={{
           position: 'relative',

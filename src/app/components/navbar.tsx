@@ -7,7 +7,9 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import { useState, useRef, useEffect } from 'react';
-import AuthButton from "@/app/components/AuthButton";
+import { onAuthStateChanged, User, signOut } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
+import { auth } from '@/lib/firebase';
 
 const HUBS = [
     { label: 'Therapy Hub', href: '/therapyhub' },
@@ -19,16 +21,33 @@ const HUBS = [
 
 const Navbar: React.FC<NavbarProps> = ({ show }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+    const [userDropdownPosition, setUserDropdownPosition] = useState<'left' | 'right'>('left');
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const userDropdownRef = useRef<HTMLDivElement>(null);
+    const userDropdownMenuRef = useRef<HTMLDivElement>(null);
+    const [user, setUser] = useState<User | null>(null);
+    const router = useRouter();
 
-    // Close dropdown when clicking outside
+    // Auth state
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            setUser(user);
+        });
+        return () => unsubscribe();
+    }, []);
+
+    // Close dropdowns when clicking outside
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 setDropdownOpen(false);
             }
+            if (userDropdownRef.current && !userDropdownRef.current.contains(event.target as Node)) {
+                setUserDropdownOpen(false);
+            }
         }
-        if (dropdownOpen) {
+        if (dropdownOpen || userDropdownOpen) {
             document.addEventListener('mousedown', handleClickOutside);
         } else {
             document.removeEventListener('mousedown', handleClickOutside);
@@ -36,7 +55,36 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [dropdownOpen]);
+    }, [dropdownOpen, userDropdownOpen]);
+
+    // Dynamically position user dropdown
+    useEffect(() => {
+        if (userDropdownOpen && userDropdownRef.current && userDropdownMenuRef.current) {
+            const buttonRect = userDropdownRef.current.getBoundingClientRect();
+            const menuRect = userDropdownMenuRef.current.getBoundingClientRect();
+            const spaceRight = window.innerWidth - buttonRect.left;
+            if (spaceRight < menuRect.width + 16) {
+                setUserDropdownPosition('right');
+            } else {
+                setUserDropdownPosition('left');
+            }
+        }
+    }, [userDropdownOpen]);
+
+    const handleMyPlanClick = () => {
+        setUserDropdownOpen(false);
+        if (user) {
+            router.push('/my-plan');
+        } else {
+            router.push('/test-auth?redirect=/my-plan');
+        }
+    };
+
+    const handleLogout = async () => {
+        setUserDropdownOpen(false);
+        await signOut(auth);
+        router.push('/');
+    };
 
     return (
         <motion.nav
@@ -109,7 +157,73 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
                         </div>
                         <Link href="/Members" style={{ color: 'inherit', textDecoration: 'none' }}>Members</Link>
                         <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact us</Link>
-                        <AuthButton/>
+                        <div
+                            className="services-dropdown-wrapper"
+                            style={{ position: 'relative', display: 'inline-block' }}
+                            ref={userDropdownRef}
+                            onMouseEnter={() => setUserDropdownOpen(true)}
+                            onMouseLeave={() => setUserDropdownOpen(false)}
+                        >
+                            <span
+                                className="services-link"
+                                tabIndex={0}
+                                style={{ color: 'inherit', textDecoration: 'none', fontFamily: 'erstoria', fontSize: '1.4rem', cursor: 'pointer', padding: 0 }}
+                                onClick={() => setUserDropdownOpen((open) => !open)}
+                                aria-haspopup="true"
+                                aria-expanded={userDropdownOpen}
+                            >
+                                User
+                            </span>
+                            <div
+                                className="services-dropdown"
+                                ref={userDropdownMenuRef}
+                                style={{
+                                    display: userDropdownOpen ? 'block' : undefined,
+                                    left: userDropdownPosition === 'left' ? 0 : 'auto',
+                                    right: userDropdownPosition === 'right' ? 0 : 'auto',
+                                    minWidth: 180,
+                                    maxWidth: 'calc(100vw - 16px)',
+                                    overflowX: 'auto',
+                                }}
+                            >
+                                <div
+                                    onClick={handleMyPlanClick}
+                                    className="services-dropdown-item"
+                                    style={{
+                                        display: 'block',
+                                        textDecoration: 'none',
+                                        padding: '0.6rem 1.2rem',
+                                        fontFamily: 'erstoria',
+                                        fontSize: '1.1rem',
+                                        whiteSpace: 'nowrap',
+                                        borderRadius: 3,
+                                        cursor: 'pointer',
+                                    }}
+                                    tabIndex={0}
+                                >
+                                    My Plan
+                                </div>
+                                {user && (
+                                    <div
+                                        onClick={handleLogout}
+                                        className="services-dropdown-item"
+                                        style={{
+                                            display: 'block',
+                                            textDecoration: 'none',
+                                            padding: '0.6rem 1.2rem',
+                                            fontFamily: 'erstoria',
+                                            fontSize: '1.1rem',
+                                            whiteSpace: 'nowrap',
+                                            borderRadius: 3,
+                                            cursor: 'pointer',
+                                        }}
+                                        tabIndex={0}
+                                    >
+                                        Logout
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                     </Box>
                 </Toolbar>
             </AppBar>
@@ -131,8 +245,10 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
                         z-index: 1000;
                         padding: 0.5rem 0;
                         transition: background 0.2s;
+                        max-width: calc(100vw - 16px);
+                        overflow-x: auto;
                     }
-                    .services-dropdown a {
+                    .services-dropdown a, .services-dropdown-item {
                         display: block;
                         color: #2e1a13;
                         text-decoration: none;
@@ -145,11 +261,14 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
                         background: transparent;
                     }
                     .services-dropdown a:hover,
-                    .services-dropdown a:focus {
+                    .services-dropdown a:focus,
+                    .services-dropdown-item:hover,
+                    .services-dropdown-item:focus {
                         background: #a18c7c;
                         color: #a0522d;
                     }
-                    .services-dropdown a:not(:hover):not(:focus) {
+                    .services-dropdown a:not(:hover):not(:focus),
+                    .services-dropdown-item:not(:hover):not(:focus) {
                         background: #d1c1b2;
                         color: #2e1a13;
                     }
