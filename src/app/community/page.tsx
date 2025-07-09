@@ -55,7 +55,11 @@ export default async function CommunityPage() {
                             <div className={styles.cardContent}>
                                 <h2 className={styles.cardTitle}>{event.title}</h2>
                                 <p className={styles.cardDescription}>{event.description}</p>
-                                <div className={styles.cardMeta}>{event.date}</div>
+                                <div className={styles.cardMeta}>{event.date}<br />
+                                    {typeof event.price === 'number' && !isNaN(event.price) && (
+                                        <span>Price: ₹{event.price}</span>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     ))}

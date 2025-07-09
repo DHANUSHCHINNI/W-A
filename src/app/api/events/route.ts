@@ -10,4 +10,24 @@ export async function GET() {
     } catch (error) {
         return NextResponse.json({ error: 'Failed to fetch events' }, { status: 500 });
     }
+}
+
+export async function POST(req: Request) {
+    try {
+        const body = await req.json();
+        const { title, description, date, price } = body;
+
+        if (!title || !description || !date || typeof price !== 'number' || isNaN(price)) {
+            return NextResponse.json({ error: 'All fields are required and price must be a number' }, { status: 400 });
+        }
+
+        const client = await clientPromise;
+        const db = client.db('WandA1'); // Use your events DB
+        const result = await db.collection('Events').insertOne({ title, description, date, price });
+
+        return NextResponse.json({ success: true, insertedId: result.insertedId });
+    } catch (err) {
+        console.error('Error inserting event:', err);
+        return NextResponse.json({ error: 'Failed to add event' }, { status: 500 });
+    }
 } 

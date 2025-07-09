@@ -3,50 +3,23 @@ import { useEffect, useState } from "react";
 import { auth } from "@/lib/firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
 import styles from "../community/community.module.css";
+import UserPayments from "./UserPayments";
 
-interface Payment {
-    name: string;
-    payment_status: boolean;
-    payment_amount: number;
-    transaction_id: string;
-    subscription_type: string;
-    [key: string]: any;
-}
+const adminEmails = [
+    'admin@example.com',
+    'syedhamadanahmad@gmail.com',
+    'dhanushchinni100@gmail.com'
+    // add more emails here
+];
 
 export default function MyPlanPage() {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-    const [payment, setPayment] = useState<Payment | null>(null);
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+        const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
             setUser(firebaseUser);
-            if (firebaseUser) {
-                try {
-                    setLoading(true);
-                    setError(null);
-                    const res = await fetch("/api/paymentHistory", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ email: firebaseUser.email }),
-                    });
-                    const data = await res.json();
-                    if (res.ok && data.payments && data.payments.length > 0) {
-                        setPayment(data.payments[0]);
-                    } else {
-                        setPayment(null);
-                        setError("No payment details found.");
-                    }
-                } catch (err) {
-                    setError("Failed to fetch payment details.");
-                } finally {
-                    setLoading(false);
-                }
-            } else {
-                setLoading(false);
-                setPayment(null);
-            }
+            setLoading(false);
         });
         return () => unsubscribe();
     }, []);
@@ -71,34 +44,31 @@ export default function MyPlanPage() {
         );
     }
 
-    if (error) {
+    const isAdmin = user.email && adminEmails.includes(user.email.toLowerCase());
+    const userEmail = user.email || "";
+
+    if (isAdmin) {
+        // We'll handle admin logic in a later step
         return (
             <main className={styles.communityBackground}>
                 <div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <p>{error}</p>
+                    <p>Admins: Please use the Dashboard from the User menu.</p>
                 </div>
             </main>
         );
     }
 
+    // User view: my-plan UI with UserPayments
     return (
         <div className={styles.communityBackground}>
             <div className={styles.communityContainer}>
-                <h1 className={styles.heading}>
-                    Welcome{payment?.name ? `, ${payment.name}` : ''}
-                </h1>
+                <h1 className={styles.heading}>Welcome{user.displayName ? `, ${user.displayName}` : ''}</h1>
                 <div className={styles.subheading}>Here are your current plan details</div>
                 <div className={styles.cardsWrapper}>
                     <div className={styles.card}>
                         <div className={styles.cardContent}>
-                            <h2 className={styles.cardTitle}>Plan Information</h2>
-                            <div className={styles.cardDescription}>
-                                <strong>Email:</strong> {user.email}<br />
-                                <strong>Payment Status:</strong> {payment?.payment_status ? "Paid" : "Unpaid"}<br />
-                                <strong>Payment Amount:</strong> {payment?.payment_amount ?? "-"}<br />
-                                <strong>Transaction ID:</strong> {payment?.transaction_id ?? "-"}<br />
-                                <strong>Subscription Type:</strong> {payment?.subscription_type ?? "-"}
-                            </div>
+                            <h2 className={styles.cardTitle}>Payment History</h2>
+                            <UserPayments email={userEmail} />
                         </div>
                     </div>
                 </div>

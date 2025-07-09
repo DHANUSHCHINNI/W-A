@@ -19,6 +19,13 @@ const HUBS = [
     { label: 'Training Hub', href: '/traininghub' },
 ];
 
+const adminEmails = [
+    'admin@example.com',
+    'syedhamadanahmad@gmail.com',
+    'dhanushchinni100@gmail.com'
+    // add more emails here
+];
+
 const Navbar: React.FC<NavbarProps> = ({ show }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [userDropdownOpen, setUserDropdownOpen] = useState(false);
@@ -85,6 +92,9 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
         await signOut(auth);
         router.push('/');
     };
+
+    // Ensure isAdmin is always boolean
+    const isAdmin = !!(user && user.email && adminEmails.includes(user.email.toLowerCase()));
 
     return (
         <motion.nav
@@ -203,6 +213,44 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
                                 >
                                     My Plan
                                 </div>
+                                {!user && (
+                                    <div
+                                        onClick={() => { setUserDropdownOpen(false); router.push('/test-auth'); }}
+                                        className="services-dropdown-item"
+                                        style={{
+                                            display: 'block',
+                                            textDecoration: 'none',
+                                            padding: '0.6rem 1.2rem',
+                                            fontFamily: 'erstoria',
+                                            fontSize: '1.1rem',
+                                            whiteSpace: 'nowrap',
+                                            borderRadius: 3,
+                                            cursor: 'pointer',
+                                        }}
+                                        tabIndex={0}
+                                    >
+                                        Login
+                                    </div>
+                                )}
+                                {Boolean(isAdmin) && (
+                                    <div
+                                        onClick={() => { setUserDropdownOpen(false); router.push('/admin-dashboard'); }}
+                                        className="services-dropdown-item"
+                                        style={{
+                                            display: 'block',
+                                            textDecoration: 'none',
+                                            padding: '0.6rem 1.2rem',
+                                            fontFamily: 'erstoria',
+                                            fontSize: '1.1rem',
+                                            whiteSpace: 'nowrap',
+                                            borderRadius: 3,
+                                            cursor: 'pointer',
+                                        }}
+                                        tabIndex={0}
+                                    >
+                                        Dashboard
+                                    </div>
+                                )}
                                 {user && (
                                     <div
                                         onClick={handleLogout}

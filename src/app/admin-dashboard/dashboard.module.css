@@ -1,0 +1,133 @@
+.dashboardBackground {
+    min-height: 100vh;
+    background: #2e1a13;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+.dashboardContainer {
+    max-width: 1200px;
+    width: 100%;
+    margin: 60px auto 0 auto;
+    padding: 32px;
+    border-radius: 24px;
+    background: #82341A;
+    box-shadow: 0 4px 32px 0 rgba(217, 217, 218, 0.08);
+    position: relative;
+    z-index: 2;
+}
+
+.heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1C1610;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    font-family: 'Erstoria', serif;
+}
+
+.section {
+    margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+    color: #BAB1AB;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    font-family: 'Erstoria', serif;
+}
+
+.formCard {
+    background: rgba(46, 26, 19, 0.55);
+    border-radius: 18px;
+    box-shadow: 0 2px 12px 0 rgba(0, 32, 128, 0.06);
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.2s;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1.5px solid rgba(46, 26, 19, 0.18);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.input,
+.textarea,
+.button {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input,
+.textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #f9fafb;
+    color: #374151;
+}
+
+.input:focus,
+.textarea:focus {
+    outline: none;
+    border-color: #2e1a13;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(46, 26, 19, 0.1);
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+}
+
+.button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem 2rem;
+    background: #2e1a13;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(46, 26, 19, 0.3);
+}
+
+.button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.message {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #d1fae5;
+    color: #065f46;
+    border-radius: 8px;
+    border: 1px solid #a7f3d0;
+    text-align: center;
+    font-size: 1rem;
+}

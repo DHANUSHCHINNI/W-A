@@ -114,4 +114,4 @@ export default function UserPayments({ email }: Props) {
             {renderTable(unpaid, '❌ Pending Payments')}
         </div>
     );
-}
+} 

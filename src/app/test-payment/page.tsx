@@ -1,4 +1,4 @@
-import TestPaymentForm from '../components/TestPaymentForm';
+import TestPaymentForm from './TestPaymentForm';
 
 export default function TestPaymentPage() {
     return (

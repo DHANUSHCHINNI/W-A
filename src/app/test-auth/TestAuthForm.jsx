@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { auth } from '@/lib/firebase';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import styles from '../test-auth/TestAuthForm.module.css';
 
 export default function TestAuthForm() {
     const [email, setEmail] = useState('');
@@ -67,31 +68,37 @@ export default function TestAuthForm() {
     };
 
     return (
-        <div style={{ maxWidth: 400, margin: '2rem auto', padding: '1rem', border: '1px solid #ccc', borderRadius: 8, background: '#fafafa' }}>
-            <h2>Test Auth Form</h2>
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={e => setEmail(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
-                />
-                <button onClick={handleSignUp}>Sign Up</button>
-                <button onClick={handleSignIn}>Sign In</button>
-                <button type="button" onClick={handleGoogleSignIn} style={{ background: '#db4437', color: 'white' }}>
-                    Sign in with Google
-                </button>
-            </form>
-            <button onClick={handleSignOut} style={{ marginTop: '1rem' }}>Sign Out</button>
-            <div style={{ marginTop: '1rem' }}>
-                {user ? <div>Logged in as: <b>{user.email}</b></div> : <div>Not logged in</div>}
-                {message && <div style={{ color: 'blue', marginTop: 8 }}>{message}</div>}
+        <div className={styles.authBackground}>
+            <div className={styles.authContainer}>
+                <div className={styles.formCard}>
+                    <h2 className={styles.heading}>Sign In</h2>
+                    <form className={styles.form}>
+                        <input
+                            type="email"
+                            placeholder="Email"
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                            className={styles.input}
+                        />
+                        <input
+                            type="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            className={styles.input}
+                        />
+                        <button onClick={handleSignUp} className={styles.button} type="button">Sign Up</button>
+                        <button onClick={handleSignIn} className={styles.button} type="button">Sign In</button>
+                        <button type="button" onClick={handleGoogleSignIn} className={styles.button} style={{ background: '#db4437', color: 'white' }}>
+                            Sign in with Google
+                        </button>
+                    </form>
+                    <button onClick={handleSignOut} className={styles.button} style={{ marginTop: '1rem', background: '#666' }}>Sign Out</button>
+                    <div style={{ marginTop: '1rem', textAlign: 'center' }}>
+                        {user ? <div>Logged in as: <b>{user.email}</b></div> : <div>Not logged in</div>}
+                        {message && <div className={styles.message} style={{ color: message.startsWith('Sign') ? 'green' : 'red' }}>{message}</div>}
+                    </div>
+                </div>
             </div>
         </div>
     );

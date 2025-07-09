@@ -1,5 +1,5 @@
 'use client'
-import TestAuthForm from '../components/TestAuthForm';
+import TestAuthForm from './TestAuthForm';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -19,7 +19,6 @@ export default function TestAuthPage() {
 
     return (
         <main>
-            <h1>Test Auth Page</h1>
             <TestAuthForm />
         </main>
     );
