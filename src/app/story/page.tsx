@@ -8,7 +8,6 @@ import OurStoryfin2 from '../assets/OurStoryfin2.jpg';
 import { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4, storyTextSection5, storyTextSection6 } from './storyText';
 import kritijaImage from '../assets/KritijaHeadshot.jpg';
 import amrutaImage from '../assets/AHHeadshot.jpg';
-import FlightAnimation from "@/app/story/PlaneAnimation";
 export default function StoryPage() {
     return (
         <main className={styles.storyContainer}>
@@ -31,12 +30,6 @@ export default function StoryPage() {
                 </div>
             </div>
 
-            {/* Plane animation left, text right (fixed size animation) */}
-            <div className={styles.twoColRow}>
-                <div className={styles.colLeftPlaneFixed}><FlightAnimation /></div>
-                <div className={styles.colRight}>{storyTextSection3}</div>
-            </div>
-
             {/* Image left, text right (text wraps around image) */}
             <div className={styles.wrapRow}>
                 <div className={styles.wrapTextImageSection}>
@@ -48,7 +41,9 @@ export default function StoryPage() {
                         className={`${styles.image} ${styles.imageOnLeft}`}
                     />
                     <div className={styles.textWrapSection}>
-                        {storyTextSection4}
+                        <p className={styles.ptSerif}>
+                            It was a dream rooted in justice, joy, and imagination. A dream where arts are not an add-on, but a form of medicine— a part of a global movement recognising the role of creative expression in healthcare and human flourishing. <span className={styles.erstoria}>That dream became the <b>Well-being & Arts Hub</b> — A living, breathing space for creative connection.</span> We are artists, therapists, listeners, wanderers. We hold spaces where the personal meets the political, and the playful meets the profound. We're building a modular ecosystem of creative care. Not just for individuals, but for workplaces, communities, and the world. Whether you're a seeker, a professional, a wanderer, or simply someone who feels — You're welcome here. <span className={styles.erstoria}>Because care, like art, was never meant to be solitary.</span>
+                        </p>
                     </div>
                 </div>
             </div>
