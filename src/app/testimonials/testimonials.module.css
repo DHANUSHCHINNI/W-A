@@ -1,6 +1,6 @@
 .testimonialsBg {
     min-height: 100vh;
-    background: url('/assets/Brown Background with light.svg') center center / cover no-repeat;
+    background: url(https://res.cloudinary.com/djspsll41/image/upload/v1752150058/BrownBackground.svg) center center / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;

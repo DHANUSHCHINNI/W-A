@@ -42,6 +42,7 @@ const images = [
     { file: 'TrainingHub3.jpg', public_id: 'traininghub3' },
     { file: 'TrainingHub4.JPG', public_id: 'traininghub4' },
     { file: 'TrainingHub5.JPG', public_id: 'traininghub5' },
+    { file: 'BrownBackground.svg', public_id: 'BrownBackground' },
 ];
 
 (async () => {
