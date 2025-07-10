@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
+import { Suspense } from 'react';
 
 export default function TestAuthPage() {
     const router = useRouter();
@@ -19,7 +20,9 @@ export default function TestAuthPage() {
 
     return (
         <main>
-            <TestAuthForm />
+            <Suspense fallback={<div>Loading...</div>}>
+                <TestAuthForm />
+            </Suspense>
         </main>
     );
 } 
