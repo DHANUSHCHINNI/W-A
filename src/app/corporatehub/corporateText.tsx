@@ -6,10 +6,13 @@ export const corporateTextHeading =
 export const corporateTextBody = [
     <p key="1">
         Our approach blends science with creativity—helping employees manage stress while boosting engagement and emotional resilience.<br /><br />
-        <b>Offerings:</b><br />
-        Bespoke Workshops &amp; Webinars on stress, emotional intelligence, and creative leadership<br /><br />
-        <button className={buttonStyles.myButton} style={{ marginTop: '1rem', display: 'inline-block' }}>Filling Your Cup</button> – Our signature offering for burnout-prevention to refuel your team<br /><br />
-        <button className={buttonStyles.myButton} style={{ marginTop: '1rem', display: 'inline-block' }}>Well-being Retreats</button> – Immersive resets for teams <br /><br />
+        <span style={{ fontFamily: 'Erstoria, serif', fontWeight: 'bold', fontSize: '2rem', color: '#BAB1AB', display: 'block', marginBottom: '1.2rem', marginTop: '2.2rem' }}>Offerings:</span>
+        <span style={{ display: 'inline-block', marginBottom: '0.5rem' }}>
+            <button className={buttonStyles.myButton} style={{ marginTop: '1rem', display: 'inline-block' }}>Bespoke Workshops &amp; Webinars</button> on stress, emotional intelligence, and creative leadership
+        </span>
+        <br />
+        <button className={buttonStyles.myButton} style={{ marginTop: '1rem', display: 'inline-block' }}>Filling Your Cup</button> is our signature offering for burnout-prevention to refuel your team<br />
+        <button className={buttonStyles.myButton} style={{ marginTop: '1rem', display: 'inline-block' }}>Well-being Retreats</button> are the immersive resets for teams <br /><br />
         Discover employee wellness solutions that go deeper—trusted by HR professionals, team leaders, and organizations seeking care, connection, and creativity at work.
     </p>
 ]; 

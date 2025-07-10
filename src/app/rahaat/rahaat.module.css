@@ -1,0 +1,164 @@
+.rndBackground {
+    position: relative;
+    min-height: 100vh;
+    background: #2e1a13;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.rndContainer {
+    max-width: 100%;
+    margin: 0 auto 0 auto;
+    padding: 32px;
+    color: #BAB1AB;
+    font-family: 'Erstoria', serif;
+    position: relative;
+    z-index: 2;
+}
+
+.rndHeading {
+    font-size: 3rem;
+    margin-top: 80px;
+    margin-bottom: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.textSection {
+    width: 100%;
+    max-width: 100%;
+    color: #ffffff;
+    font-family: 'Erstoria';
+    font-size: 1.7rem;
+    line-height: 1.5;
+    text-align: center;
+    padding-left: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.contentWrapper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 8px auto 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.videoBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center top;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.videoOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(30, 20, 20, 0.9);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.animatedHeading {
+    font-size: 2.2rem;
+    font-family: 'Erstoria', serif;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+    letter-spacing: 1.2px;
+}
+
+.animatedHeading:not(:first-child) {
+    margin-top: 3.5rem;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bodyText {
+    font-family: 'PT Serif', serif;
+    font-size: 1.75rem;
+    color: #fff;
+    text-align: center;
+    line-height: 1.7;
+}
+
+.bodyText br {
+    line-height: 3.5;
+    margin-bottom: 1.2em;
+    display: block;
+}
+
+.bodyText>*+* {
+    margin-top: 1.5em;
+}
+
+.highlight {
+    font-family: 'Erstoria', serif;
+    font-size: 1.75rem;
+    color: #82341A;
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 0.2em;
+    transition: color 0.7s;
+}
+
+.question {
+    font-family: 'Erstoria', serif;
+    font-size: 1.6rem;
+    color: #82341A;
+    font-weight: 600;
+    margin: 1.2em 0 0.7em 0;
+    display: block;
+    text-align: center;
+}
+
+.introText {
+    font-size: 1.5rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 1.5em;
+}
+
+.introText .highlight {
+    font-size: 2rem;
+}
+
+.gradientBrownText {
+    background: linear-gradient(90deg, #a9744f 20%, #c9a074 0%, #ab1c1c 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.largeButton {
+    font-size: 2rem !important;
+    padding: 0.7em 2.2em !important;
+    border-radius: 2.5em !important;
+}

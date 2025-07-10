@@ -30,9 +30,8 @@ const plans = [
         title: 'Supervision for Therapists & Creatives',
         description: (
             <>
-                We also offer reflective spaces for professionals seeking growth and guidance.<br />
-                <b>Clinical Supervision:</b> For therapists and care practitioners to strengthen reflection and ethics.<br />
-                <b>Creative Supervision:</b> For artists, teams, and arts organizations to move through blocks, reconnect with purpose, and grow their practice.
+                A steady space to think, feel, and grow.<br />
+                Rooted in reflection and care, our supervision supports therapists and creatives to navigate complexities, stay connected to purpose, and sustain meaningful practice.
             </>
         ),
         button: 'Book Consultation →',

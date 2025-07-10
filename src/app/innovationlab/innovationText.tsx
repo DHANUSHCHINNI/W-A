@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import buttonStyles from '../components/Button.module.css';
+
 export const innovationTextsection1 = [
     <div key="1" style={{ fontFamily: 'Erstoria, serif', fontSize: '2.3rem', color: '#BAB1AB', marginBottom: '1.2rem' }}>
         The Innovation Lab bridges disciplines, identities, and perspectives to create initiatives that inspire connection and enrich communities.
@@ -21,5 +24,12 @@ export const innovationTextsection3 = [
     <span key="5" style={{ fontFamily: 'Erstoria, serif', fontSize: '1.3em', color: '#BAB1AB', fontWeight: 600 }}>Therapeutic Movement Classes</span>,
     <span key="6" style={{ fontFamily: 'PT Serif, serif', fontSize: '1.7rem', color: '#BAB1AB' }}>
         {' '} - These are mental-health informed movement classes to experience and explore the nuances of creative expression through movement. The classes incorporate movement explorations and learning a thematic based choreography. The classes are inspired by a wealth of different movement styles ranging from Indian Classical (Kuchipudi, Odissi, Bharatanatyam), Indian contemporary, folk dances, Bollywood style, Butoh and Yoga. These classes first premiered in Brighton (UK) during 2024 in collaboration with South East Dance.
+    </span>,
+    <span key="7" style={{ display: 'block', marginTop: '2.5rem', fontFamily: 'Erstoria, serif', fontSize: '1.3em', color: '#BAB1AB', fontWeight: 600 }}>Well-being Retreats</span>,
+    <span key="8" style={{ fontFamily: 'PT Serif, serif', fontSize: '1.7rem', color: '#BAB1AB', display: 'inline' }}>
+        Immersive retreats designed to bring together somatics, creative arts, and nature to support rest, reflection, and renewal. These retreats offer individuals and teams an opportunity to slow down, reconnect with the body, and rediscover creative flow in community. Whether as a personal journey or a team offsite, our retreats embody innovation in care — integrating body-mind practices with artistic exploration in natural settings.{' '}
+        <Link href="/wellbeingretreats" style={{ textDecoration: 'none', display: 'inline' }}>
+            <button className={buttonStyles.myButton} style={{ fontSize: '1.7rem', padding: '0.18em 0.7em', verticalAlign: 'middle' }}>Discover more →</button>
+        </Link>
     </span>
 ]; 

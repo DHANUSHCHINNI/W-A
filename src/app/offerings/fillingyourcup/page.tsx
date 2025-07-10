@@ -3,13 +3,17 @@ import React from 'react';
 import Navbar from '../../components/navbar';
 import styles from './fillingyourcup.module.css';
 import { fillingyourcupTextsection1 } from './fillingyourcupText';
+
 export default function FillingYourCupPage() {
     return (
         <div className={styles.rndBackground}>
-            <video autoPlay loop muted playsInline className={styles.videoBackground}>
-                <source src="/coffee.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+            {/* Background image instead of video */}
+            <img
+                src="https://res.cloudinary.com/djspsll41/image/upload/v1752133741/samples/coffee.jpg"
+                alt="Coffee background"
+                className={styles.videoBackground}
+                style={{ objectFit: 'cover', objectPosition: 'center', width: '100vw', height: '100vh', zIndex: 0, position: 'fixed', top: 0, left: 0 }}
+            />
             <div className={styles.videoOverlay}></div>
             <Navbar show={true} />
             <div className={styles.rndContainer}>

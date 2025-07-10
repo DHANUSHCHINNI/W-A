@@ -83,7 +83,7 @@ export default function KeyOfferings() {
               </div>
             </div>
           </Link>
-          <Link href="/offerings/rahaat" style={{ textDecoration: 'none', flex: 1 }}>
+          <Link href="/rahaat" style={{ textDecoration: 'none', flex: 1 }}>
             <div
               style={{
                 display: 'flex',
