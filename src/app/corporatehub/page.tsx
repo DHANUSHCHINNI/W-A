@@ -4,12 +4,13 @@ import styles from './corporate.module.css';
 import { corporateTextHeading, corporateTextBody } from './corporateText';
 import Carousel from '../components/Carousel';
 import Carousel2Styles from '../components/Carousel2.module.css';
-import corporatehub1 from '../assets/corporatehub1.jpg';
-import corporatehub2 from '../assets/corporatehub2.jpg';
-import corporatehub3 from '../assets/corporatehub3.jpg';
-import corporatehub7 from '../assets/CorporateHub7.jpg';
 
-const images = [corporatehub1, corporatehub2, corporatehub3, corporatehub7];
+const corporateImages = [
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752140073/corporatehub1.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752140074/corporatehub2.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752140076/corporatehub3.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752140078/corporatehub7.jpg',
+];
 
 export default function CorporateHubPage() {
     return (
@@ -46,7 +47,7 @@ export default function CorporateHubPage() {
                         {corporateTextHeading}
                     </div>
                     <div style={{ marginBottom: '2.5rem' }}>
-                        <Carousel images={images} altPrefix="Corporate Hub Image" styles={Carousel2Styles} />
+                        <Carousel images={corporateImages} altPrefix="Corporate Hub Image" styles={Carousel2Styles} />
                     </div>
                     <div style={{ fontFamily: 'PT Serif, serif', fontSize: '1.7rem', color: '#BAB1AB' }}>
                         {corporateTextBody}

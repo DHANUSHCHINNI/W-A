@@ -22,7 +22,7 @@
     left: 50%;
     top: 50%;
     transform-origin: 0 0;
-    animation: orbit 48s linear infinite;
+    animation: orbit 65s linear infinite;
 }
 
 .serviceButton:nth-child(1) {
@@ -30,19 +30,19 @@
 }
 
 .serviceButton:nth-child(2) {
-    animation-delay: -9.6s;
+    animation-delay: -13s;
 }
 
 .serviceButton:nth-child(3) {
-    animation-delay: -19.2s;
+    animation-delay: -26s;
 }
 
 .serviceButton:nth-child(4) {
-    animation-delay: -28.8s;
+    animation-delay: -39s;
 }
 
 .serviceButton:nth-child(5) {
-    animation-delay: -38.4s;
+    animation-delay: -52s;
 }
 
 @keyframes orbit {

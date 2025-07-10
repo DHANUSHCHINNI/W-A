@@ -3,11 +3,7 @@ import React from "react";
 import Navbar from "../components/navbar";
 import Image from "next/image";
 import styles from './Story.module.css';
-import OurStoryfin1 from '../assets/OurStoryfin1.jpg';
-import OurStoryfin2 from '../assets/OurStoryfin2.jpg';
 import { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4, storyTextSection5, storyTextSection6 } from './storyText';
-import kritijaImage from '../assets/KritijaHeadshot.jpg';
-import amrutaImage from '../assets/AHHeadshot.jpg';
 export default function StoryPage() {
     return (
         <main className={styles.storyContainer}>
@@ -21,7 +17,7 @@ export default function StoryPage() {
                 <div className={styles.sideBySideText}>{storyTextSection2}</div>
                 <div className={styles.sideBySideImgWrap}>
                     <Image
-                        src={OurStoryfin1}
+                        src="https://res.cloudinary.com/djspsll41/image/upload/v1752136638/ourstoryfin1.jpg"
                         alt="Our Story 1"
                         width={350}
                         height={210}
@@ -34,7 +30,7 @@ export default function StoryPage() {
             <div className={styles.wrapRow}>
                 <div className={styles.wrapTextImageSection}>
                     <Image
-                        src={OurStoryfin2}
+                        src="https://res.cloudinary.com/djspsll41/image/upload/v1752139191/ourstoryfin2.jpg"
                         alt="Our Story 2"
                         width={500}
                         height={300}
@@ -56,7 +52,7 @@ export default function StoryPage() {
             <div className={styles.contentWrapper}>
                 <div className={`${styles.imageSection} ${styles.imageOnLeft}`}>
                     <Image
-                        src={amrutaImage}
+                        src="https://res.cloudinary.com/djspsll41/image/upload/v1752140072/AHHeadshot.jpg"
                         alt="Amruta Huddar"
                         width={500}
                         height={300}
@@ -76,7 +72,7 @@ export default function StoryPage() {
             <div className={styles.contentWrapper}>
                 <div className={`${styles.imageSection} ${styles.imageOnLeft}`}>
                     <Image
-                        src={kritijaImage}
+                        src="https://res.cloudinary.com/djspsll41/image/upload/v1752140070/kritijaHeadshot.jpg"
                         alt="Kritija Saxena"
                         width={500}
                         height={300}

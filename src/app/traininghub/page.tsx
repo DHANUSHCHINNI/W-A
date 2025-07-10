@@ -6,15 +6,16 @@ import styles from './training.module.css';
 import { trainingTextsection1, trainingTextsection1b, trainingTextsection2 } from './trainingText';
 import Carousel from '../components/Carousel';
 import Carousel2Styles from '../components/Carousel2.module.css';
-import TrainingHub1 from '../assets/TrainingHub1.jpg';
-import TrainingHub2 from '../assets/TrainingHub2.jpg';
-import TrainingHub3 from '../assets/TrainingHub3.jpg';
-import TrainingHub4 from '../assets/TrainingHub4.jpg';
-import TrainingHub5 from '../assets/TrainingHub5.jpg';
 import TrainingOfferingsCards from './TrainingOfferingsCards';
 import origamiImg from '../assets/origami.jpg';
 
-const images = [TrainingHub5, TrainingHub1, TrainingHub2, TrainingHub3, TrainingHub4];
+const images = [
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752138230/traininghub5.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752136643/traininghub1.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752136644/traininghub2.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752136645/traininghub3.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752138023/traininghub4.jpg',
+];
 
 export default function TrainingHubPage() {
     return (

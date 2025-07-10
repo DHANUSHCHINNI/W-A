@@ -4,19 +4,24 @@ import Image from 'next/image';
 import styles from './innovation.module.css';
 import { innovationTextsection1, innovationTextsection1b, innovationTextsection2, innovationTextsection3 } from './innovationText';
 import Carousel from '../components/Carousel';
-import PB1 from '../assets/PB1.jpg';
-import PB2 from '../assets/PB2.jpg';
-import PB4 from '../assets/PB4.jpg';
-import PB6 from '../assets/PB6.jpg';
-import TMC1 from '../assets/TMC1.jpg';
-import TMC2 from '../assets/TMC2.jpg';
-import TMC4 from '../assets/TMC4.jpg';
-import TMC5 from '../assets/TMC5.jpg';
 import carousel2Styles from '../components/Carousel2.module.css';
 import mirrorImg from '../assets/mirror.jpg';
+import TMC2 from '../assets/TMC2.jpg'
 
-const pbImages = [PB1, PB2, PB4, PB6];
-const tmcImages = [TMC1, TMC2, TMC4, TMC5];
+const pbImages = [
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752136639/pb1.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752136640/pb2.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752136641/pb4.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752136642/pb6.jpg',
+
+];
+const tmcImages = [
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752136646/tmc1.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752136648/tmc4.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752136649/tmc5.jpg',
+    TMC2
+
+];
 
 export default function InnovationLabPage() {
     return (

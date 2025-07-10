@@ -6,13 +6,15 @@ import Silhouette1 from '../components/Silhouette1';
 import Silhouette2 from '../components/Silhouette2';
 import Silhouette6 from '../components/Silhouette6';
 // Import TMC images to circulate
-import TMC1 from '../assets/TMC1.jpg';
 import TMC2 from '../assets/TMC2.jpg';
-import TMC4 from '../assets/TMC4.jpg';
-import TMC5 from '../assets/TMC5.jpg';
-import { headers } from 'next/headers';
 
-const tmcImages = [TMC1, TMC2, TMC4, TMC5];
+const tmcImages = [
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752140056/tmc1.jpg',
+    TMC2,
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752140064/tmc4.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1752140068/tmc5.jpg',
+];
+import { headers } from 'next/headers';
 
 async function getEvents() {
     // Ensure headers() is not awaited and used directly
