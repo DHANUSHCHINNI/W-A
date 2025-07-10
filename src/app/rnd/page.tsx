@@ -24,7 +24,7 @@ export default function RnDPage() {
                     className={styles.heroBgImage}
                 />
                 <div className={styles.heroOverlay}>
-                    <h1 className={styles.rndHeading}>Research&amp; Development Hub</h1>
+                    <h1 className={styles.rndHeading}>Research &amp; Development Hub</h1>
                 </div>
             </div>
             <div className={styles.rndContainer}>

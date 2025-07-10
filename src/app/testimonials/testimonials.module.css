@@ -1,6 +1,6 @@
 .testimonialsBg {
     min-height: 100vh;
-    background: transparent;
+    background: url('/assets/Brown Background with light.svg') center center / cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
