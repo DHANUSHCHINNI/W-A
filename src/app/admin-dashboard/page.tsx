@@ -21,6 +21,9 @@ export default function AdminDashboardPage() {
         description: '',
         date: '',
         price: '',
+        type: '',
+        link: '',
+        venue: '',
     });
     const [eventMessage, setEventMessage] = useState<string | null>(null);
 
@@ -57,11 +60,14 @@ export default function AdminDashboardPage() {
                     description: eventForm.description,
                     date: eventForm.date,
                     price: parseFloat(eventForm.price),
+                    type: eventForm.type,
+                    link: eventForm.link,
+                    venue: eventForm.venue,
                 }),
             });
             if (!res.ok) throw new Error('Failed to add event');
             setEventMessage('✅ Event added successfully');
-            setEventForm({ title: '', description: '', date: '', price: '' });
+            setEventForm({ title: '', description: '', date: '', price: '', type: '', link: '', venue: '' });
         } catch (err) {
             setEventMessage('❌ Error submitting event');
         }
@@ -113,6 +119,27 @@ export default function AdminDashboardPage() {
                                 required
                                 min="0"
                                 step="0.01"
+                                className={styles.input}
+                            />
+                            <input
+                                name="type"
+                                placeholder="Type (e.g. Upcoming or Past)"
+                                value={eventForm.type}
+                                onChange={handleEventChange}
+                                className={styles.input}
+                            />
+                            <input
+                                name="link"
+                                placeholder="Event Link (optional)"
+                                value={eventForm.link}
+                                onChange={handleEventChange}
+                                className={styles.input}
+                            />
+                            <input
+                                name="venue"
+                                placeholder="Venue (optional)"
+                                value={eventForm.venue}
+                                onChange={handleEventChange}
                                 className={styles.input}
                             />
                             <button type="submit" className={styles.button}>Add Event</button>

@@ -20,9 +20,16 @@
 
 .subheading {
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.eventSectionHeading {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
 }
 
 .heading {
@@ -87,7 +94,7 @@
     font-size: 1.4rem;
     font-weight: 600;
     color: #BAB1AB;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 }
 
 .cardDescription {
@@ -99,7 +106,7 @@
 
 .cardMeta {
     font-size: 0.98rem;
-    color: #000000;
+    color: #BAB1AB;
     font-style: italic;
 }
 

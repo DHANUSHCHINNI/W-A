@@ -28,7 +28,11 @@ async function getEvents() {
 }
 
 export default async function CommunityPage() {
-    const events: any[] = await getEvents();
+    const events = await getEvents();
+
+    // Separate events
+    const upcomingEvents = events.filter((event: any) => event.type && event.type.toLowerCase() === 'upcoming');
+    const pastEvents = events.filter((event: any) => !event.type || event.type.toLowerCase() !== 'upcoming');
 
     return (
         <div className={styles.communityBackground}>
@@ -42,30 +46,82 @@ export default async function CommunityPage() {
             <div className={styles.communityContainer}>
                 <h1 className={styles.heading}>Community events</h1>
                 <div className={styles.subheading}>Here's what's been brewing in W&A recently</div>
-                <div className={styles.cardsWrapper}>
-                    {events.map((event: any, idx: number) => (
-                        <div className={styles.card} key={event._id || idx}>
-                            <div className={styles.cardImage}>
-                                <Image
-                                    src={tmcImages[idx % tmcImages.length]}
-                                    alt={event.title}
-                                    width={220}
-                                    height={180}
-                                    className={styles.image}
-                                />
-                            </div>
-                            <div className={styles.cardContent}>
-                                <h2 className={styles.cardTitle}>{event.title}</h2>
-                                <p className={styles.cardDescription}>{event.description}</p>
-                                <div className={styles.cardMeta}>{event.date}<br />
-                                    {typeof event.price === 'number' && !isNaN(event.price) && (
-                                        <span>Price: ₹{event.price}</span>
-                                    )}
+
+                {/* Upcoming Events */}
+                {upcomingEvents.length > 0 && (
+                    <>
+                        <h2 className={styles.eventSectionHeading}>Upcoming Events</h2>
+                        <div className={styles.cardsWrapper}>
+                            {upcomingEvents.map((event: any, idx: number) => (
+                                <div className={styles.card} key={event._id || idx}>
+                                    <div className={styles.cardImage}>
+                                        <Image
+                                            src={tmcImages[idx % tmcImages.length]}
+                                            alt={event.title}
+                                            width={220}
+                                            height={180}
+                                            className={styles.image}
+                                        />
+                                    </div>
+                                    <div className={styles.cardContent}>
+                                        <h2 className={styles.cardTitle}>{event.title}</h2>
+                                        <p className={styles.cardDescription}>{event.description}</p>
+                                        <div className={styles.cardMeta}>
+                                            {event.date && <>{event.date}<br /></>}
+                                            {typeof event.price === 'number' && !isNaN(event.price) && (
+                                                <span>Price: ₹{event.price}<br /></span>
+                                            )}
+                                            {event.venue && <span>Venue: {event.venue}<br /></span>}
+                                            {event.link && event.link !== '-' && (
+                                                <a href={event.link} target="_blank" rel="noopener noreferrer">
+                                                    <button>Book Now</button>
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
+                    </>
+                )}
+
+                {/* Past Events */}
+                {pastEvents.length > 0 && (
+                    <>
+                        <h2 className={styles.eventSectionHeading}>Past Events</h2>
+                        <div className={styles.cardsWrapper}>
+                            {pastEvents.map((event: any, idx: number) => (
+                                <div className={styles.card} key={event._id || idx}>
+                                    <div className={styles.cardImage}>
+                                        <Image
+                                            src={tmcImages[idx % tmcImages.length]}
+                                            alt={event.title}
+                                            width={220}
+                                            height={180}
+                                            className={styles.image}
+                                        />
+                                    </div>
+                                    <div className={styles.cardContent}>
+                                        <h2 className={styles.cardTitle}>{event.title}</h2>
+                                        <p className={styles.cardDescription}>{event.description}</p>
+                                        <div className={styles.cardMeta}>
+                                            {event.date && <>{event.date}<br /></>}
+                                            {typeof event.price === 'number' && !isNaN(event.price) && (
+                                                <span>Price: ₹{event.price}<br /></span>
+                                            )}
+                                            {event.venue && <span>Venue: {event.venue}<br /></span>}
+                                            {event.link && event.link !== '-' && (
+                                                <a href={event.link} target="_blank" rel="noopener noreferrer">
+                                                    <button>View Link</button>
+                                                </a>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );
