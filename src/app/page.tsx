@@ -16,7 +16,7 @@ import Footer from "./components/Footer";
 
 
 export default function LandingPage() {
-  const [pageState, setPageState] = useState(0); // 0: landing, 1: nav+asset+buttons, 2: nav only
+  const [pageState, setPageState] = useState(1); // 0: landing, 1: nav+asset+buttons, 2: nav only
   const scrollingRef = useRef(false);
   const [isMobile, setIsMobile] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
