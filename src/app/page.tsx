@@ -47,31 +47,81 @@ export default function LandingPage() {
   const testimonialsScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function onWheel(e: WheelEvent) {
-      if (scrollingRef.current) return;
-      if (e.deltaY > 0 && pageStateRef.current < maxPage) {
-        setPageState(pageStateRef.current + 1);
-        scrollingRef.current = true;
-        setTimeout(() => { scrollingRef.current = false; }, 800);
-      } else if (e.deltaY < 0 && pageStateRef.current > 0) {
-        // Custom logic for testimonials scroll lock
-        if (pageStateRef.current === 7 && testimonialsScrollRef.current) {
-          const el = testimonialsScrollRef.current;
-          if (el.scrollTop > 0) {
-            el.scrollTo({ top: 0, behavior: 'smooth' });
+        const isMobileEnv = window.innerWidth <= 768;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        const goNext = () => {
+            if (scrollingRef.current || pageStateRef.current >= maxPage) return;
+            setPageState(pageStateRef.current + 1);
             scrollingRef.current = true;
-            setTimeout(() => { scrollingRef.current = false; }, 400);
-            return;
-          }
+            setTimeout(() => { scrollingRef.current = false; }, 800);
+        };
+
+        const goPrev = () => {
+            if (scrollingRef.current || pageStateRef.current <= 0) return;
+
+            // Scroll lock logic for Testimonials
+            if (pageStateRef.current === 7 && testimonialsScrollRef.current) {
+                const el = testimonialsScrollRef.current;
+                if (el.scrollTop > 0) {
+                    el.scrollTo({ top: 0, behavior: 'smooth' });
+                    scrollingRef.current = true;
+                    setTimeout(() => { scrollingRef.current = false; }, 400);
+                    return;
+                }
+            }
+
+            setPageState(pageStateRef.current - 1);
+            scrollingRef.current = true;
+            setTimeout(() => { scrollingRef.current = false; }, 800);
+        };
+
+        if (isMobileEnv) {
+            const onTouchStart = (e: TouchEvent) => {
+                touchStartY = e.touches[0].clientY;
+            };
+
+            const onTouchMove = (e: TouchEvent) => {
+                touchEndY = e.touches[0].clientY;
+            };
+
+            const onTouchEnd = () => {
+                const deltaY = touchStartY - touchEndY;
+                if (deltaY > 30) {
+                    goNext();
+                } else if (deltaY < -30) {
+                    goPrev();
+                }
+            };
+
+            window.addEventListener("touchstart", onTouchStart, { passive: true });
+            window.addEventListener("touchmove", onTouchMove, { passive: true });
+            window.addEventListener("touchend", onTouchEnd, { passive: true });
+
+            return () => {
+                window.removeEventListener("touchstart", onTouchStart);
+                window.removeEventListener("touchmove", onTouchMove);
+                window.removeEventListener("touchend", onTouchEnd);
+            };
+        } else {
+            const onWheel = (e: WheelEvent) => {
+                if (scrollingRef.current) return;
+                if (e.deltaY > 0) {
+                    goNext();
+                } else if (e.deltaY < 0) {
+                    goPrev();
+                }
+            };
+
+            window.addEventListener("wheel", onWheel, { passive: true });
+
+            return () => {
+                window.removeEventListener("wheel", onWheel);
+            };
         }
-        setPageState(pageStateRef.current - 1);
-        scrollingRef.current = true;
-        setTimeout(() => { scrollingRef.current = false; }, 800);
-      }
-    }
-    window.addEventListener("wheel", onWheel, { passive: true });
-    return () => window.removeEventListener("wheel", onWheel);
-  }, []);
+    }, []);
+
 
   return (
     <main
