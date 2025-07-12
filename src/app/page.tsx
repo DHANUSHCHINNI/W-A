@@ -16,7 +16,7 @@ import Footer from "./components/Footer";
 
 
 export default function LandingPage() {
-  const [pageState, setPageState] = useState(1); // 0: landing, 1: nav+asset+buttons, 2: nav only
+  const [pageState, setPageState] = useState(0); // 0: landing, 1: nav+asset+buttons, 2: nav only
   const scrollingRef = useRef(false);
   const [isMobile, setIsMobile] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
@@ -46,32 +46,44 @@ export default function LandingPage() {
 
   const testimonialsScrollRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    function onWheel(e: WheelEvent) {
-      if (scrollingRef.current) return;
-      if (e.deltaY > 0 && pageStateRef.current < maxPage) {
-        setPageState(pageStateRef.current + 1);
-        scrollingRef.current = true;
-        setTimeout(() => { scrollingRef.current = false; }, 800);
-      } else if (e.deltaY < 0 && pageStateRef.current > 0) {
-        // Custom logic for testimonials scroll lock
-        if (pageStateRef.current === 7 && testimonialsScrollRef.current) {
-          const el = testimonialsScrollRef.current;
-          if (el.scrollTop > 0) {
-            el.scrollTo({ top: 0, behavior: 'smooth' });
-            scrollingRef.current = true;
-            setTimeout(() => { scrollingRef.current = false; }, 400);
-            return;
-          }
-        }
-        setPageState(pageStateRef.current - 1);
-        scrollingRef.current = true;
-        setTimeout(() => { scrollingRef.current = false; }, 800);
-      }
-    }
-    window.addEventListener("wheel", onWheel, { passive: true });
-    return () => window.removeEventListener("wheel", onWheel);
-  }, []);
+    useEffect(() => {
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        const onTouchStart = (e: TouchEvent) => {
+            touchStartY = e.touches[0].clientY;
+        };
+
+        const onTouchMove = (e: TouchEvent) => {
+            touchEndY = e.touches[0].clientY;
+        };
+
+        const onTouchEnd = () => {
+            if (scrollingRef.current) return;
+            const deltaY = touchStartY - touchEndY;
+            if (deltaY > 30 && pageStateRef.current < maxPage) {
+                // swipe up
+                setPageState(pageStateRef.current + 1);
+                scrollingRef.current = true;
+                setTimeout(() => { scrollingRef.current = false; }, 800);
+            } else if (deltaY < -30 && pageStateRef.current > 0) {
+                // swipe down
+                setPageState(pageStateRef.current - 1);
+                scrollingRef.current = true;
+                setTimeout(() => { scrollingRef.current = false; }, 800);
+            }
+        };
+
+        window.addEventListener("touchstart", onTouchStart, { passive: true });
+        window.addEventListener("touchmove", onTouchMove, { passive: true });
+        window.addEventListener("touchend", onTouchEnd, { passive: true });
+
+        return () => {
+            window.removeEventListener("touchstart", onTouchStart);
+            window.removeEventListener("touchmove", onTouchMove);
+            window.removeEventListener("touchend", onTouchEnd);
+        };
+    }, []);
 
   return (
     <main
