@@ -51,3 +51,13 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+
+@font-face {
+  font-family: 'Erstoria';
+  src: url('/fonts/Erstoria.woff2') format('woff2'),
+    url('/fonts/Erstoria.otf') format('opentype'),
+    url('/fonts/Erstoria.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

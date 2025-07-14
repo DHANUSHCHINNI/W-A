@@ -40,8 +40,10 @@ export default function SecondPage() {
         transition={{ duration: 0.4 }}
         style={{
           display: "flex",
-          gap: isMobile ? "1.5rem" : "2rem",
+          flexDirection: isMobile ? "column" : "row",
+          gap: isMobile ? "1.2rem" : "2rem",
           justifyContent: "center",
+          alignItems: "center",
           marginTop: isMobile ? 40 : 60,
           zIndex: 6,
           position: "relative",
@@ -52,6 +54,8 @@ export default function SecondPage() {
           style={{
             fontSize: isMobile ? "0.95rem" : undefined,
             padding: isMobile ? "0.5rem 1.2rem" : undefined,
+            width: isMobile ? "90vw" : undefined,
+            maxWidth: isMobile ? 340 : undefined,
           }}
         >
           Book consultation
@@ -61,6 +65,8 @@ export default function SecondPage() {
           style={{
             fontSize: isMobile ? "0.95rem" : undefined,
             padding: isMobile ? "0.5rem 1.2rem" : undefined,
+            width: isMobile ? "90vw" : undefined,
+            maxWidth: isMobile ? 340 : undefined,
           }}
           onClick={() => router.push('/community')}
         >

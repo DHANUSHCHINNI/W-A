@@ -47,80 +47,80 @@ export default function LandingPage() {
   const testimonialsScrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-        const isMobileEnv = window.innerWidth <= 768;
-        let touchStartY = 0;
-        let touchEndY = 0;
+    const isMobileEnv = window.innerWidth <= 768;
+    let touchStartY = 0;
+    let touchEndY = 0;
 
-        const goNext = () => {
-            if (scrollingRef.current || pageStateRef.current >= maxPage) return;
-            setPageState(pageStateRef.current + 1);
-            scrollingRef.current = true;
-            setTimeout(() => { scrollingRef.current = false; }, 800);
-        };
+    const goNext = () => {
+      if (scrollingRef.current || pageStateRef.current >= maxPage) return;
+      setPageState(pageStateRef.current + 1);
+      scrollingRef.current = true;
+      setTimeout(() => { scrollingRef.current = false; }, 800);
+    };
 
-        const goPrev = () => {
-            if (scrollingRef.current || pageStateRef.current <= 0) return;
+    const goPrev = () => {
+      if (scrollingRef.current || pageStateRef.current <= 0) return;
 
-            // Scroll lock logic for Testimonials
-            if (pageStateRef.current === 7 && testimonialsScrollRef.current) {
-                const el = testimonialsScrollRef.current;
-                if (el.scrollTop > 0) {
-                    el.scrollTo({ top: 0, behavior: 'smooth' });
-                    scrollingRef.current = true;
-                    setTimeout(() => { scrollingRef.current = false; }, 400);
-                    return;
-                }
-            }
-
-            setPageState(pageStateRef.current - 1);
-            scrollingRef.current = true;
-            setTimeout(() => { scrollingRef.current = false; }, 800);
-        };
-
-        if (isMobileEnv) {
-            const onTouchStart = (e: TouchEvent) => {
-                touchStartY = e.touches[0].clientY;
-            };
-
-            const onTouchMove = (e: TouchEvent) => {
-                touchEndY = e.touches[0].clientY;
-            };
-
-            const onTouchEnd = () => {
-                const deltaY = touchStartY - touchEndY;
-                if (deltaY > 30) {
-                    goNext();
-                } else if (deltaY < -30) {
-                    goPrev();
-                }
-            };
-
-            window.addEventListener("touchstart", onTouchStart, { passive: true });
-            window.addEventListener("touchmove", onTouchMove, { passive: true });
-            window.addEventListener("touchend", onTouchEnd, { passive: true });
-
-            return () => {
-                window.removeEventListener("touchstart", onTouchStart);
-                window.removeEventListener("touchmove", onTouchMove);
-                window.removeEventListener("touchend", onTouchEnd);
-            };
-        } else {
-            const onWheel = (e: WheelEvent) => {
-                if (scrollingRef.current) return;
-                if (e.deltaY > 0) {
-                    goNext();
-                } else if (e.deltaY < 0) {
-                    goPrev();
-                }
-            };
-
-            window.addEventListener("wheel", onWheel, { passive: true });
-
-            return () => {
-                window.removeEventListener("wheel", onWheel);
-            };
+      // Scroll lock logic for Testimonials
+      if (pageStateRef.current === 7 && testimonialsScrollRef.current) {
+        const el = testimonialsScrollRef.current;
+        if (el.scrollTop > 0) {
+          el.scrollTo({ top: 0, behavior: 'smooth' });
+          scrollingRef.current = true;
+          setTimeout(() => { scrollingRef.current = false; }, 400);
+          return;
         }
-    }, []);
+      }
+
+      setPageState(pageStateRef.current - 1);
+      scrollingRef.current = true;
+      setTimeout(() => { scrollingRef.current = false; }, 800);
+    };
+
+    if (isMobileEnv) {
+      const onTouchStart = (e: TouchEvent) => {
+        touchStartY = e.touches[0].clientY;
+      };
+
+      const onTouchMove = (e: TouchEvent) => {
+        touchEndY = e.touches[0].clientY;
+      };
+
+      const onTouchEnd = () => {
+        const deltaY = touchStartY - touchEndY;
+        if (deltaY > 30) {
+          goNext();
+        } else if (deltaY < -30) {
+          goPrev();
+        }
+      };
+
+      window.addEventListener("touchstart", onTouchStart, { passive: true });
+      window.addEventListener("touchmove", onTouchMove, { passive: true });
+      window.addEventListener("touchend", onTouchEnd, { passive: true });
+
+      return () => {
+        window.removeEventListener("touchstart", onTouchStart);
+        window.removeEventListener("touchmove", onTouchMove);
+        window.removeEventListener("touchend", onTouchEnd);
+      };
+    } else {
+      const onWheel = (e: WheelEvent) => {
+        if (scrollingRef.current) return;
+        if (e.deltaY > 0) {
+          goNext();
+        } else if (e.deltaY < 0) {
+          goPrev();
+        }
+      };
+
+      window.addEventListener("wheel", onWheel, { passive: true });
+
+      return () => {
+        window.removeEventListener("wheel", onWheel);
+      };
+    }
+  }, []);
 
 
   return (
@@ -143,58 +143,68 @@ export default function LandingPage() {
         <Navbar show={pageState > 0} />
       )}
 
-      {/* Top left logo */}
-      <div style={{ position: "absolute", top: 20, left: 32, zIndex: 10 }}>
-        <Asset1 width={50} height={50} />
-      </div>
+      {/* Top left logo (centered above content on mobile) */}
+      {isMobile ? (
+        <div style={{ position: "absolute", top: 18, left: 0, right: 0, zIndex: 10, display: 'flex', justifyContent: 'center' }}>
+          <Asset1 width={60} height={60} />
+        </div>
+      ) : (
+        <div style={{ position: "absolute", top: 20, left: 32, zIndex: 10 }}>
+          <Asset1 width={50} height={50} />
+        </div>
+      )}
 
       {/* Top right brush stroke */}
-      <motion.div
-        style={{
-          position: "absolute",
-          top: -100,
-          right: -200,
-          zIndex: 1,
-          transformOrigin: "center",
-        } as React.CSSProperties}
-        initial={{
-          opacity: pageState >= 5 ? 0 : 0.7,
-          rotate: (pageState >= 2 && pageState <= 4) ? topBrushRotations[paraIndex] : 210,
-          scale: 1.9
-        }}
-        animate={{
-          opacity: pageState >= 5 ? 0 : 0.7,
-          rotate: (pageState >= 2 && pageState <= 4) ? topBrushRotations[paraIndex] : 210,
-          scale: 1.9
-        }}
-        transition={{ duration: 0.7 }}
-      >
-        <Asset2 width={800} height={400} />
-      </motion.div>
+      {!isMobile && (
+        <motion.div
+          style={{
+            position: "absolute",
+            top: -100,
+            right: -200,
+            zIndex: 1,
+            transformOrigin: "center",
+          } as React.CSSProperties}
+          initial={{
+            opacity: pageState >= 5 ? 0 : 0.7,
+            rotate: (pageState >= 2 && pageState <= 4) ? topBrushRotations[paraIndex] : 210,
+            scale: 1.9
+          }}
+          animate={{
+            opacity: pageState >= 5 ? 0 : 0.7,
+            rotate: (pageState >= 2 && pageState <= 4) ? topBrushRotations[paraIndex] : 210,
+            scale: 1.9
+          }}
+          transition={{ duration: 0.7 }}
+        >
+          <Asset2 width={800} height={400} />
+        </motion.div>
+      )}
 
       {/* Bottom left brush stroke */}
-      <motion.div
-        style={{
-          position: "absolute",
-          bottom: -280,
-          left: 0,
-          zIndex: 1,
-          transformOrigin: "center",
-        } as React.CSSProperties}
-        initial={{
-          opacity: pageState >= 5 ? 0 : 0.7,
-          rotate: (pageState >= 2 && pageState <= 4) ? bottomBrushRotations[paraIndex] : 210,
-          scale: 2.4
-        }}
-        animate={{
-          opacity: pageState >= 5 ? 0 : 0.7,
-          rotate: (pageState >= 2 && pageState <= 4) ? bottomBrushRotations[paraIndex] : 210,
-          scale: 2.4
-        }}
-        transition={{ duration: 0.7 }}
-      >
-        <Asset3 width={800} height={400} />
-      </motion.div>
+      {!isMobile && (
+        <motion.div
+          style={{
+            position: "absolute",
+            bottom: -280,
+            left: 0,
+            zIndex: 1,
+            transformOrigin: "center",
+          } as React.CSSProperties}
+          initial={{
+            opacity: pageState >= 5 ? 0 : 0.7,
+            rotate: (pageState >= 2 && pageState <= 4) ? bottomBrushRotations[paraIndex] : 210,
+            scale: 2.4
+          }}
+          animate={{
+            opacity: pageState >= 5 ? 0 : 0.7,
+            rotate: (pageState >= 2 && pageState <= 4) ? bottomBrushRotations[paraIndex] : 210,
+            scale: 2.4
+          }}
+          transition={{ duration: 0.7 }}
+        >
+          <Asset3 width={800} height={400} />
+        </motion.div>
+      )}
 
       {/* Center content */}
       <div
@@ -219,11 +229,12 @@ export default function LandingPage() {
               exit={{ opacity: 0.5 }}
               transition={{ duration: 0.2 }}
               style={{
-                width: "700px",
+                width: isMobile ? "90vw" : "700px",
                 maxWidth: "100%",
+                margin: isMobile ? '0 auto' : undefined,
               } as React.CSSProperties}
             >
-              <Asset6 width={700} height={300} style={{ fill: "#d1c1b2" }} />
+              <Asset6 width={isMobile ? 320 : 700} height={isMobile ? 120 : 300} style={{ fill: "#d1c1b2" }} />
             </motion.div>
           )}
           {pageState === 1 && (
