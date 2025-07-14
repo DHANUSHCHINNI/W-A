@@ -1,5 +1,7 @@
-import React from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
+import HamburgerNavbar from '../components/HamburgerNavbar';
 import styles from './corporate.module.css';
 import { corporateTextHeading, corporateTextBody } from './corporateText';
 import Carousel from '../components/Carousel';
@@ -13,9 +15,23 @@ const corporateImages = [
 ];
 
 export default function CorporateHubPage() {
+    const [isMobile, setIsMobile] = useState(false);
+    const [hamburgerOpen, setHamburgerOpen] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth <= 900);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <div className={styles.rndBackground}>
-            <Navbar show={true} />
+            {isMobile ? (
+                <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
+            ) : (
+                <Navbar show={true} />
+            )}
             {/* Video header section */}
             <div style={{ position: 'relative', width: '100%', height: '400px', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' } as React.CSSProperties}>
                 <video

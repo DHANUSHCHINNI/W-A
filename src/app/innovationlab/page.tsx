@@ -1,5 +1,7 @@
-import React from 'react';
+'use client'
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
+import HamburgerNavbar from '../components/HamburgerNavbar';
 import Image from 'next/image';
 import styles from './innovation.module.css';
 import { innovationTextsection1, innovationTextsection1b, innovationTextsection2, innovationTextsection3 } from './innovationText';
@@ -24,9 +26,23 @@ const tmcImages = [
 ];
 
 export default function InnovationLabPage() {
+    const [isMobile, setIsMobile] = useState(false);
+    const [hamburgerOpen, setHamburgerOpen] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth <= 900);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <div className={styles.rndBackground}>
-            <Navbar show={true} />
+            {isMobile ? (
+                <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
+            ) : (
+                <Navbar show={true} />
+            )}
             <div className={styles.heroBgSection}>
                 <Image
                     src={mirrorImg}

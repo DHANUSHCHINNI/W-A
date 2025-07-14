@@ -1,10 +1,21 @@
 'use client'
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/navbar';
+import HamburgerNavbar from '../../components/HamburgerNavbar';
 import styles from './fillingyourcup.module.css';
 import { fillingyourcupTextsection1 } from './fillingyourcupText';
 
 export default function FillingYourCupPage() {
+    const [isMobile, setIsMobile] = useState(false);
+    const [hamburgerOpen, setHamburgerOpen] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth <= 900);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <div className={styles.rndBackground}>
             {/* Background image instead of video */}
@@ -15,7 +26,11 @@ export default function FillingYourCupPage() {
                 style={{ objectFit: 'cover', objectPosition: 'center', width: '100vw', height: '100vh', zIndex: 0, position: 'fixed', top: 0, left: 0 }}
             />
             <div className={styles.videoOverlay}></div>
-            <Navbar show={true} />
+            {isMobile ? (
+                <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
+            ) : (
+                <Navbar show={true} />
+            )}
             <div className={styles.rndContainer}>
                 <div className={styles.contentWrapper}>
                     <h1

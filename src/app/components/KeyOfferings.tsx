@@ -6,6 +6,7 @@ import Rahaat from './Rahaat';
 import Retreat from './Retreat';
 import Fillcup from './Fillcup';
 import SukoonLogo from './SukoonLogo';
+import React from 'react';
 
 const offerings = [
     {
@@ -90,69 +91,60 @@ export default function KeyOfferings() {
                 }}
             >
                 {isMobile ? (
-                    <div style={{width: '100%', textAlign: 'center', position: 'relative'}}>
-                        <button
-                            onClick={prev}
-                            style={{
-                                position: 'absolute',
-                                left: 10,
-                                top: '50%',
-                                transform: 'translateY(-50%)',
-                                fontSize: 28,
-                                background: 'transparent',
-                                border: 'none',
-                                color: '#83351b',
-                                cursor: 'pointer',
-                            }}
-                            aria-label="Previous"
-                        >
-                            &#8249;
-                        </button>
-
-                        <Link href={offerings[index].href} style={{textDecoration: 'none'}}>
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    borderRadius: 10,
-                                    padding: '1.5rem 1rem',
-                                    background: '#B1ABAB',
-                                }}
-                            >
-                                {offerings[index].icon}
+                    <div
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: '1fr 1fr',
+                            gridTemplateRows: '1fr 1fr',
+                            gap: '1.2rem',
+                            width: '100%',
+                            maxWidth: 400,
+                            margin: '0 auto',
+                            justifyItems: 'center',
+                            alignItems: 'center',
+                        }}
+                    >
+                        {offerings.slice(0, 4).map((item, i) => (
+                            <Link href={item.href} key={i} style={{ textDecoration: 'none', width: '100%' }}>
                                 <div
                                     style={{
-                                        marginTop: 18,
-                                        fontFamily: 'Erstoria',
-                                        fontSize: 20,
-                                        color: '#83351b',
-                                        fontWeight: 500,
-                                        textAlign: 'center',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        borderRadius: 18,
+                                        padding: '0.85rem 0.4rem',
+                                        background: '#B1ABAB',
+                                        width: '100%',
+                                        minWidth: 0,
+                                        minHeight: 80,
+                                        maxWidth: 135,
+                                        margin: '0 auto',
+                                        boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                                        transition: 'background 0.18s, box-shadow 0.18s',
+                                        border: '2px solid #a99b8a',
                                     }}
+                                    onTouchStart={e => e.currentTarget.style.background = '#d1c1b2'}
+                                    onTouchEnd={e => e.currentTarget.style.background = '#B1ABAB'}
+                                    onMouseDown={e => e.currentTarget.style.background = '#d1c1b2'}
+                                    onMouseUp={e => e.currentTarget.style.background = '#B1ABAB'}
                                 >
-                                    {offerings[index].label}
+                                    {React.cloneElement(item.icon, { width: 68, height: 68 })}
+                                    <div
+                                        style={{
+                                            marginTop: 9,
+                                            fontFamily: 'Erstoria',
+                                            fontSize: 14,
+                                            color: '#83351b',
+                                            fontWeight: 500,
+                                            textAlign: 'center',
+                                        }}
+                                    >
+                                        {item.label}
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
-
-                        <button
-                            onClick={next}
-                            style={{
-                                position: 'absolute',
-                                right: 10,
-                                top: '50%',
-                                transform: 'translateY(-50%)',
-                                fontSize: 28,
-                                background: 'transparent',
-                                border: 'none',
-                                color: '#83351b',
-                                cursor: 'pointer',
-                            }}
-                            aria-label="Next"
-                        >
-                            &#8250;
-                        </button>
+                            </Link>
+                        ))}
                     </div>
                 ) : (
                     <div
@@ -167,7 +159,7 @@ export default function KeyOfferings() {
                         }}
                     >
                         {offerings.map((item, i) => (
-                            <Link href={item.href} key={i} style={{textDecoration: 'none', flex: 1}}>
+                            <Link href={item.href} key={i} style={{ textDecoration: 'none', flex: 1 }}>
                                 <div
                                     style={{
                                         display: 'flex',

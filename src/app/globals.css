@@ -52,6 +52,12 @@ body {
   /* Firefox */
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 @font-face {
   font-family: 'Erstoria';
   src: url('/fonts/Erstoria.woff2') format('woff2'),

@@ -144,11 +144,7 @@ export default function LandingPage() {
       )}
 
       {/* Top left logo (centered above content on mobile) */}
-      {isMobile ? (
-        <div style={{ position: "absolute", top: 18, left: 0, right: 0, zIndex: 10, display: 'flex', justifyContent: 'center' }}>
-          <Asset1 width={60} height={60} />
-        </div>
-      ) : (
+      {isMobile ? null : (
         <div style={{ position: "absolute", top: 20, left: 32, zIndex: 10 }}>
           <Asset1 width={50} height={50} />
         </div>
@@ -220,53 +216,104 @@ export default function LandingPage() {
           justifyContent: "center",
         } as React.CSSProperties}
       >
-        <AnimatePresence mode="wait">
-          {pageState === 0 && (
-            <motion.div
-              key="asset6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0.5 }}
-              transition={{ duration: 0.2 }}
-              style={{
-                width: isMobile ? "90vw" : "700px",
-                maxWidth: "100%",
-                margin: isMobile ? '0 auto' : undefined,
-              } as React.CSSProperties}
-            >
-              <Asset6 width={isMobile ? 320 : 700} height={isMobile ? 120 : 300} style={{ fill: "#d1c1b2" }} />
-            </motion.div>
-          )}
-          {pageState === 1 && (
-            <SecondPage />
-          )}
-          {pageState >= 2 && pageState <= 4 && (
-            <Paragraphs pageState={pageState} paragraphs={paragraphs} />
-          )}
-          {pageState === 5 && (
-            <Services />
-          )}
-          {pageState === 6 && (
-            <KeyOfferings />
-          )}
-          {pageState === 7 && (
-            <div
-              ref={testimonialsScrollRef}
-              style={{
-                background: "url('/brownlight.svg') center center / cover no-repeat",
-                maxHeight: 'calc(100vh - 60px)',
-                minHeight: '100vh',
-                overflowY: 'auto',
-                width: '100vw',
-                position: 'relative',
-                zIndex: 1,
-              }}
-            >
-              <Testimonials />
-              <Footer />
+        {/* Mobile: Logo above Asset6 only on landing and paragraphs, with absolute positioning to avoid extra scroll and keep centered */}
+        {isMobile && (pageState === 0 || (pageState >= 2 && pageState <= 4)) ? (
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingTop: 110, // logo height + margin
+            marginBottom: 0,
+            minHeight: 0,
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              display: 'flex',
+              justifyContent: 'center',
+              zIndex: 2,
+              pointerEvents: 'none',
+            }}>
+              <Asset1 width={100} height={100} />
             </div>
-          )}
-        </AnimatePresence>
+            <AnimatePresence mode="wait">
+              {pageState === 0 && (
+                <motion.div
+                  key="asset6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0.5 }}
+                  transition={{ duration: 0.2 }}
+                  style={{
+                    width: "90vw",
+                    maxWidth: "100%",
+                    margin: '0 auto',
+                  } as React.CSSProperties}
+                >
+                  <Asset6 width={320} height={120} style={{ fill: "#d1c1b2" }} />
+                </motion.div>
+              )}
+              {pageState >= 2 && pageState <= 4 && (
+                <Paragraphs pageState={pageState} paragraphs={paragraphs} />
+              )}
+            </AnimatePresence>
+          </div>
+        ) : (
+          <>
+            <AnimatePresence mode="wait">
+              {pageState === 0 && (
+                <motion.div
+                  key="asset6"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0.5 }}
+                  transition={{ duration: 0.2 }}
+                  style={{
+                    width: "700px",
+                    maxWidth: "100%",
+                    margin: undefined,
+                  } as React.CSSProperties}
+                >
+                  <Asset6 width={700} height={300} style={{ fill: "#d1c1b2" }} />
+                </motion.div>
+              )}
+              {pageState === 1 && (
+                <SecondPage />
+              )}
+              {pageState >= 2 && pageState <= 4 && (
+                <Paragraphs pageState={pageState} paragraphs={paragraphs} />
+              )}
+              {pageState === 5 && (
+                <Services />
+              )}
+              {pageState === 6 && (
+                <KeyOfferings />
+              )}
+              {pageState === 7 && (
+                <div
+                  ref={testimonialsScrollRef}
+                  style={{
+                    background: "url('/brownlight.svg') center center / cover no-repeat",
+                    maxHeight: 'calc(100vh - 60px)',
+                    minHeight: '100vh',
+                    overflowY: 'auto',
+                    width: '100vw',
+                    position: 'relative',
+                    zIndex: 1,
+                  }}
+                >
+                  <Testimonials />
+                  <Footer />
+                </div>
+              )}
+            </AnimatePresence>
+          </>
+        )}
       </div>
     </main>
   );

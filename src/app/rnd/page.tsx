@@ -1,6 +1,7 @@
 'use client'
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
+import HamburgerNavbar from '../components/HamburgerNavbar';
 import Image from 'next/image';
 import styles from './rnd.module.css';
 import anchorImg from '../assets/anchor.jpg';
@@ -9,9 +10,23 @@ import { rndTextsection1, rndTextsection2 } from './rndText';
 import LogoCarousel from '../components/LogoCarousel';
 
 export default function RnDPage() {
+    const [isMobile, setIsMobile] = useState(false);
+    const [hamburgerOpen, setHamburgerOpen] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth <= 900);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <div className={styles.rndBackground}>
-            <Navbar show={true} />
+            {isMobile ? (
+                <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
+            ) : (
+                <Navbar show={true} />
+            )}
             {/* Header image section */}
             <div className={styles.heroBgSection}>
                 <Image

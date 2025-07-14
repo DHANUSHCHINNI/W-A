@@ -1,13 +1,28 @@
 'use client';
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/navbar";
+import HamburgerNavbar from "../components/HamburgerNavbar";
 import Image from "next/image";
 import styles from './Story.module.css';
 import { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4, storyTextSection5, storyTextSection6 } from './storyText';
 export default function StoryPage() {
+    const [isMobile, setIsMobile] = useState(false);
+    const [hamburgerOpen, setHamburgerOpen] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth <= 900);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     return (
         <main className={styles.storyContainer}>
-            <Navbar show={true} />
+            {isMobile ? (
+                <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
+            ) : (
+                <Navbar show={true} />
+            )}
             <div className={styles.centeredOnceUponSection}>
                 <h2 className={styles.onceUponIntro}>Once upon a Time...</h2>
                 <div className={styles.bigErstoria}>Two friends. One question:</div>

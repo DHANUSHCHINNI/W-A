@@ -45,27 +45,68 @@ export default function TestimonialsPage() {
                 onMouseLeave={() => setIsHovered(false)}
                 style={isMobile ? { flexDirection: 'column', alignItems: 'center', padding: '0 8px', width: '100vw', maxWidth: '100vw' } : {}}
             >
-                <button className={styles.arrowBtn} onClick={handlePrev} aria-label="Previous">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
-                </button>
-                <div
-                    className={styles.cardsRow}
-                    style={isMobile ? { flexDirection: 'column', gap: 0, width: '100%', alignItems: 'center' } : {}}
-                >
-                    {testimonials.slice(index, index + visibleCount).map((t, i) => (
-                        <div
-                            className={styles.card}
-                            key={i}
-                            style={isMobile ? { width: '90vw', minWidth: 0, maxWidth: 400, padding: '24px 12px 18px 12px', minHeight: 180 } : {}}
-                        >
-                            <div className={styles.text}>{t.text}</div>
-                            <div className={styles.name}>- {t.name}</div>
-                        </div>
-                    ))}
-                </div>
-                <button className={styles.arrowBtn} onClick={handleNext} aria-label="Next">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
-                </button>
+                {isMobile ? null : (
+                    <button className={styles.arrowBtn} onClick={handlePrev} aria-label="Previous">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+                    </button>
+                )}
+                {isMobile ? (
+                    <div
+                        className={styles.cardsRow}
+                        style={{
+                            flexDirection: 'row',
+                            gap: 0,
+                            width: '100vw',
+                            alignItems: 'center',
+                            overflowX: 'auto',
+                            scrollSnapType: 'x mandatory',
+                            WebkitOverflowScrolling: 'touch',
+                            msOverflowStyle: 'none',
+                            scrollbarWidth: 'none',
+                        }}
+                    >
+                        {testimonials.map((t, i) => (
+                            <div
+                                className={styles.card}
+                                key={i}
+                                style={{
+                                    width: '90vw',
+                                    minWidth: 0,
+                                    maxWidth: 400,
+                                    padding: '24px 12px 18px 12px',
+                                    minHeight: 180,
+                                    scrollSnapAlign: 'center',
+                                    flex: '0 0 90vw',
+                                    marginRight: i === testimonials.length - 1 ? 0 : 12,
+                                }}
+                            >
+                                <div className={styles.text}>{t.text}</div>
+                                <div className={styles.name}>- {t.name}</div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div
+                        className={styles.cardsRow}
+                        style={{ flexDirection: 'row', gap: 32, overflow: 'hidden' }}
+                    >
+                        {testimonials.slice(index, index + visibleCount).map((t, i) => (
+                            <div
+                                className={styles.card}
+                                key={i}
+                                style={{}}
+                            >
+                                <div className={styles.text}>{t.text}</div>
+                                <div className={styles.name}>- {t.name}</div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+                {isMobile ? null : (
+                    <button className={styles.arrowBtn} onClick={handleNext} aria-label="Next">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 6 15 12 9 18" /></svg>
+                    </button>
+                )}
             </div>
         </div>
     );

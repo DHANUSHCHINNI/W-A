@@ -155,21 +155,6 @@ export default function ContactPage() {
                         </div>
                     </div>
 
-                    <div className={styles.infoItem}>
-                        <div className={styles.infoIcon}>📍</div>
-                        <div>
-                            <h3 className={styles.infoTitle}>Location</h3>
-                            <p className={styles.infoText}>Your Business Address</p>
-                        </div>
-                    </div>
-
-                    <div className={styles.infoItem}>
-                        <div className={styles.infoIcon}>📞</div>
-                        <div>
-                            <h3 className={styles.infoTitle}>Phone</h3>
-                            <p className={styles.infoText}>+1 (555) 123-4567</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
