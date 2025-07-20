@@ -44,17 +44,19 @@ export default function Services() {
       {/* Silhouettes as background decorations (desktop only) */}
       {!isMobile && (
         <>
-          <Silhouette1 className={undefined} style={{ position: 'absolute', left: 490, top: 120, width: 720, height: 620, opacity: 0.95, zIndex: 0 }} />
-          <Silhouette6 className={undefined} style={{ position: 'absolute', left: -600, top: 200, width: 720, height: 620, opacity: 0.95, zIndex: 0 }} />
+          {/* Left silhouette */}
+          <Silhouette6 className={undefined} style={{ position: 'absolute', left: 0, top: 180, width: 420, height: 520, opacity: 0.95, zIndex: 0 }} />
+          {/* Right silhouette */}
+          <Silhouette1 className={undefined} style={{ position: 'absolute', right: 0, top: 180, width: 420, height: 520, opacity: 0.95, zIndex: 0 }} />
         </>
       )}
-      <div style={{ marginTop: 100, width: '100%' }}>
+      <div style={{ marginTop: 100, width: '100%', position: 'relative' }}>
         {/* Center logo (desktop only) */}
         {!isMobile && (
           <div style={{
             position: 'absolute',
             left: '50%',
-            top: '55%',
+            top: '72%',
             transform: 'translate(-50%, -50%)',
             zIndex: 2,
           } as React.CSSProperties}>
@@ -101,7 +103,7 @@ export default function Services() {
             </div>
           </>
         ) : (
-          <div className={styles.revolvingContainer}>
+          <div className={styles.revolvingContainer} style={{ zIndex: 2, position: 'relative' }}>
             <div className={styles.revolvingButtons}>
               <div className={styles.serviceButton} style={{ '--angle': '0deg' } as React.CSSProperties}>
                 <ServiceHubButton label="Therapy Hub" href="/therapyhub" style={{}} customSize={{ width: 360, height: 120 }} />
@@ -121,22 +123,24 @@ export default function Services() {
             </div>
           </div>
         )}
-        {/* Services text at top left for services page */}
-        <div
-          style={{
-            position: 'absolute',
-            top: 100,
-            left: -340,
-            zIndex: 10,
-            color: '#BAB1AB',
-            fontFamily: 'Erstoria',
-            fontSize: 40,
-            fontWeight: 600,
-            letterSpacing: 1,
-          } as React.CSSProperties}
-        >
-          Services
-        </div>
+        {/* Services text at top left for services page (desktop only) */}
+        {!isMobile && (
+          <div
+            style={{
+              position: 'absolute',
+              top: -20,
+              left: 80,
+              zIndex: 10,
+              color: '#BAB1AB',
+              fontFamily: 'Erstoria',
+              fontSize: 40,
+              fontWeight: 600,
+              letterSpacing: 1,
+            } as React.CSSProperties}
+          >
+            Services
+          </div>
+        )}
       </div>
     </div>
   )

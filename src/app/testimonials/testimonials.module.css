@@ -50,9 +50,9 @@
     background: #2e1a13;
     border: 2px solid #BAB1AB;
     border-radius: 8px;
-    width: 600px;
-    min-height: 220px;
-    padding: 32px 32px 24px 32px;
+    width: 370px;
+    min-height: 140px;
+    padding: 18px 18px 14px 18px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -61,10 +61,10 @@
 }
 
 .text {
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: #ffffff;
     font-family: 'Inter', Arial, sans-serif;
-    margin-bottom: 32px;
+    margin-bottom: 18px;
 }
 
 .icon {
@@ -76,9 +76,9 @@
 
 .name {
     display: block;
-    font-size: 1.05rem;
+    font-size: 0.92rem;
     color: #ffffff;
     font-family: 'Inter', Arial, sans-serif;
-    margin-top: 16px;
-    text-align: left;
+    margin-top: 10px;
+    text-align: right;
 }

@@ -1,11 +1,11 @@
 .revolvingContainer {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     margin: 0 auto;
     z-index: 1;
     left: -200px;
-    top: -80px;
+    top: 20px;
 }
 
 .revolvingButtons {
@@ -47,10 +47,10 @@
 
 @keyframes orbit {
     0% {
-        transform: rotate(0deg) translateX(260px) rotate(0deg);
+        transform: rotate(0deg) translateX(220px) rotate(0deg);
     }
 
     100% {
-        transform: rotate(360deg) translateX(260px) rotate(-360deg);
+        transform: rotate(360deg) translateX(230px) rotate(-360deg);
     }
 }

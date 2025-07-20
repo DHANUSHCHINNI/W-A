@@ -53,41 +53,52 @@ export default function KeyOfferings() {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center',
+                justifyContent: 'flex-start',
                 position: 'relative',
                 color: '#B1ABAB',
+                paddingTop: 60,
+                paddingBottom: isMobile ? 24 : 40,
             }}
         >
+            {/* Heading at the very top of the section */}
             <div
                 style={{
-                    position: 'absolute',
-                    top: isMobile ? 60 : 75,
-                    left: isMobile ? 50 : 170,
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginTop: 0,
+                    marginBottom: 0,
                     fontFamily: 'Erstoria',
                     fontSize: isMobile ? 28 : 40,
                     fontWeight: 500,
                     color: '#BAB1AB',
                     letterSpacing: 1,
-                    textAlign: 'left',
+                    textAlign: 'center',
                     zIndex: 20,
+                    position: 'absolute',
+                    top: 60,
+                    left: 0,
                 }}
             >
                 Key offerings
             </div>
 
-
-            {/* Carousel or Grid */}
+            {/* Centered gray bar with offerings */}
             <div
                 style={{
-                    marginTop: 60,
+                    margin: 0,
                     width: '100vw',
                     maxWidth: '100vw',
                     background: '#B1ABAB',
-                    padding: '3.5rem 2.5rem',
+                    padding: isMobile ? '2.5rem 0.5rem' : '3.5rem 2.5rem',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    position: 'relative',
+                    position: 'absolute',
+                    left: 0,
+                    top: 'calc(50% + 60px)',
+                    transform: 'translateY(-50%)',
                 }}
             >
                 {isMobile ? (

@@ -9,17 +9,20 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 64px;
     max-width: 1200px;
     margin: 0 auto;
     flex-wrap: wrap;
+    text-align: center;
 }
 
 .footerCol {
     min-width: 180px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .footerHeading {
@@ -29,6 +32,7 @@
     margin-bottom: 18px;
     letter-spacing: 1px;
     color: #bdbdbd;
+    text-align: center;
 }
 
 .footerCol ul {
@@ -109,4 +113,22 @@
 .footerLink:hover {
     color: #ffb6c1;
     text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+    .footerContent {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+        text-align: center;
+    }
+
+    .footerCol {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footerHeading {
+        text-align: center;
+    }
 }

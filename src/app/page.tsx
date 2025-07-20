@@ -1,6 +1,6 @@
 'use client';
 import React, { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Navbar from "./components/navbar";
 import Asset1 from "./components/Asset1";
 import Asset2 from "./components/Asset2";
@@ -14,10 +14,7 @@ import HamburgerNavbar from "./components/HamburgerNavbar";
 import Testimonials from "./testimonials/page";
 import Footer from "./components/Footer";
 
-
 export default function LandingPage() {
-  const [pageState, setPageState] = useState(0); // 0: landing, 1: nav+asset+buttons, 2: nav only
-  const scrollingRef = useRef(false);
   const [isMobile, setIsMobile] = useState(false);
   const [hamburgerOpen, setHamburgerOpen] = useState(false);
   const paragraphs = [
@@ -25,18 +22,6 @@ export default function LandingPage() {
     "At Well-being & Arts Hub, we make noise, make art, make space for all the parts of you that don't fit the script.",
     "Come, celebrate the wild, weird and wonderful ways of being human. Say it messy, say it loud, however it shows up. We'll meet you there."
   ];
-  const maxPage = 7; // 0: landing, 1: SecondPage, 2-4: Paragraphs, 5: Services, 6: Key Offerings, 7: Testimonials
-
-  // Brush stroke rotation values for each paragraph
-  const topBrushRotations = [210, 205, 210]; // Asset2
-  const bottomBrushRotations = [210, 200, 205]; // Asset3
-  const paraIndex = Math.max(0, Math.min(pageState - 2, 2));
-
-  const pageStateRef = useRef(pageState);
-  useEffect(() => {
-    pageStateRef.current = pageState;
-  }, [pageState]);
-
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
@@ -44,84 +29,26 @@ export default function LandingPage() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const testimonialsScrollRef = useRef<HTMLDivElement>(null);
+  // Section refs for in-view animations
+  const landingRef = useRef(null);
+  const landingInView = useInView(landingRef, { margin: "-40% 0px -40% 0px" });
+  const secondRef = useRef(null);
+  const secondInView = useInView(secondRef, { margin: "-40% 0px -40% 0px" });
+  const paraRefs = [useRef(null), useRef(null), useRef(null)];
+  const paraInViews = paraRefs.map(ref => useInView(ref, { margin: "-40% 0px -40% 0px" }));
+  const servicesRef = useRef(null);
+  const servicesInView = useInView(servicesRef, { once: true, margin: "-20% 0px" });
+  const keyOfferingsRef = useRef(null);
+  const keyOfferingsInView = useInView(keyOfferingsRef, { once: true, margin: "-20% 0px" });
+  const testimonialsRef = useRef(null);
+  const testimonialsInView = useInView(testimonialsRef, { once: true, margin: "-20% 0px" });
 
-  useEffect(() => {
-    const isMobileEnv = window.innerWidth <= 768;
-    let touchStartY = 0;
-    let touchEndY = 0;
+  // Brush stroke rotation values for each paragraph
+  const topBrushRotations = [210, 205, 210]; // Asset2
+  const bottomBrushRotations = [210, 200, 205]; // Asset3
 
-    const goNext = () => {
-      if (scrollingRef.current || pageStateRef.current >= maxPage) return;
-      setPageState(pageStateRef.current + 1);
-      scrollingRef.current = true;
-      setTimeout(() => { scrollingRef.current = false; }, 800);
-    };
-
-    const goPrev = () => {
-      if (scrollingRef.current || pageStateRef.current <= 0) return;
-
-      // Scroll lock logic for Testimonials
-      if (pageStateRef.current === 7 && testimonialsScrollRef.current) {
-        const el = testimonialsScrollRef.current;
-        if (el.scrollTop > 0) {
-          el.scrollTo({ top: 0, behavior: 'smooth' });
-          scrollingRef.current = true;
-          setTimeout(() => { scrollingRef.current = false; }, 400);
-          return;
-        }
-      }
-
-      setPageState(pageStateRef.current - 1);
-      scrollingRef.current = true;
-      setTimeout(() => { scrollingRef.current = false; }, 800);
-    };
-
-    if (isMobileEnv) {
-      const onTouchStart = (e: TouchEvent) => {
-        touchStartY = e.touches[0].clientY;
-      };
-
-      const onTouchMove = (e: TouchEvent) => {
-        touchEndY = e.touches[0].clientY;
-      };
-
-      const onTouchEnd = () => {
-        const deltaY = touchStartY - touchEndY;
-        if (deltaY > 30) {
-          goNext();
-        } else if (deltaY < -30) {
-          goPrev();
-        }
-      };
-
-      window.addEventListener("touchstart", onTouchStart, { passive: true });
-      window.addEventListener("touchmove", onTouchMove, { passive: true });
-      window.addEventListener("touchend", onTouchEnd, { passive: true });
-
-      return () => {
-        window.removeEventListener("touchstart", onTouchStart);
-        window.removeEventListener("touchmove", onTouchMove);
-        window.removeEventListener("touchend", onTouchEnd);
-      };
-    } else {
-      const onWheel = (e: WheelEvent) => {
-        if (scrollingRef.current) return;
-        if (e.deltaY > 0) {
-          goNext();
-        } else if (e.deltaY < 0) {
-          goPrev();
-        }
-      };
-
-      window.addEventListener("wheel", onWheel, { passive: true });
-
-      return () => {
-        window.removeEventListener("wheel", onWheel);
-      };
-    }
-  }, []);
-
+  // Helper to determine which paragraph section is most in view
+  const paraActiveIdx = paraInViews.findIndex(Boolean); // 0,1,2 for paragraphs, -1 if none
 
   return (
     <main
@@ -131,190 +58,136 @@ export default function LandingPage() {
         position: "relative",
         overflow: "hidden",
         fontFamily: "Erstoria",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        display: "block",
       }}
     >
       {/* Navbar */}
       {isMobile ? (
-        <HamburgerNavbar show={pageState > 0} open={hamburgerOpen} setOpen={setHamburgerOpen} />
+        <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
       ) : (
-        <Navbar show={pageState > 0} />
+        <Navbar show={true} />
       )}
 
-      {/* Top left logo (centered above content on mobile) */}
+      {/* Top left logo (desktop only) */}
       {isMobile ? null : (
         <div style={{ position: "absolute", top: 20, left: 32, zIndex: 10 }}>
           <Asset1 width={50} height={50} />
         </div>
       )}
 
-      {/* Top right brush stroke */}
-      {!isMobile && (
-        <motion.div
-          style={{
-            position: "absolute",
-            top: -100,
-            right: -200,
-            zIndex: 1,
-            transformOrigin: "center",
-          } as React.CSSProperties}
-          initial={{
-            opacity: pageState >= 5 ? 0 : 0.7,
-            rotate: (pageState >= 2 && pageState <= 4) ? topBrushRotations[paraIndex] : 210,
-            scale: 1.9
-          }}
-          animate={{
-            opacity: pageState >= 5 ? 0 : 0.7,
-            rotate: (pageState >= 2 && pageState <= 4) ? topBrushRotations[paraIndex] : 210,
-            scale: 1.9
-          }}
-          transition={{ duration: 0.7 }}
-        >
-          <Asset2 width={800} height={400} />
-        </motion.div>
-      )}
-
-      {/* Bottom left brush stroke */}
-      {!isMobile && (
-        <motion.div
-          style={{
-            position: "absolute",
-            bottom: -280,
-            left: 0,
-            zIndex: 1,
-            transformOrigin: "center",
-          } as React.CSSProperties}
-          initial={{
-            opacity: pageState >= 5 ? 0 : 0.7,
-            rotate: (pageState >= 2 && pageState <= 4) ? bottomBrushRotations[paraIndex] : 210,
-            scale: 2.4
-          }}
-          animate={{
-            opacity: pageState >= 5 ? 0 : 0.7,
-            rotate: (pageState >= 2 && pageState <= 4) ? bottomBrushRotations[paraIndex] : 210,
-            scale: 2.4
-          }}
-          transition={{ duration: 0.7 }}
-        >
-          <Asset3 width={800} height={400} />
-        </motion.div>
-      )}
-
-      {/* Center content */}
-      <div
-        style={{
-          position: "relative",
-          zIndex: 5,
-          textAlign: "center",
-          color: "#d1c1b2",
-          minHeight: 300,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-        } as React.CSSProperties}
-      >
-        {/* Mobile: Logo above Asset6 only on landing and paragraphs, with absolute positioning to avoid extra scroll and keep centered */}
-        {isMobile && (pageState === 0 || (pageState >= 2 && pageState <= 4)) ? (
-          <div style={{
-            position: 'relative',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            paddingTop: 110, // logo height + margin
-            marginBottom: 0,
-            minHeight: 0,
-          }}>
-            <div style={{
-              position: 'absolute',
-              top: 0,
+      {/* Top and Bottom brush strokes for only the active paragraph section (desktop only) */}
+      {!isMobile && paraActiveIdx !== -1 && (
+        <>
+          {/* Top brush stroke */}
+          <motion.div
+            style={{
+              position: "absolute",
+              top: -100,
+              right: -200,
+              zIndex: 1,
+              transformOrigin: "center",
+            } as React.CSSProperties}
+            initial={{ opacity: 0, rotate: topBrushRotations[paraActiveIdx], scale: 1.9 }}
+            animate={{ opacity: 0.7, rotate: topBrushRotations[paraActiveIdx], scale: 1.9 }}
+            transition={{ duration: 0.7 }}
+          >
+            <Asset2 width={800} height={400} />
+          </motion.div>
+          {/* Bottom brush stroke */}
+          <motion.div
+            style={{
+              position: "absolute",
+              bottom: -280,
               left: 0,
-              right: 0,
-              display: 'flex',
-              justifyContent: 'center',
-              zIndex: 2,
-              pointerEvents: 'none',
-            }}>
-              <Asset1 width={100} height={100} />
-            </div>
-            <AnimatePresence mode="wait">
-              {pageState === 0 && (
-                <motion.div
-                  key="asset6"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0.5 }}
-                  transition={{ duration: 0.2 }}
-                  style={{
-                    width: "90vw",
-                    maxWidth: "100%",
-                    margin: '0 auto',
-                  } as React.CSSProperties}
-                >
-                  <Asset6 width={320} height={120} style={{ fill: "#d1c1b2" }} />
-                </motion.div>
-              )}
-              {pageState >= 2 && pageState <= 4 && (
-                <Paragraphs pageState={pageState} paragraphs={paragraphs} />
-              )}
-            </AnimatePresence>
-          </div>
-        ) : (
-          <>
-            <AnimatePresence mode="wait">
-              {pageState === 0 && (
-                <motion.div
-                  key="asset6"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0.5 }}
-                  transition={{ duration: 0.2 }}
-                  style={{
-                    width: "700px",
-                    maxWidth: "100%",
-                    margin: undefined,
-                  } as React.CSSProperties}
-                >
-                  <Asset6 width={700} height={300} style={{ fill: "#d1c1b2" }} />
-                </motion.div>
-              )}
-              {pageState === 1 && (
-                <SecondPage />
-              )}
-              {pageState >= 2 && pageState <= 4 && (
-                <Paragraphs pageState={pageState} paragraphs={paragraphs} />
-              )}
-              {pageState === 5 && (
-                <Services />
-              )}
-              {pageState === 6 && (
-                <KeyOfferings />
-              )}
-              {pageState === 7 && (
-                <div
-                  ref={testimonialsScrollRef}
-                  style={{
-                    background: "url('/brownlight.svg') center center / cover no-repeat",
-                    maxHeight: 'calc(100vh - 60px)',
-                    minHeight: '100vh',
-                    overflowY: 'auto',
-                    width: '100vw',
-                    position: 'relative',
-                    zIndex: 1,
-                  }}
-                >
-                  <Testimonials />
-                  <Footer />
-                </div>
-              )}
-            </AnimatePresence>
-          </>
-        )}
-      </div>
+              zIndex: 1,
+              transformOrigin: "center",
+            } as React.CSSProperties}
+            initial={{ opacity: 0, rotate: bottomBrushRotations[paraActiveIdx], scale: 2.4 }}
+            animate={{ opacity: 0.7, rotate: bottomBrushRotations[paraActiveIdx], scale: 2.4 }}
+            transition={{ duration: 0.7 }}
+          >
+            <Asset3 width={800} height={400} />
+          </motion.div>
+        </>
+      )}
+
+      {/* Landing Section */}
+      <section ref={landingRef} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: landingInView ? 1 : 0 }}
+          transition={{ duration: 0.7 }}
+          style={{ width: isMobile ? "90vw" : "700px", maxWidth: "100%", margin: '0 auto' }}
+        >
+          <Asset6 width={isMobile ? 320 : 700} height={isMobile ? 120 : 300} style={{ fill: "#d1c1b2" }} />
+        </motion.div>
+      </section>
+
+      {/* Second Page Section */}
+      <section ref={secondRef} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: secondInView ? 1 : 0 }}
+          transition={{ duration: 0.7 }}
+          style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+        >
+          <SecondPage />
+        </motion.div>
+      </section>
+
+      {/* Paragraph Sections */}
+      {paragraphs.map((para, idx) => (
+        <section
+          key={idx}
+          ref={paraRefs[idx]}
+          style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}
+        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: paraInViews[idx] ? 1 : 0 }}
+            transition={{ duration: 0.7 }}
+            style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+          >
+            <Paragraphs pageState={idx + 2} paragraphs={paragraphs} />
+          </motion.div>
+        </section>
+      ))}
+
+      {/* Services Section */}
+      <section ref={servicesRef} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: servicesInView ? 1 : 0 }}
+          transition={{ duration: 0.7 }}
+          style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+        >
+          <Services />
+        </motion.div>
+      </section>
+
+      {/* Key Offerings Section */}
+      <section ref={keyOfferingsRef} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: keyOfferingsInView ? 1 : 0 }}
+          transition={{ duration: 0.7 }}
+          style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+        >
+          <KeyOfferings />
+        </motion.div>
+      </section>
+
+      {/* Testimonials + Footer Section */}
+      <section ref={testimonialsRef} style={{ minHeight: '100vh', width: '100vw', background: "url('/brownlight.svg') center center / cover no-repeat", position: 'relative', zIndex: 1 }}>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: testimonialsInView ? 1 : 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <Testimonials />
+          <Footer />
+        </motion.div>
+      </section>
     </main>
   );
 }
