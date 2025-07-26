@@ -11,6 +11,9 @@ body {
   box-sizing: border-box;
   background: #291812;
   overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain; /* contain prevents pull-to-refresh but still allows scroll */
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
