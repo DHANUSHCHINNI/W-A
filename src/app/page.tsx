@@ -22,6 +22,31 @@ export default function LandingPage() {
     "At Well-being & Arts Hub, we make noise, make art, make space for all the parts of you that don't fit the script.",
     "Come, celebrate the wild, weird and wonderful ways of being human. Say it messy, say it loud, however it shows up. We'll meet you there."
   ];
+
+  // ✅ Prevent Chrome pull-to-refresh on mobile
+  useEffect(() => {
+    let touchStartY = 0;
+
+    const onTouchStart = (e: TouchEvent) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      const currentY = e.touches[0].clientY;
+      if (window.scrollY === 0 && currentY > touchStartY) {
+        e.preventDefault(); // Block pull-to-refresh
+      }
+    };
+
+    window.addEventListener('touchstart', onTouchStart, { passive: false });
+    window.addEventListener('touchmove', onTouchMove, { passive: false });
+
+    return () => {
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
+    };
+  }, []);
+
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     checkMobile();
@@ -44,150 +69,130 @@ export default function LandingPage() {
   const testimonialsInView = useInView(testimonialsRef, { once: true, margin: "-20% 0px" });
 
   // Brush stroke rotation values for each paragraph
-  const topBrushRotations = [210, 205, 210]; // Asset2
-  const bottomBrushRotations = [210, 200, 205]; // Asset3
+  const topBrushRotations = [210, 205, 210];
+  const bottomBrushRotations = [210, 200, 205];
 
-  // Helper to determine which paragraph section is most in view
-  const paraActiveIdx = paraInViews.findIndex(Boolean); // 0,1,2 for paragraphs, -1 if none
+  const paraActiveIdx = paraInViews.findIndex(Boolean);
 
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "#2e1a13",
-        position: "relative",
-        overflow: "hidden",
-        fontFamily: "Erstoria",
-        display: "block",
-      }}
-    >
-      {/* Navbar */}
-      {isMobile ? (
-        <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
-      ) : (
-        <Navbar show={true} />
-      )}
+      <main
+          style={{
+            minHeight: "100vh",
+            background: "#2e1a13",
+            position: "relative",
+            overflow: "hidden",
+            fontFamily: "Erstoria",
+            display: "block",
+          }}
+      >
+        {/* Navbar */}
+        {isMobile ? (
+            <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
+        ) : (
+            <Navbar show={true} />
+        )}
 
-      {/* Top left logo (desktop only) */}
-      {isMobile ? null : (
-        <div style={{ position: "absolute", top: 20, left: 32, zIndex: 10 }}>
-          <Asset1 width={50} height={50} />
-        </div>
-      )}
+        {/* Top left logo (desktop only) */}
+        {!isMobile && (
+            <div style={{ position: "absolute", top: 20, left: 32, zIndex: 10 }}>
+              <Asset1 width={50} height={50} />
+            </div>
+        )}
 
-      {/* Top and Bottom brush strokes for only the active paragraph section (desktop only) */}
-      {!isMobile && paraActiveIdx !== -1 && (
-        <>
-          {/* Top brush stroke */}
+        {/* Top and Bottom brush strokes (desktop only) */}
+        {!isMobile && paraActiveIdx !== -1 && (
+            <>
+              <motion.div
+                  style={{
+                    position: "absolute",
+                    top: -100,
+                    right: -200,
+                    zIndex: 1,
+                    transformOrigin: "center",
+                  }}
+                  initial={{ opacity: 0, rotate: topBrushRotations[paraActiveIdx], scale: 1.9 }}
+                  animate={{ opacity: 0.7, rotate: topBrushRotations[paraActiveIdx], scale: 1.9 }}
+                  transition={{ duration: 0.7 }}
+              >
+                <Asset2 width={800} height={400} />
+              </motion.div>
+              <motion.div
+                  style={{
+                    position: "absolute",
+                    bottom: -280,
+                    left: 0,
+                    zIndex: 1,
+                    transformOrigin: "center",
+                  }}
+                  initial={{ opacity: 0, rotate: bottomBrushRotations[paraActiveIdx], scale: 2.4 }}
+                  animate={{ opacity: 0.7, rotate: bottomBrushRotations[paraActiveIdx], scale: 2.4 }}
+                  transition={{ duration: 0.7 }}
+              >
+                <Asset3 width={800} height={400} />
+              </motion.div>
+            </>
+        )}
+
+        {/* All sections remain unchanged below */}
+        <section ref={landingRef} style={sectionStyle}>
           <motion.div
-            style={{
-              position: "absolute",
-              top: -100,
-              right: -200,
-              zIndex: 1,
-              transformOrigin: "center",
-            } as React.CSSProperties}
-            initial={{ opacity: 0, rotate: topBrushRotations[paraActiveIdx], scale: 1.9 }}
-            animate={{ opacity: 0.7, rotate: topBrushRotations[paraActiveIdx], scale: 1.9 }}
-            transition={{ duration: 0.7 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: landingInView ? 1 : 0 }}
+              transition={{ duration: 0.7 }}
+              style={{ width: isMobile ? "90vw" : "700px", maxWidth: "100%", margin: '0 auto' }}
           >
-            <Asset2 width={800} height={400} />
-          </motion.div>
-          {/* Bottom brush stroke */}
-          <motion.div
-            style={{
-              position: "absolute",
-              bottom: -280,
-              left: 0,
-              zIndex: 1,
-              transformOrigin: "center",
-            } as React.CSSProperties}
-            initial={{ opacity: 0, rotate: bottomBrushRotations[paraActiveIdx], scale: 2.4 }}
-            animate={{ opacity: 0.7, rotate: bottomBrushRotations[paraActiveIdx], scale: 2.4 }}
-            transition={{ duration: 0.7 }}
-          >
-            <Asset3 width={800} height={400} />
-          </motion.div>
-        </>
-      )}
-
-      {/* Landing Section */}
-      <section ref={landingRef} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: landingInView ? 1 : 0 }}
-          transition={{ duration: 0.7 }}
-          style={{ width: isMobile ? "90vw" : "700px", maxWidth: "100%", margin: '0 auto' }}
-        >
-          <Asset6 width={isMobile ? 320 : 700} height={isMobile ? 120 : 300} style={{ fill: "#d1c1b2" }} />
-        </motion.div>
-      </section>
-
-      {/* Second Page Section */}
-      <section ref={secondRef} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: secondInView ? 1 : 0 }}
-          transition={{ duration: 0.7 }}
-          style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-        >
-          <SecondPage />
-        </motion.div>
-      </section>
-
-      {/* Paragraph Sections */}
-      {paragraphs.map((para, idx) => (
-        <section
-          key={idx}
-          ref={paraRefs[idx]}
-          style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}
-        >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: paraInViews[idx] ? 1 : 0 }}
-            transition={{ duration: 0.7 }}
-            style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-          >
-            <Paragraphs pageState={idx + 2} paragraphs={paragraphs} />
+            <Asset6 width={isMobile ? 320 : 700} height={isMobile ? 120 : 300} style={{ fill: "#d1c1b2" }} />
           </motion.div>
         </section>
-      ))}
 
-      {/* Services Section */}
-      <section ref={servicesRef} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: servicesInView ? 1 : 0 }}
-          transition={{ duration: 0.7 }}
-          style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-        >
-          <Services />
-        </motion.div>
-      </section>
+        <section ref={secondRef} style={sectionStyle}>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: secondInView ? 1 : 0 }} transition={{ duration: 0.7 }} style={motionStyle}>
+            <SecondPage />
+          </motion.div>
+        </section>
 
-      {/* Key Offerings Section */}
-      <section ref={keyOfferingsRef} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: keyOfferingsInView ? 1 : 0 }}
-          transition={{ duration: 0.7 }}
-          style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-        >
-          <KeyOfferings />
-        </motion.div>
-      </section>
+        {paragraphs.map((para, idx) => (
+            <section key={idx} ref={paraRefs[idx]} style={sectionStyle}>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: paraInViews[idx] ? 1 : 0 }} transition={{ duration: 0.7 }} style={motionStyle}>
+                <Paragraphs pageState={idx + 2} paragraphs={paragraphs} />
+              </motion.div>
+            </section>
+        ))}
 
-      {/* Testimonials + Footer Section */}
-      <section ref={testimonialsRef} style={{ minHeight: '100vh', width: '100vw', background: "url('/brownlight.svg') center center / cover no-repeat", position: 'relative', zIndex: 1 }}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: testimonialsInView ? 1 : 0 }}
-          transition={{ duration: 0.7 }}
-        >
-          <Testimonials />
-          <Footer />
-        </motion.div>
-      </section>
-    </main>
+        <section ref={servicesRef} style={sectionStyle}>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: servicesInView ? 1 : 0 }} transition={{ duration: 0.7 }} style={motionStyle}>
+            <Services />
+          </motion.div>
+        </section>
+
+        <section ref={keyOfferingsRef} style={sectionStyle}>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: keyOfferingsInView ? 1 : 0 }} transition={{ duration: 0.7 }} style={motionStyle}>
+            <KeyOfferings />
+          </motion.div>
+        </section>
+
+        <section ref={testimonialsRef} style={{ ...sectionStyle, background: "url('/brownlight.svg') center center / cover no-repeat", width: "100vw" }}>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: testimonialsInView ? 1 : 0 }} transition={{ duration: 0.7 }}>
+            <Testimonials />
+            <Footer />
+          </motion.div>
+        </section>
+      </main>
   );
 }
+
+const sectionStyle: React.CSSProperties = {
+  minHeight: '100vh',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  position: 'relative',
+  zIndex: 5
+};
+
+const motionStyle: React.CSSProperties = {
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center'
+};
