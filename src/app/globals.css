@@ -6,8 +6,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%; /* Changed from 100vw */
+  height: 100%; /* Changed from 100vh */
   box-sizing: border-box;
   background: #291812;
   overflow-x: hidden;
