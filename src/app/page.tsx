@@ -87,9 +87,10 @@ export default function LandingPage() {
             minHeight: "100vh",
             background: "#2e1a13",
             position: "relative",
-            overflow: "hidden",
             fontFamily: "Erstoria",
             display: "block",
+            scrollSnapType: "y mandatory",
+            overflowY: "auto" // Change from "hidden" to "auto"
           }}
       >
         {/* Navbar */}
@@ -187,15 +188,16 @@ export default function LandingPage() {
       </main>
   );
 }
-
 const sectionStyle: React.CSSProperties = {
-  minHeight: '100vh',
+  height: '100vh', // Change from minHeight to height for consistency
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   position: 'relative',
-  zIndex: 5
+  zIndex: 5,
+  scrollSnapAlign: 'start' // Add this line
 };
+
 
 const motionStyle: React.CSSProperties = {
   width: '100%',
