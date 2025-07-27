@@ -131,3 +131,23 @@
     text-align: center;
     font-size: 1rem;
 }
+
+@media (max-width: 900px) {
+  .dashboardContainer {
+    max-width: 98vw;
+    padding: 16px;
+    margin: 24px 1vw 0 1vw;
+    border-radius: 14px;
+  }
+  .heading {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .sectionTitle {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+  .formCard {
+    padding: 1rem;
+  }
+}
