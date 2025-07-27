@@ -23,17 +23,24 @@ export default function LandingPage() {
     "Come, celebrate the wild, weird and wonderful ways of being human. Say it messy, say it loud, however it shows up. We'll meet you there."
   ];
 
-  // ✅ Prevent Chrome pull-to-refresh on mobile
   useEffect(() => {
     let touchStartY = 0;
+    let initialScrollY = 0;
 
     const onTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
+      initialScrollY = window.scrollY; // Capture initial scroll position
     };
 
     const onTouchMove = (e: TouchEvent) => {
       const currentY = e.touches[0].clientY;
-      if (window.scrollY === 0 && currentY > touchStartY) {
+      const deltaY = currentY - touchStartY;
+
+      // Only prevent if:
+      // 1. We started at the very top (scrollY === 0)
+      // 2. We're moving downward (deltaY > 0)
+      // 3. The movement is significant enough (> 10px to avoid tiny movements)
+      if (initialScrollY === 0 && deltaY > 10) {
         e.preventDefault(); // Block pull-to-refresh
       }
     };
