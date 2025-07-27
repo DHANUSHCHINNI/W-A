@@ -26,31 +26,52 @@ export default function LandingPage() {
   useEffect(() => {
     let touchStartY = 0;
     let initialScrollY = 0;
+    let isScrolling = false;
 
     const onTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
-      initialScrollY = window.scrollY; // Capture initial scroll position
+      initialScrollY = window.scrollY;
+      isScrolling = false;
     };
 
     const onTouchMove = (e: TouchEvent) => {
       const currentY = e.touches[0].clientY;
       const deltaY = currentY - touchStartY;
 
-      // Only prevent if:
-      // 1. We started at the very top (scrollY === 0)
-      // 2. We're moving downward (deltaY > 0)
-      // 3. The movement is significant enough (> 10px to avoid tiny movements)
+      // Prevent pull-to-refresh
       if (initialScrollY === 0 && deltaY > 10) {
-        e.preventDefault(); // Block pull-to-refresh
+        e.preventDefault();
+        return;
       }
+
+      isScrolling = true;
+    };
+
+    const onTouchEnd = () => {
+      if (!isScrolling) return;
+
+      // Snap to nearest section after touch ends
+      setTimeout(() => {
+        const viewportHeight = window.innerHeight;
+        const currentScroll = window.scrollY;
+        const sectionIndex = Math.round(currentScroll / viewportHeight);
+        const targetScroll = sectionIndex * viewportHeight;
+
+        window.scrollTo({
+          top: targetScroll,
+          behavior: 'smooth'
+        });
+      }, 100);
     };
 
     window.addEventListener('touchstart', onTouchStart, { passive: false });
     window.addEventListener('touchmove', onTouchMove, { passive: false });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
 
     return () => {
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('touchend', onTouchEnd);
     };
   }, []);
 
@@ -87,10 +108,9 @@ export default function LandingPage() {
             minHeight: "100vh",
             background: "#2e1a13",
             position: "relative",
+            overflow: "hidden",
             fontFamily: "Erstoria",
             display: "block",
-            scrollSnapType: "y mandatory",
-            overflowY: "auto" // Change from "hidden" to "auto"
           }}
       >
         {/* Navbar */}
@@ -188,16 +208,15 @@ export default function LandingPage() {
       </main>
   );
 }
+
 const sectionStyle: React.CSSProperties = {
-  height: '100vh', // Change from minHeight to height for consistency
+  minHeight: '100vh',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   position: 'relative',
-  zIndex: 5,
-  scrollSnapAlign: 'start' // Add this line
+  zIndex: 5
 };
-
 
 const motionStyle: React.CSSProperties = {
   width: '100%',
