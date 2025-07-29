@@ -20,9 +20,9 @@ const HUBS = [
 ];
 
 const adminEmails = [
-    'admin@example.com',
     'syedhamadanahmad@gmail.com',
     'dhanushchinni100@gmail.com'
+
     // add more emails here
 ];
 

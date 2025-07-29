@@ -9,7 +9,11 @@ import PaymentDetailsDashboard from "@/app/components/PaymentDetailsDashboard";
 const adminEmails = [
     'admin@example.com',
     'syedhamadanahmad@gmail.com',
-    'dhanushchinni100@gmail.com'
+    'dhanushchinni100@gmail.com',
+    'amruta@wearehub.org',
+    'kritija@wearehub.org',
+    'info@wearehub.org'
+
     // add more emails here
 ];
 
