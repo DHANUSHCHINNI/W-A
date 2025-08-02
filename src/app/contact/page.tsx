@@ -1,7 +1,8 @@
 'use client';
-
 import { useState } from 'react';
 import styles from './contact.module.css';
+import Navbar from '../components/navbar';
+import HamburgerNavbar from '../components/HamburgerNavbar';
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -12,6 +13,10 @@ export default function ContactPage() {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+    // Detect mobile screen size
+    const isMobile = typeof window !== 'undefined' ? window.innerWidth <= 768 : false;
+    const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -50,6 +55,11 @@ export default function ContactPage() {
 
     return (
         <div className={styles.container}>
+            {isMobile ? (
+                <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
+            ) : (
+                <Navbar show={true} />
+            )}
             <div className={styles.content}>
                 <div className={styles.header}>
                     <h1 className={styles.title}>Get in Touch</h1>

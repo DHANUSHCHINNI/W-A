@@ -1,13 +1,12 @@
 'use client';
-import { motion, AnimatePresence } from "framer-motion";
+import styles from '../therapyhub/PlanCards.module.css';
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function Paragraphs({
-  pageState,
   paragraphs,
 }: {
-  pageState: number;
-  paragraphs: String[];
+  paragraphs: string[];
 }) {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -19,37 +18,50 @@ export default function Paragraphs({
   }, []);
 
   return (
+    // Plain background color wrapper
     <div
       style={{
-        width: "100%",
-        display: "flex",
+        width: "100vw",
+        minHeight: "100vh",
+        background: isMobile
+          ? "url('https://res.cloudinary.com/djspsll41/image/upload/v1754164310/paraPhone_xnkqil.svg') center center / cover no-repeat"
+          : "url('/scroll3.svg') center center / cover no-repeat", display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
         alignItems: "center",
-        padding: isMobile ? "1rem 1rem" : "2rem 1rem", // reduced padding
+        padding: isMobile ? "32px 0" : "64px 0",
       }}
     >
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={pageState}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.7 }}
-          style={{
-            color: "#fff",
-            padding: 0, // remove double padding
-            width: "90%",
-            maxWidth: 960,
-            textAlign: "center",
-            fontSize: isMobile ? 20 : 36, // slightly smaller font
-            fontFamily: "Erstoria",
-            fontWeight: 400,
-            lineHeight: 1.4,
-          }}
+      <div className={styles.planSectionWrapper}>
+        <h2
+          className={styles.choosePlanHeading}
+          style={{ marginTop: '-40px', color: "#1C1610", marginBottom: '24px' }}
         >
-          {paragraphs[pageState - 2]}
-        </motion.div>
-      </AnimatePresence>
+          Our Philosophy
+        </h2>
+        <div className={styles.cardsRow}>
+          {paragraphs.map((para, idx) => (
+            <motion.div
+              key={idx}
+              className={styles.planCard}
+              style={{
+                minHeight: isMobile ? undefined : 260,
+                color: "#ffffff",
+                fontFamily: "Erstoria",
+                fontSize: isMobile ? 18 : 22,
+                fontWeight: 400,
+                lineHeight: 1.5,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+              }}
+            >
+              {para}
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

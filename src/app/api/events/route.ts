@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '@/lib/mongodb';
+import { ObjectId } from "mongodb";
 
 export async function GET() {
     try {
@@ -30,4 +31,20 @@ export async function POST(req: Request) {
         console.error('Error inserting event:', err);
         return NextResponse.json({ error: 'Failed to add event' }, { status: 500 });
     }
-} 
+}
+
+export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
+    try {
+        const client = await clientPromise;
+        const db = client.db();
+        const result = await db.collection("events").deleteOne({ _id: new ObjectId(params.id) });
+        if (result.deletedCount === 1) {
+            return NextResponse.json({ success: true });
+        } else {
+            return NextResponse.json({ success: false }, { status: 404 });
+        }
+    } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : 'Failed to delete event';
+        return NextResponse.json({ error: errorMessage }, { status: 500 });
+    }
+}

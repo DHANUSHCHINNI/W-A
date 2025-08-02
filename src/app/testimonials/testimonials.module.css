@@ -1,10 +1,35 @@
-.testimonialsBg {
+.testimonialsSection {
     min-height: 100vh;
-    background: url(https://res.cloudinary.com/djspsll41/image/upload/v1752150058/BrownBackground.svg) center center / cover no-repeat;
+    background: url('https://res.cloudinary.com/djspsll41/image/upload/v1754160787/Frame2alt_m9skd7.svg') center center / cover no-repeat;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .testimonialsSection {
+        background: url('https://res.cloudinary.com/djspsll41/image/upload/v1754164468/testimonialPhone_okhdmf.svg') center center / cover no-repeat;
+    }
+}
+
+.heading {
+    text-align: center;
+    font-size: 2.1rem;
+    color: #1C1610;
+    letter-spacing: 0.04em;
+    font-family: 'Erstoria', serif;
+    font-weight: 600;
+    margin-bottom: 32px;
+    margin-top: 0;
+}
+
+@media (max-width: 768px) {
+    .heading {
+        font-size: 1.3rem;
+        margin-bottom: 18px;
+    }
 }
 
 .carouselWrapper {
@@ -14,7 +39,6 @@
     justify-content: center;
     width: 100vw;
     max-width: 1800px;
-    padding: 0 32px;
 }
 
 .arrowBtn {
@@ -24,7 +48,7 @@
     width: 48px;
     height: 48px;
     font-size: 2.5rem;
-    color: #fff;
+    color: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,6 +84,41 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
+.cardsRowMobile {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    width: 100vw;
+    align-items: center;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.cardMobile {
+    background: #2e1a13;
+    border: 2px solid #BAB1AB;
+    border-radius: 8px;
+    width: 90vw;
+    min-width: 0;
+    max-width: 400px;
+    padding: 24px 12px 18px 12px;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    scroll-snap-align: center;
+    flex: 0 0 90vw;
+    margin-right: 12px;
+}
+
+.cardsRowMobile> :last-child {
+    margin-right: 0;
+}
+
 .text {
     font-size: 1rem;
     color: #ffffff;
@@ -67,18 +126,12 @@
     margin-bottom: 18px;
 }
 
-.icon {
-    position: absolute;
-    left: 24px;
-    bottom: 24px;
-    font-size: 2.2rem;
-}
-
 .name {
     display: block;
     font-size: 0.92rem;
-    color: #ffffff;
+    color: #BAB1AB;
     font-family: 'Inter', Arial, sans-serif;
     margin-top: 10px;
     text-align: right;
+    font-style: italic;
 }

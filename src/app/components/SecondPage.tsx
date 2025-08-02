@@ -18,7 +18,19 @@ export default function SecondPage() {
   }, []);
 
   return (
-    <>
+    <div
+      style={{
+        minHeight: "100vh",
+        width: "100vw",
+        background: isMobile
+          ? "url('https://res.cloudinary.com/djspsll41/image/upload/v1754164009/homepagePhone_ojryml.svg') center center / cover no-repeat"
+          : "url('/Page1.svg') center center / cover no-repeat",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center"
+      }}
+    >
       <motion.div
         key="colorLogoFin"
         initial={{ opacity: 0 }}
@@ -73,6 +85,6 @@ export default function SecondPage() {
           Community events
         </button>
       </motion.div>
-    </>
+    </div>
   );
 }

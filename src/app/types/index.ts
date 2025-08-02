@@ -2,6 +2,7 @@ import { ReactNode } from 'react';
 
 export interface NavbarProps {
     show: boolean;
+    color?: string;
 }
 
 export interface AssetProps {
