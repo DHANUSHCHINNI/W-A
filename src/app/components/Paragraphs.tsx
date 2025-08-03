@@ -25,7 +25,7 @@ export default function Paragraphs({
         minHeight: "100vh",
         background: isMobile
           ? "url('https://res.cloudinary.com/djspsll41/image/upload/v1754164310/paraPhone_xnkqil.svg') center center / cover no-repeat"
-          : "url('/scroll3.svg') center center / cover no-repeat", display: "flex",
+          : "url('https://res.cloudinary.com/djspsll41/image/upload/v1754202523/paraDesk_etzxiv.svg') bottom 35% center / cover no-repeat", display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",

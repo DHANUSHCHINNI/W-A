@@ -1,5 +1,6 @@
 import React from "react";
 import styles from './Story.module.css';
+import { styleText } from "util";
 
 const storyTextSection1 = [
     <p key="1"><span className={styles.erstoria}>Two friends. One question:</span></p>,
@@ -7,10 +8,24 @@ const storyTextSection1 = [
 ]
 
 const storyTextSection2 = [
-    <p key="3"><span className={styles.ptSerif}>From late-night walks in London to community circles in India, our story begins with a return —To rhythm. To roots. To each other.</span></p>,
-    <p key="4"><span className={styles.ptSerif}>We were therapists in the UK, working across NHS wards and grassroots spaces — Our friendship grew through shared work, big questions, and even bigger laughter. In that space of trust, a vision and a dream began to form.</span></p>,
-    <p key="5"><span className={styles.erstoria}>One of our earliest collaborations was <b>Project Bhava </b> — an immersive, multidisciplinary performance series in Brighton, UK. Through <b>nine evocative performances </b>, we explored the spectrum of human emotion, inspired by the Indian aesthetic of Navarasas. Rasa by rasa, we sparked dialogue, built connection, and watched strangers come alive through shared feeling.</span></p>
-]
+    <p key="3">
+        <span className={styles.ptSerif}>
+            From late-night walks in London to community circles in India, our story begins with a return —To rhythm. To roots. To each other.
+        </span>
+    </p>,
+    <p key="4">
+        <span className={styles.ptSerif}>
+            We were therapists in the UK, working across NHS wards and grassroots spaces — Our friendship grew through shared work, big questions, and even bigger laughter. In that space of trust, a vision and a dream began to form.
+        </span>
+    </p>,
+    <p key="5">
+        <span className={styles.erstoria}>
+            One of our earliest collaborations was{' '}
+            <span className={styles.highlight}>Project Bhava</span> — an immersive, multidisciplinary performance series in Brighton, UK. Through <span className={styles.highlight}>nine evocative performances</span>, we explored the spectrum of human emotion, inspired by the Indian aesthetic of Navarasas. Rasa by rasa, we sparked dialogue, built connection, and watched strangers come alive through shared feeling.
+        </span>
+    </p>
+];
+
 
 const storyTextSection3 = [
     <p key="6"><span className={styles.erstoria}><b> We dreamt of changing the landscape of mental health in India </b></span><span className={styles.ptSerif}> — Not just for those seeking support, but for those offering it.</span></p>,
@@ -20,11 +35,11 @@ const storyTextSection3 = [
 
 const storyTextSection4 = [
     <p key="1"><span className={styles.ptSerif}>It was a dream rooted in justice, joy, and imagination. A dream where arts are not an add-on, but a form of medicine—  a part of a global movement recognising the role of creative expression in healthcare and human flourishing.</span></p>,
-    <p key="2"><span className={styles.erstoria}>That dream became the <b>Well-being & Arts Hub</b> — A living, breathing space for creative connection.</span></p>,
+    <p key="2"><span className={styles.erstoria}>That dream became the <span className={styles.highlight}> Well-being & Arts Hub </span> — A living, breathing space for creative connection.</span></p>,
     <p key="3"><span className={styles.ptSerif}>We are artists, therapists, listeners, wanderers. We hold spaces where the personal meets the political, and the playful meets the profound. We're building a modular ecosystem of creative care.</span></p>,
     <p key="4"><span className={styles.ptSerif}>Not just for individuals, but for workplaces, communities, and the world.</span></p>,
     <p key="5"><span className={styles.ptSerif}>Whether you're a seeker, a professional, a wanderer, or simply someone who feels — You're welcome here.</span></p>,
-    <p key="6"><span className={styles.erstoria}>Because care, like art, was never meant to be solitary.</span></p>
+    <p key="6"><span className={styles.subheading}> <span className={styles.highlight}>Because care, like art, was never meant to be solitary.</span></span></p>
 ];
 
 const storyTextSection5 = [
