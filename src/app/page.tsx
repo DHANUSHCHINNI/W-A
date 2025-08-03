@@ -81,6 +81,7 @@ export default function LandingPage() {
           justifyContent: 'center',
           position: 'relative',
           zIndex: 5,
+          fontStyle: 'PT Serif, serif'
         }}
       >
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

@@ -47,7 +47,7 @@ export default function Paragraphs({
               style={{
                 minHeight: isMobile ? undefined : 260,
                 color: "#ffffff",
-                fontFamily: "Erstoria",
+                fontFamily: "PT serif, serif",
                 fontSize: isMobile ? 18 : 22,
                 fontWeight: 400,
                 lineHeight: 1.5,
