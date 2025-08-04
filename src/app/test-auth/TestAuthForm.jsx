@@ -93,7 +93,7 @@ export default function TestAuthForm() {
                             Sign in with Google
                         </button>
                     </form>
-                    <button onClick={handleSignOut} className={styles.button} style={{ marginTop: '1rem', background: '#666' }}>Sign Out</button>
+                    <button onClick={handleSignOut} className={styles.button} style={{ marginTop: '1rem' }}>Sign Out</button>
                     <div style={{ marginTop: '1rem', textAlign: 'center' }}>
                         {user ? <div>Logged in as: <b>{user.email}</b></div> : <div>Not logged in</div>}
                         {message && <div className={styles.message} style={{ color: message.startsWith('Sign') ? 'green' : 'red' }}>{message}</div>}

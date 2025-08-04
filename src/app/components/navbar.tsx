@@ -1,45 +1,50 @@
-'use client';
-import { motion, HTMLMotionProps } from 'framer-motion';
-import Link from 'next/link';
-import Asset1 from './Asset1';
-import { NavbarProps } from '../types';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Box from '@mui/material/Box';
-import { useState, useRef, useEffect } from 'react';
-import { onAuthStateChanged, User, signOut } from 'firebase/auth';
-import { useRouter } from 'next/navigation';
-import { auth } from '@/lib/firebase';
+"use client";
+import { motion, HTMLMotionProps } from "framer-motion";
+import Link from "next/link";
+import Asset1 from "./Asset1";
+import { NavbarProps } from "../types";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Box from "@mui/material/Box";
+import { useState, useRef, useEffect } from "react";
+import { onAuthStateChanged, User, signOut } from "firebase/auth";
+import { useRouter, usePathname } from "next/navigation";
+import { auth } from "@/lib/firebase";
+import Image from "next/image";
+import styles from "./Navbar.module.css";
 
 const HUBS = [
-    { label: 'Therapy Hub', href: '/therapyhub' },
-    { label: 'R&D Hub', href: '/rnd' },
-    { label: 'Corporate Hub', href: '/corporatehub' },
-    { label: 'Innovation Lab', href: '/innovationlab' },
-    { label: 'Training Hub', href: '/traininghub' },
+    { label: "Therapy Hub", href: "/therapyhub" },
+    { label: "R&D Hub", href: "/rnd" },
+    { label: "Corporate Hub", href: "/corporatehub" },
+    { label: "Innovation Lab", href: "/innovationlab" },
+    { label: "Training Hub", href: "/traininghub" },
 ];
 
 const adminEmails = [
-    'admin@example.com',
-    'syedhamadanahmad@gmail.com',
-    'dhanushchinni100@gmail.com'
+    "syedhamadanahmad@gmail.com",
+    "dhanushchinni100@gmail.com",
+    'amruta@wearehub.org',
+    'kritija@wearehub.org',
+    'info@wearehub.org'
     // add more emails here
 ];
 
-const Navbar: React.FC<NavbarProps> = ({ show }) => {
+const Navbar: React.FC<NavbarProps> = ({ show, color = "#1C1610" }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [userDropdownOpen, setUserDropdownOpen] = useState(false);
-    const [userDropdownPosition, setUserDropdownPosition] = useState<'left' | 'right'>('left');
+    const [userDropdownPosition, setUserDropdownPosition] = useState<"left" | "right">("left");
     const dropdownRef = useRef<HTMLDivElement>(null);
     const userDropdownRef = useRef<HTMLDivElement>(null);
     const userDropdownMenuRef = useRef<HTMLDivElement>(null);
     const [user, setUser] = useState<User | null>(null);
     const router = useRouter();
+    const pathname = usePathname();
 
-    // Auth state
+    // Subscribe to auth state changes
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
         });
         return () => unsubscribe();
     }, []);
@@ -47,137 +52,131 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
     // Close dropdowns when clicking outside
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+            if (dropdownOpen && dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
                 setDropdownOpen(false);
             }
-            if (userDropdownRef.current && !userDropdownRef.current.contains(event.target as Node)) {
+            if (userDropdownOpen && userDropdownRef.current && !userDropdownRef.current.contains(event.target as Node)) {
                 setUserDropdownOpen(false);
             }
         }
-        if (dropdownOpen || userDropdownOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
-        } else {
-            document.removeEventListener('mousedown', handleClickOutside);
-        }
+
+        document.addEventListener("mousedown", handleClickOutside);
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [dropdownOpen, userDropdownOpen]);
 
-    // Dynamically position user dropdown
+    // Position user dropdown dynamically (left or right)
     useEffect(() => {
         if (userDropdownOpen && userDropdownRef.current && userDropdownMenuRef.current) {
             const buttonRect = userDropdownRef.current.getBoundingClientRect();
             const menuRect = userDropdownMenuRef.current.getBoundingClientRect();
             const spaceRight = window.innerWidth - buttonRect.left;
             if (spaceRight < menuRect.width + 16) {
-                setUserDropdownPosition('right');
+                setUserDropdownPosition("right");
             } else {
-                setUserDropdownPosition('left');
+                setUserDropdownPosition("left");
             }
         }
     }, [userDropdownOpen]);
 
+    // Navigation handlers
     const handleMyPlanClick = () => {
         setUserDropdownOpen(false);
         if (user) {
-            router.push('/my-plan');
+            router.push("/my-plan");
         } else {
-            router.push('/test-auth?redirect=/my-plan');
+            router.push("/test-auth?redirect=/my-plan");
         }
     };
 
     const handleLogout = async () => {
         setUserDropdownOpen(false);
         await signOut(auth);
-        router.push('/');
+        router.push("/");
     };
 
-    // Ensure isAdmin is always boolean
     const isAdmin = !!(user && user.email && adminEmails.includes(user.email.toLowerCase()));
+
+    // Check if Services dropdown should be active (any of its hubs matches current path)
+    const isServicesActive = HUBS.some((hub) => pathname.startsWith(hub.href));
 
     return (
         <motion.nav
             initial={{ y: -80, opacity: 0 }}
             animate={show ? { y: 0, opacity: 1 } : { y: -80, opacity: 0 }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                zIndex: 100,
-            } as HTMLMotionProps<"nav">["style"]}
+            className={styles.navbar}
+            style={{ backgroundColor: color } as HTMLMotionProps<"nav">["style"]}
         >
-            <AppBar
-                position="static"
-                elevation={0}
-                sx={{
-                    background: '#BAB1AB',
-                    color: '#2e1a13',
-                    fontFamily: 'erstoria',
-                    fontSize: '1.4rem',
-                    boxShadow: 'none',
-                    padding: '5px'
-                }}
-            >
-                <Toolbar sx={{ minHeight: '64px', px: 2, display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
-                    <Box className="logo" sx={{ mr: 3, ml: 2, zIndex: 10 }}>
-                        <Asset1 width={55} height={55} />
+            <AppBar position="static" elevation={0} className={styles.appBar} style={{ backgroundColor: color }}>
+                <Toolbar className={styles.toolbar}>
+                    <Box className={styles.logoBox}>
+                        <Image src="/toplogo2.png" alt="Logo" width={55} height={25} />
+
                     </Box>
-                    <Box sx={{ display: 'flex', gap: '1.1rem', ml: 'auto' }}>
-                        <Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Home</Link>
-                        <Link href="/story" style={{ color: 'inherit', textDecoration: 'none' }}>Our story</Link>
-                        <div
-                            className="services-dropdown-wrapper"
-                            style={{ position: 'relative', display: 'inline-block' }}
-                            ref={dropdownRef}
-                            onMouseEnter={() => setDropdownOpen(true)}
-                            onMouseLeave={() => setDropdownOpen(false)}
+
+                    <Box className={styles.navLinks}>
+                        <Link
+                            href="/"
+                            className={`${styles.navLink} ${pathname === "/" ? styles.activeNavLink : ""}`}
                         >
+                            Home
+                        </Link>
+
+                        <Link
+                            href="/story"
+                            className={`${styles.navLink} ${pathname === "/story" ? styles.activeNavLink : ""}`}
+                        >
+                            Our story
+                        </Link>
+
+                        {/* Services Dropdown */}
+                        <div className={styles.dropdownWrapper} ref={dropdownRef}>
                             <span
-                                className="services-link"
                                 tabIndex={0}
-                                style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer', padding: 0 }}
+                                className={`${styles.dropdownToggle} ${isServicesActive ? styles.activeNavLink : ""}`}
                                 onClick={() => setDropdownOpen((open) => !open)}
                                 aria-haspopup="true"
                                 aria-expanded={dropdownOpen}
                             >
                                 Services
                             </span>
-                            <div className="services-dropdown" style={{ display: dropdownOpen ? 'block' : undefined }}>
-                                {HUBS.map(hub => (
+                            <div className={`${styles.dropdownMenu} ${dropdownOpen ? styles.open : ""}`}>
+                                {HUBS.map((hub) => (
                                     <Link
                                         key={hub.href}
                                         href={hub.href}
-                                        style={{
-                                            display: 'block',
-                                            fontFamily: 'erstoria',
-                                            fontSize: '1.1rem',
-                                            whiteSpace: 'nowrap',
-                                            textDecoration: 'none',
-                                            padding: '0.6rem 1.2rem',
+                                        className={`${styles.dropdownItem} ${pathname === hub.href ? styles.activeNavLink : ""}`}
+                                        onClick={() => {
+                                            setDropdownOpen(false);
                                         }}
-                                        onClick={() => setDropdownOpen(false)}
                                     >
                                         {hub.label}
                                     </Link>
                                 ))}
                             </div>
                         </div>
-                        <Link href="/Members" style={{ color: 'inherit', textDecoration: 'none' }}>Members</Link>
-                        <Link href="/contact" style={{ color: 'inherit', textDecoration: 'none' }}>Contact us</Link>
-                        <div
-                            className="services-dropdown-wrapper"
-                            style={{ position: 'relative', display: 'inline-block' }}
-                            ref={userDropdownRef}
-                            onMouseEnter={() => setUserDropdownOpen(true)}
-                            onMouseLeave={() => setUserDropdownOpen(false)}
+
+                        <Link
+                            href="/Members"
+                            className={`${styles.navLink} ${pathname === "/Members" ? styles.activeNavLink : ""}`}
                         >
+                            Members
+                        </Link>
+
+                        <Link
+                            href="/contact"
+                            className={`${styles.navLink} ${pathname === "/contact" ? styles.activeNavLink : ""}`}
+                        >
+                            Contact us
+                        </Link>
+
+                        {/* User dropdown */}
+                        <div className={styles.dropdownWrapper} ref={userDropdownRef}>
                             <span
-                                className="services-link"
                                 tabIndex={0}
-                                style={{ color: 'inherit', textDecoration: 'none', fontFamily: 'erstoria', fontSize: '1.4rem', cursor: 'pointer', padding: 0 }}
+                                className={styles.dropdownToggle}
                                 onClick={() => setUserDropdownOpen((open) => !open)}
                                 aria-haspopup="true"
                                 aria-expanded={userDropdownOpen}
@@ -185,86 +184,54 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
                                 User
                             </span>
                             <div
-                                className="services-dropdown"
+                                className={`${styles.dropdownMenu} ${userDropdownOpen ? styles.open : ""}`}
                                 ref={userDropdownMenuRef}
                                 style={{
-                                    display: userDropdownOpen ? 'block' : undefined,
-                                    left: userDropdownPosition === 'left' ? 0 : 'auto',
-                                    right: userDropdownPosition === 'right' ? 0 : 'auto',
+                                    left: userDropdownPosition === "left" ? 0 : "auto",
+                                    right: userDropdownPosition === "right" ? 0 : "auto",
                                     minWidth: 180,
-                                    maxWidth: 'calc(100vw - 16px)',
-                                    overflowX: 'auto',
+                                    maxWidth: "calc(100vw - 16px)",
+                                    overflowX: "auto",
                                 }}
                             >
                                 <div
+                                    className={styles.dropdownItem}
                                     onClick={handleMyPlanClick}
-                                    className="services-dropdown-item"
-                                    style={{
-                                        display: 'block',
-                                        textDecoration: 'none',
-                                        padding: '0.6rem 1.2rem',
-                                        fontFamily: 'erstoria',
-                                        fontSize: '1.1rem',
-                                        whiteSpace: 'nowrap',
-                                        borderRadius: 3,
-                                        cursor: 'pointer',
-                                    }}
                                     tabIndex={0}
                                 >
                                     My Plan
                                 </div>
+
                                 {!user && (
                                     <div
-                                        onClick={() => { setUserDropdownOpen(false); router.push('/test-auth'); }}
-                                        className="services-dropdown-item"
-                                        style={{
-                                            display: 'block',
-                                            textDecoration: 'none',
-                                            padding: '0.6rem 1.2rem',
-                                            fontFamily: 'erstoria',
-                                            fontSize: '1.1rem',
-                                            whiteSpace: 'nowrap',
-                                            borderRadius: 3,
-                                            cursor: 'pointer',
+                                        className={styles.dropdownItem}
+                                        onClick={() => {
+                                            setUserDropdownOpen(false);
+                                            router.push("/test-auth");
                                         }}
                                         tabIndex={0}
                                     >
                                         Login
                                     </div>
                                 )}
-                                {Boolean(isAdmin) && (
+
+                                {isAdmin && (
                                     <div
-                                        onClick={() => { setUserDropdownOpen(false); router.push('/admin-dashboard'); }}
-                                        className="services-dropdown-item"
-                                        style={{
-                                            display: 'block',
-                                            textDecoration: 'none',
-                                            padding: '0.6rem 1.2rem',
-                                            fontFamily: 'erstoria',
-                                            fontSize: '1.1rem',
-                                            whiteSpace: 'nowrap',
-                                            borderRadius: 3,
-                                            cursor: 'pointer',
+                                        className={styles.dropdownItem}
+                                        onClick={() => {
+                                            setUserDropdownOpen(false);
+                                            router.push("/admin-dashboard");
                                         }}
                                         tabIndex={0}
                                     >
                                         Dashboard
                                     </div>
                                 )}
+
                                 {user && (
                                     <div
+                                        className={styles.dropdownItem}
                                         onClick={handleLogout}
-                                        className="services-dropdown-item"
-                                        style={{
-                                            display: 'block',
-                                            textDecoration: 'none',
-                                            padding: '0.6rem 1.2rem',
-                                            fontFamily: 'erstoria',
-                                            fontSize: '1.1rem',
-                                            whiteSpace: 'nowrap',
-                                            borderRadius: 3,
-                                            cursor: 'pointer',
-                                        }}
                                         tabIndex={0}
                                     >
                                         Logout
@@ -275,74 +242,8 @@ const Navbar: React.FC<NavbarProps> = ({ show }) => {
                     </Box>
                 </Toolbar>
             </AppBar>
-            <style jsx global>{`
-                @media (min-width: 900px) {
-                    .services-dropdown-wrapper:hover .services-dropdown,
-                    .services-dropdown-wrapper:focus-within .services-dropdown {
-                        display: block;
-                    }
-                    .services-dropdown {
-                        display: none;
-                        position: absolute;
-                        top: 2.2rem;
-                        left: 0;
-                        background: #BAB1AB;
-                        min-width: 180px;
-                        box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-                        border-radius: 4px;
-                        z-index: 1000;
-                        padding: 0.5rem 0;
-                        transition: background 0.2s;
-                        max-width: calc(100vw - 16px);
-                        overflow-x: auto;
-                    }
-                    .services-dropdown a, .services-dropdown-item {
-                        display: block;
-                        color: #2e1a13;
-                        text-decoration: none;
-                        padding: 0.6rem 1.2rem;
-                        font-family: 'erstoria';
-                        font-size: 1.1rem;
-                        white-space: nowrap;
-                        border-radius: 3px;
-                        transition: background 0.18s, color 0.18s;
-                        background: transparent;
-                    }
-                    .services-dropdown a:hover,
-                    .services-dropdown a:focus,
-                    .services-dropdown-item:hover,
-                    .services-dropdown-item:focus {
-                        background: #a18c7c;
-                        color: #a0522d;
-                    }
-                    .services-dropdown a:not(:hover):not(:focus),
-                    .services-dropdown-item:not(:hover):not(:focus) {
-                        background: #d1c1b2;
-                        color: #2e1a13;
-                    }
-                    .services-link {
-                        cursor: pointer;
-                        color: inherit;
-                        text-decoration: none;
-                        padding: 0 0.2rem;
-                        font-family: 'erstoria';
-                        font-size: 1.4rem;
-                        outline: none;
-                        transition: color 0.18s;
-                    }
-                    .services-link:focus,
-                    .services-link:hover {
-                        color: #ff9900;
-                    }
-                }
-                @media (max-width: 899px) {
-                    .services-dropdown-wrapper, .services-dropdown {
-                        display: none !important;
-                    }
-                }
-            `}</style>
         </motion.nav>
     );
-}
+};
 
 export default Navbar;

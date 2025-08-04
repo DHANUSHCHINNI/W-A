@@ -1,14 +1,70 @@
 import { useEffect, useState } from 'react';
-import hubs3 from './Hubs3';
-import hubs1 from './Hubs1';
-import hubs2 from './Hubs2';
-import ServiceHubButton from './ServiceHubButton';
-import Asset2 from "./Asset2";
-import Asset1 from './Asset1';
 import styles from './Services.module.css';
-import Silhouette1 from './Silhouette1';
-import Silhouette2 from './Silhouette2';
-import Silhouette6 from './Silhouette6';
+import buttonStyles2 from './buttons2.module.css';
+import SukoonLogo from './SukoonLogo';
+import Rahaat from './Rahaat';
+import Fillcup from './Fillcup';
+import Retreat from './Retreat';
+import Link from 'next/link';
+import React from 'react';
+
+// Key Offerings data
+const keyOfferings = [
+  {
+    href: '/sukoon',
+    icon: <SukoonLogo width={62} height={62} />,
+    label: 'Sukoon Subscription',
+  },
+  {
+    href: '/rahaat',
+    icon: <Rahaat width={62} height={62} />,
+    label: 'Rahaat Subscription',
+  },
+  {
+    href: '/offerings/fillingyourcup',
+    icon: <Fillcup width={62} height={62} />,
+    label: 'Filling your cup',
+  },
+  {
+    href: '/wellbeingretreats',
+    icon: <Retreat width={62} height={62} />,
+    label: 'Well-being Retreats',
+  },
+];
+
+// Services PlanButtons data with descriptions
+const serviceButtons = [
+  {
+    href: '/therapyhub',
+    title: 'Therapy Hub',
+    button: 'Go to Therapy Hub →',
+    description: 'Explore our therapy services for individuals and groups.',
+  },
+  {
+    href: '/corporatehub',
+    title: 'Corporate Hub',
+    button: 'Go to Corporate Hub →',
+    description: 'Well-being solutions for organizations and teams.',
+  },
+  {
+    href: '/traininghub',
+    title: 'Training Hub',
+    button: 'Go to Training Hub →',
+    description: 'Workshops and training for personal and professional growth.',
+  },
+  {
+    href: '/innovationlab',
+    title: 'Innovation Lab',
+    button: 'Go to Innovation Lab →',
+    description: 'Creative projects and research for well-being.',
+  },
+  {
+    href: '/rnd',
+    title: 'R&D Hub',
+    button: 'Go to R&D Hub →',
+    description: 'Research and development in well-being and arts.',
+  },
+];
 
 export default function Services() {
   const [isMobile, setIsMobile] = useState(false);
@@ -20,128 +76,180 @@ export default function Services() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const serviceButtons = [
-    { label: 'Therapy Hub', href: '/therapyhub', size: { width: 360, height: 120 } },
-    { label: 'Corporate Hub', href: '/corporatehub', size: { width: 480, height: 160 } },
-    { label: 'Training Hub', href: '/traininghub', size: { width: 360, height: 120 } },
-    { label: 'Innovation Lab', href: '/innovationlab', size: { width: 360, height: 120 } },
-    { label: 'R&D Hub', href: '/rnd', size: { width: 480, height: 160 } },
-  ];
-
   return (
     <div
+      className={styles.servicesContainer}
       style={{
-        width: '100%',
-        minHeight: '80vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-        color: '#fff',
-      } as React.CSSProperties}
+        minHeight: "100vh",
+        width: "100vw",
+        background: isMobile
+          ? "url('https://res.cloudinary.com/djspsll41/image/upload/v1754164365/servicesPhone_e1xszh.svg')"
+          : "url('https://res.cloudinary.com/djspsll41/image/upload/v1754160938/scroll4orange_w1yjxk.svg') center center / cover no-repeat",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        paddingTop: 60,
+      }}
     >
-      {/* Silhouettes as background decorations (desktop only) */}
-      {!isMobile && (
-        <>
-          {/* Left silhouette */}
-          <Silhouette6 className={undefined} style={{ position: 'absolute', left: 0, top: 180, width: 420, height: 520, opacity: 0.95, zIndex: 0 }} />
-          {/* Right silhouette */}
-          <Silhouette1 className={undefined} style={{ position: 'absolute', right: 0, top: 180, width: 420, height: 520, opacity: 0.95, zIndex: 0 }} />
-        </>
+      {/* Heading */}
+      <div className={styles.servicesHeading}>Services</div>
+
+      {/* Key Offerings Bar */}
+      {isMobile ? (
+        <div className={styles.keyOfferingsGridMobile}>
+          {keyOfferings.map((item, i) => (
+            <Link href={item.href} key={i} style={{ textDecoration: 'none' }}>
+              <div className={styles.keyOfferingsItem}>
+                {item.icon}
+                <div className={styles.keyOfferingsLabel}>{item.label}</div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      ) : (
+        <div className={styles.keyOfferingsBar}>
+          {keyOfferings.map((item, i) => (
+            <Link href={item.href} key={i} style={{ textDecoration: 'none' }}>
+              <div className={styles.keyOfferingsItem}>
+                {item.icon}
+                <div className={styles.keyOfferingsLabel}>{item.label}</div>
+              </div>
+            </Link>
+          ))}
+        </div>
       )}
-      <div style={{ marginTop: 100, width: '100%', position: 'relative' }}>
-        {/* Center logo (desktop only) */}
-        {!isMobile && (
-          <div style={{
-            position: 'absolute',
-            left: '50%',
-            top: '72%',
-            transform: 'translate(-50%, -50%)',
-            zIndex: 2,
-          } as React.CSSProperties}>
-            <Asset1 width={140} height={140} />
+
+
+      {/* Hubs Row */}
+      {isMobile ? (
+        // MOBILE VIEW: two rows of two cards, then center the fifth below
+        <div style={{ width: '100%' }}>
+          <div className={styles.hubCardsRowMobile}>
+            {[0, 1].map((i) => (
+              <Link
+                href={serviceButtons[i].href}
+                key={i}
+                style={{ textDecoration: 'none', flex: 1 }}
+              >
+                <div className={styles.hubCard}>
+                  <h3 className={styles.hubCardTitle}>{serviceButtons[i].title}</h3>
+                  <div className={styles.hubCardDescription}>
+                    {serviceButtons[i].description}
+                  </div>
+                  <div className={styles.hubCardButtonWrapper}>
+                    <button
+                      className={buttonStyles2.myButton2}
+                      style={{
+                        fontSize: '10px',
+                        padding: '0.25rem 0.6rem',
+                        minWidth: 'unset',
+                        width: 'auto',
+                        maxWidth: '100%',
+                      }}
+                    >
+                      {serviceButtons[i].button}
+                    </button>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
-        )}
-        {/* Conditional rendering for mobile/desktop */}
-        {isMobile ? (
-          <>
-            <div
-              style={{
-                width: '100%',
-                textAlign: 'center',
-                fontFamily: 'Erstoria',
-                fontSize: 28,
-                fontWeight: 600,
-                color: '#BAB1AB',
-                letterSpacing: 1,
-                marginBottom: 24,
-                marginTop: 0,
-                zIndex: 10,
-              }}
-            >
-              Services
-            </div>
-            <div style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: 24,
-              marginTop: 0,
-              width: '100%',
-              zIndex: 3,
-            }}>
-              {serviceButtons.map((btn, i) => (
-                <ServiceHubButton
-                  key={btn.label}
-                  label={btn.label}
-                  href={btn.href}
-                  style={{ width: '90vw', maxWidth: 340, height: 70, fontSize: 18 }}
-                  customSize={{ width: 340, height: 70 }}
-                />
-              ))}
-            </div>
-          </>
-        ) : (
-          <div className={styles.revolvingContainer} style={{ zIndex: 2, position: 'relative' }}>
-            <div className={styles.revolvingButtons}>
-              <div className={styles.serviceButton} style={{ '--angle': '0deg' } as React.CSSProperties}>
-                <ServiceHubButton label="Therapy Hub" href="/therapyhub" style={{}} customSize={{ width: 360, height: 120 }} />
-              </div>
-              <div className={styles.serviceButton} style={{ '--angle': '72deg' } as React.CSSProperties}>
-                <ServiceHubButton label="Corporate Hub" href="/corporatehub" style={{}} customSize={{ width: 480, height: 160 }} />
-              </div>
-              <div className={styles.serviceButton} style={{ '--angle': '144deg' } as React.CSSProperties}>
-                <ServiceHubButton label="Training Hub" href="/traininghub" style={{}} customSize={{ width: 360, height: 120 }} />
-              </div>
-              <div className={styles.serviceButton} style={{ '--angle': '216deg' } as React.CSSProperties}>
-                <ServiceHubButton label="Innovation Lab" href="/innovationlab" style={{}} customSize={{ width: 360, height: 120 }} />
-              </div>
-              <div className={styles.serviceButton} style={{ '--angle': '288deg' } as React.CSSProperties}>
-                <ServiceHubButton label="R&D Hub" href="/rnd" style={{}} customSize={{ width: 480, height: 160 }} />
-              </div>
-            </div>
+          <div className={styles.hubCardsRowMobile}>
+            {[2, 3].map((i) => (
+              <Link
+                href={serviceButtons[i].href}
+                key={i}
+                style={{ textDecoration: 'none', flex: 1 }}
+              >
+                <div className={styles.hubCard}>
+                  <h3 className={styles.hubCardTitle}>{serviceButtons[i].title}</h3>
+                  <div className={styles.hubCardDescription}>
+                    {serviceButtons[i].description}
+                  </div>
+                  <div className={styles.hubCardButtonWrapper}>
+                    <button
+                      className={buttonStyles2.myButton2}
+                      style={{
+                        fontSize: '10px',
+                        padding: '0.25rem 0.6rem',
+                        minWidth: 'unset',
+                        width: 'auto',
+                        maxWidth: '100%',
+                      }}
+                    >
+                      {serviceButtons[i].button}
+                    </button>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
-        )}
-        {/* Services text at top left for services page (desktop only) */}
-        {!isMobile && (
           <div
             style={{
-              position: 'absolute',
-              top: -20,
-              left: 80,
-              zIndex: 10,
-              color: '#BAB1AB',
-              fontFamily: 'Erstoria',
-              fontSize: 40,
-              fontWeight: 600,
-              letterSpacing: 1,
-            } as React.CSSProperties}
+              display: 'flex',
+              justifyContent: 'center',
+              marginTop: 8,
+              marginBottom: 28
+            }}
           >
-            Services
+            <Link
+              href={serviceButtons[4].href}
+              style={{ textDecoration: 'none', flex: 1, maxWidth: 200, minWidth: 0 }}
+            >
+              <div className={styles.hubCard}>
+                <h3 className={styles.hubCardTitle}>
+                  {serviceButtons[4].title}
+                </h3>
+                <div className={styles.hubCardDescription}>
+                  {serviceButtons[4].description}
+                </div>
+                <div className={styles.hubCardButtonWrapper}>
+                  <button
+                    className={buttonStyles2.myButton2}
+                    style={{
+                      fontSize: '10px',
+                      padding: '0.25rem 0.6rem',
+                      minWidth: 'unset',
+                      width: 'auto',
+                      maxWidth: '100%',
+                    }}
+                  >
+                    {serviceButtons[4].button}
+                  </button>
+                </div>
+              </div>
+            </Link>
           </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        // DESKTOP/WEB: original row layout
+        <div className={styles.hubCardsRow}>
+          {serviceButtons.map((item, idx) => (
+            <Link href={item.href} key={idx} style={{ textDecoration: 'none', flex: 1 }}>
+              <div className={styles.hubCard}>
+                <h3 className={styles.hubCardTitle}>{item.title}</h3>
+                <div className={styles.hubCardDescription}>{item.description}</div>
+                <div className={styles.hubCardButtonWrapper}>
+                  <button
+                    className={buttonStyles2.myButton2}
+                    style={{
+                      fontSize: '16px',
+                      padding: '0.32rem 0.8rem',
+                      minWidth: 'unset',
+                      width: 'auto',
+                      maxWidth: '100%',
+                    }}
+                  >
+                    {item.button}
+                  </button>
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      )}
+
     </div>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import buttonStyles from '../components/Button.module.css';
-import styles from './PlanCards.module.css';
+import buttonStyles from '../components/buttons3.module.css';
+import styles from './PlanCards2.module.css';
 
 const plans = [
     {

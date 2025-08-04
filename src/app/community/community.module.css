@@ -20,7 +20,7 @@
 
 .subheading {
     color: #ffffff;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: 500;
     margin-bottom: 1.2rem;
 }
@@ -33,7 +33,7 @@
 }
 
 .heading {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: bold;
     color: #1C1610;
     margin-bottom: 1.5rem;
@@ -189,23 +189,49 @@
 }
 
 @media (max-width: 768px) {
-  .communityContainer {
-    max-width: 98vw;
-    padding: 16px;
-    margin: 24px 1vw 0 1vw;
-    border-radius: 14px;
-  }
-  .heading, .eventSectionHeading {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .cardsWrapper {
-    gap: 1rem;
-  }
+    .communityContainer {
+        max-width: 98vw;
+        padding: 16px;
+        margin: 24px 1vw 0 1vw;
+        border-radius: 14px;
+    }
+
+    .heading,
+    .eventSectionHeading {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .cardsWrapper {
+        gap: 1rem;
+    }
 }
 
 @media (max-width: 900px) {
     .heading {
         margin-top: 4.5rem;
     }
+}
+
+.deleteButton {
+    background: #991b1b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.deleteButton:hover:not(:disabled) {
+    background: #b91c1c;
+    transform: translateY(-2px);
+}
+
+.deleteButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
 }

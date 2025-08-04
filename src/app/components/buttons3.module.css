@@ -7,10 +7,9 @@
     font-family: 'Erstoria', serif;
     cursor: pointer;
     transition: background 0.2s;
-    background: #4b2714;
+    background: none;
 }
 
 .myButton:hover {
     color: #a0522d;
-    background: #4b2714;
 }

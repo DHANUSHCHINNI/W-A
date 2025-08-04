@@ -1,86 +1,239 @@
-.revolvingContainer {
-    position: relative;
-    width: 400px;
-    height: 400px;
-    margin: 0 auto;
-    z-index: 1;
-    left: -200px;
-    top: 20px;
+/* service.module.css */
+
+.servicesContainer {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  color: #fff;
+  padding-top: 60px;
+  overflow-x: hidden;
+  /* Add your SVG as background */
+  background: url('/scroll5.svg') center center/cover no-repeat;
 }
 
-.revolvingButtons {
-    position: absolute;
-    left: 50%;
-    top: 50%;
+.servicesContainer {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  color: #fff;
+  padding-top: 60px;
+  overflow-x: hidden;
+}
+
+.servicesHeading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: 'Erstoria', serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #BAB1AB;
+  letter-spacing: 1px;
+  text-align: center;
+  z-index: 20;
+}
+
+@media (max-width: 768px) {
+  .servicesHeading {
+    font-size: 28px;
+  }
+}
+
+.keyOfferingsBar {
+  width: 62vw;
+  background: #B1ABAB;
+  padding: 1.7rem 1.3rem;
+  border-radius: 20px;
+  margin-top: 34px;
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.1rem;
+  box-shadow: 0 2px 11px rgba(0, 0, 0, 0.09);
+}
+
+@media (max-width: 768px) {
+  .keyOfferingsBar {
+    width: 97vw;
+    padding: 1.1rem 0.3rem;
+    gap: 0.9rem;
+    margin-top: 24px;
+    margin-bottom: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .keyOfferingsGridMobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem 1rem;
+    width: 96vw;
+    background: #B1ABAB;
+    padding: 1.1rem 0.3rem;
+    border-radius: 18px;
+    margin-top: 24px;
+    margin-bottom: 18px;
+    place-items: center;
+    box-shadow: 0 2px 11px rgba(0, 0, 0, 0.09);
+  }
+}
+
+
+.keyOfferingsItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: none;
+  border-radius: 10px;
+  transition: background 0.18s, box-shadow 0.18s;
+  padding: 0.23rem 1rem;
+  cursor: pointer;
+  min-width: 120px;
+  max-width: 190px;
+}
+
+@media (max-width: 768px) {
+  .keyOfferingsItem {
+    padding: 0.13rem 0.5rem;
+    min-width: 96px;
+  }
+}
+
+.keyOfferingsLabel {
+  margin-top: 11px;
+  font-family: 'Erstoria', serif;
+  font-size: 17px;
+  color: #83351b;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+.keyOfferingsItem:hover {
+  background: #e2d6c7;
+}
+
+@media (max-width: 768px) {
+  .keyOfferingsLabel {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+}
+
+.hubCardsRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 18px;
+  width: 85vw;
+  max-width: 1540px;
+  margin-top: 12px;
+  flex-wrap: nowrap;
+  min-height: 320px;
+}
+
+@media (max-width: 768px) {
+  .hubCardsRowMobile {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
     width: 100%;
-    height: 100%;
-    transform: translate(-50%, -50%);
-}
+    padding: 0 12px;
+    justify-content: center;
+    align-items: stretch;
+    margin: 0 0 6px 0;
 
-.serviceButton {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform-origin: 0 0;
-    animation: orbit 65s linear infinite;
-}
-
-.serviceButton:nth-child(1) {
-    animation-delay: 0s;
-}
-
-.serviceButton:nth-child(2) {
-    animation-delay: -13s;
-}
-
-.serviceButton:nth-child(3) {
-    animation-delay: -26s;
-}
-
-.serviceButton:nth-child(4) {
-    animation-delay: -39s;
-}
-
-.serviceButton:nth-child(5) {
-    animation-delay: -52s;
-}
-
-@keyframes orbit {
-    0% {
-        transform: rotate(0deg) translateX(220px) rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg) translateX(220px) rotate(-360deg);
-    }
-}
-
-@media (max-width: 900px) {
-  .revolvingContainer {
-    width: 90vw;
-    height: 90vw;
-    min-width: 260px;
-    min-height: 260px;
-    max-width: 98vw;
-    max-height: 98vw;
-    left: 0;
-    top: 0;
-  }
-  .revolvingButtons {
-    width: 100%;
-    height: 100%;
-  }
-  .serviceButton {
-    /* Adjust orbit radius for smaller screens */
-    animation: orbit-mobile 65s linear infinite;
   }
 }
 
-@keyframes orbit-mobile {
-  0% {
-    transform: rotate(0deg) translateX(38vw) rotate(0deg);
+.hubCard {
+  cursor: pointer;
+  min-height: 285px;
+  min-width: 230px;
+  max-width: 280px;
+  flex: 1 1 0;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.6rem 0.85rem;
+  background: rgba(55, 43, 36, 0.92);
+  border-radius: 15px;
+  transition: background 0.18s;
+}
+
+@media (max-width: 768px) {
+  .hubCard {
+    min-height: 200px;
+    min-width: 155px;
+    padding: 1.2rem 0.7rem;
   }
-  100% {
-    transform: rotate(360deg) translateX(39vw) rotate(-360deg);
+}
+
+.hubCardTitle {
+  margin: 0;
+  margin-bottom: 14px;
+  font-size: 21px;
+  text-align: center;
+  font-weight: 600;
+  color: #edd8b5;
+}
+
+@media (max-width: 768px) {
+  .hubCardTitle {
+    font-size: 16px;
+    margin-bottom: 7px;
   }
+}
+
+.hubCardDescription {
+  font-family: 'PT Serif', serif;
+  color: #ffeedd;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 17px;
+  margin-top: 0;
+  font-weight: 400;
+  line-height: 1.3;
+  min-height: 26px;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .hubCardDescription {
+    font-size: 10.5px;
+    margin-bottom: 8px;
+    min-height: 18px;
+  }
+}
+
+.hubCardButtonWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .hubCardButtonWrapper {
+    margin-top: 2px;
+  }
+}
+
+.hubCard:hover {
+  transform: translateY(-8px) scale(1.03);
+  background: #82341A;
 }

@@ -85,7 +85,7 @@ export default function EventCards({ upcomingEvents, pastEvents, tmcImages, styl
         <>
             {upcomingEvents.length > 0 && (
                 <>
-                    <h2 className={styles.eventSectionHeading}>Upcoming Events</h2>
+                    <h3 className={styles.eventSectionHeading}>Upcoming Events</h3>
                     <div className={styles.cardsWrapper}>
                         {upcomingEvents.map((event, idx) => renderCard(event, idx, true))}
                     </div>

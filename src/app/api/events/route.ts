@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '@/lib/mongodb';
+import { ObjectId } from "mongodb";
 
 export async function GET() {
     try {
@@ -30,4 +31,4 @@ export async function POST(req: Request) {
         console.error('Error inserting event:', err);
         return NextResponse.json({ error: 'Failed to add event' }, { status: 500 });
     }
-} 
+}

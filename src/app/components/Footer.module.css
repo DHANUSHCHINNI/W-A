@@ -52,7 +52,7 @@
 }
 
 .footerCol li:hover {
-    color: #ffb6c1;
+    color: #82341A;
 }
 
 .footerBottom {
@@ -63,7 +63,7 @@
 }
 
 .footerBottom a {
-    color: #ffb6c1;
+    color: #82341A;
     text-decoration: none;
     font-weight: 600;
 }
@@ -81,7 +81,7 @@
 }
 
 .policyLink {
-    color: #ffb6c1;
+    color: #82341A;
     background: transparent;
     border: none;
     font-size: 1rem;
@@ -111,7 +111,7 @@
 }
 
 .footerLink:hover {
-    color: #ffb6c1;
+    color: #82341A;
     text-decoration: underline;
 }
 
