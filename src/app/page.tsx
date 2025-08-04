@@ -65,40 +65,6 @@ export default function LandingPage() {
       )}
 
 
-      {/* Landing Section */}
-      <section
-          ref={landingRef}
-          style={{
-            minHeight: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
-            zIndex: 5,
-            padding: '0 1rem', // optional: gives horizontal breathing space
-          }}
-      >
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: landingInView ? 1 : 0 }}
-            transition={{ duration: 0.7 }}
-            style={{
-              display: 'flex',             // NEW: flexbox to center child
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: isMobile ? "90vw" : "700px",
-              maxWidth: "100%",
-              margin: '0 auto',
-            }}
-        >
-          <Asset6
-              width={isMobile ? 320 : 700}
-              height={isMobile ? 120 : 300}
-              style={{ fill: "#d1c1b2" }}
-          />
-        </motion.div>
-      </section>
-
       {/* Second Page Section */}
       <section ref={secondRef} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}>
         <motion.div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
