@@ -64,6 +64,7 @@ export default function LandingPage() {
         <Navbar show={true} color={navbarColor} />
       )}
 
+
       {/* Second Page Section */}
       <section ref={secondRef} style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', zIndex: 5 }}>
         <motion.div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
