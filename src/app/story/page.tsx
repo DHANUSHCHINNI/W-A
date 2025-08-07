@@ -4,7 +4,8 @@ import Navbar from "../components/navbar";
 import HamburgerNavbar from "../components/HamburgerNavbar";
 import Image from "next/image";
 import styles from './Story.module.css';
-import { storyTextSection1, storyTextSection2, storyTextSection3, storyTextSection4, storyTextSection5, storyTextSection6 } from './storyText';
+import { storyTextSection2, storyTextSection4, storyTextSection5, storyTextSection6 } from './storyText';
+import Footer from "../components/Footer";
 
 export default function StoryPage() {
     const [isMobile, setIsMobile] = useState(false);
@@ -111,7 +112,7 @@ export default function StoryPage() {
                     <div className={styles.textSection}>{storyTextSection6}</div>
                 </div>
             </section>
-
+            <Footer />
         </main>
     );
 }

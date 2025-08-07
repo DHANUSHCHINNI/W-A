@@ -4,6 +4,7 @@ import Navbar from '../components/navbar';
 import HamburgerNavbar from '../components/HamburgerNavbar';
 import styles from './sukoon.module.css';
 import { sukoonTextSection1 } from './sukoonText';
+import Footer from "../components/Footer";
 
 export default function SukoonPage() {
     const [isMobile, setIsMobile] = useState(false);
@@ -36,6 +37,7 @@ export default function SukoonPage() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 } 

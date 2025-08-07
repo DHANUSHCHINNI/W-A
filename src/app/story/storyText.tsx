@@ -19,7 +19,7 @@ const storyTextSection2 = [
         </span>
     </p>,
     <p key="5">
-        <span className={styles.erstoria}>
+        <span className={styles.ptSerif}>
             One of our earliest collaborations was{' '}
             <span className={styles.highlight}>Project Bhava</span> — an immersive, multidisciplinary performance series in Brighton, UK. Through <span className={styles.highlight}>nine evocative performances</span>, we explored the spectrum of human emotion, inspired by the Indian aesthetic of Navarasas. Rasa by rasa, we sparked dialogue, built connection, and watched strangers come alive through shared feeling.
         </span>
@@ -44,7 +44,7 @@ const storyTextSection4 = [
 
 const storyTextSection5 = [
     <p key="1">
-        <span className={styles.erstoria}>Amruta Huddar doesn’t just work with the body—she listens to it.</span> <span className={styles.ptSerif}>In every tremor, gesture, or pause, she sees a story waiting to be honoured. A trained Bharatanatyam and Odissi dancer, her earliest language was movement. Long before therapy rooms and academic accolades, it was the stage where she first learned how bodies hold memory, resistance, and power.</span>
+        <span className={styles.erstoria}><span className={styles.highlight}>Amruta Huddar doesn’t just work with the body—she listens to it.</span></span> <span className={styles.ptSerif}>In every tremor, gesture, or pause, she sees a story waiting to be honoured. A trained Bharatanatyam and Odissi dancer, her earliest language was movement. Long before therapy rooms and academic accolades, it was the stage where she first learned how bodies hold memory, resistance, and power.</span>
     </p>,
     <p key="2">
         <span className={styles.ptSerif}>But Amruta’s most radical training has been her own life.<br />
@@ -60,7 +60,7 @@ const storyTextSection5 = [
 ];
 
 const storyTextSection6 = [
-    <p key="1"><span className={styles.erstoria}>Kritija Saxena knows how to hold complexity.</span> <span className={styles.ptSerif}>As a Drama & Movement Psychotherapist, Psychologist, and lifelong Kuchipudi dancer, she works at the powerful intersection of art, identity, and psychological depth.
+    <p key="1"><span className={styles.erstoria}><span className={styles.highlight}>Kritija Saxena knows how to hold complexity.</span></span> <span className={styles.ptSerif}>As a Drama & Movement Psychotherapist, Psychologist, and lifelong Kuchipudi dancer, she works at the powerful intersection of art, identity, and psychological depth.
         <br />
         Her specialty lies in working with complex trauma, especially in contexts where pain and power collide. She was the first Arts Psychotherapist appointed by East London NHS Foundation Trust’s Women’s Forensic Services, where she worked with survivors of severe sexual trauma and individuals navigating extreme behavioural and relational challenges. Her clinical insight is matched by her fierce compassion—and a steady hand in the most volatile therapeutic terrains.</span>
     </p>,

@@ -4,6 +4,7 @@ import Navbar from '../../components/navbar';
 import HamburgerNavbar from '../../components/HamburgerNavbar';
 import styles from './fillingyourcup.module.css';
 import { fillingyourcupTextsection1 } from './fillingyourcupText';
+import Footer from "../../components/Footer";
 
 export default function FillingYourCupPage() {
     const [isMobile, setIsMobile] = useState(false);
@@ -47,6 +48,7 @@ export default function FillingYourCupPage() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 } 

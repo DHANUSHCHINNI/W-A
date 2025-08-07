@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import HamburgerNavbar from '../components/HamburgerNavbar';
-import Silhouette1 from '../components/Silhouette1';
-import Silhouette2 from '../components/Silhouette2';
 import Silhouette6 from '../components/Silhouette6';
 import EventCards from './EventCards';
 
@@ -40,12 +38,7 @@ export default function CommunityClientPage({ upcomingEvents, pastEvents, tmcIma
 
     return (
         <div className={styles.communityBackground}>
-            <div className={styles.silhouetteLeft}>
-                <Silhouette6 className={styles.silhouette6} style={{}} />
-            </div>
-            <div className={styles.silhouetteRight}>
-                <Silhouette2 className={styles.silhouette2} style={{}} />
-            </div>
+
             {isMobile ? (
                 <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
             ) : (

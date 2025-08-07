@@ -8,7 +8,8 @@ import { innovationTextsection1, innovationTextsection1b, innovationTextsection2
 import Carousel from '../components/Carousel';
 import carousel2Styles from '../components/Carousel2.module.css';
 import mirrorImg from '../assets/mirror.jpg';
-import TMC2 from '../assets/TMC2.jpg'
+import TMC2 from '../assets/TMC2.jpg';
+import Footer from "../components/Footer";
 
 const pbImages = [
     'https://res.cloudinary.com/djspsll41/image/upload/v1752136639/pb1.jpg',
@@ -72,6 +73,7 @@ export default function InnovationLabPage() {
                     {innovationTextsection3}
                 </div>
             </div>
+            < Footer />
         </div>
     );
 } 

@@ -4,6 +4,8 @@ import Navbar from '../components/navbar';
 import HamburgerNavbar from '../components/HamburgerNavbar';
 import styles from './rahaat.module.css';
 import { rahaatTextSection1 } from './rahaatText';
+import Footer from "../components/Footer";
+
 
 export default function RahaatPage() {
     const [isMobile, setIsMobile] = useState(false);
@@ -36,6 +38,7 @@ export default function RahaatPage() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 } 

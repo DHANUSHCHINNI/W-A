@@ -12,8 +12,8 @@ export const trainingTextsection1b = [
 ];
 
 export const trainingTextsection2 = [
-    <p>
+    <div key="2" style={{ fontFamily: 'PT Serif, serif', fontSize: '1.7rem', color: '#BAB1AB' }}>
         Looking to bring arts-based mental health workshops, creative facilitation training, or student well-being programs to your space?<br />
         Explore how the Training Hub can support your learning journey.
-    </p>
-]; 
+    </div>
+];

@@ -9,6 +9,8 @@ import Carousel from '../components/Carousel';
 import Carousel2Styles from '../components/Carousel2.module.css';
 import TrainingOfferingsCards from './TrainingOfferingsCards';
 import origamiImg from '../assets/origami.jpg';
+import Footer from "../components/Footer";
+
 
 const images = [
     'https://res.cloudinary.com/djspsll41/image/upload/v1752138230/traininghub5.jpg',
@@ -64,6 +66,7 @@ export default function TrainingHubPage() {
                     {trainingTextsection2}
                 </div>
             </div>
+            <Footer />
         </div>
     );
 } 

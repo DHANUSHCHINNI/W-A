@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from './contact.module.css';
 import Navbar from '../components/navbar';
 import HamburgerNavbar from '../components/HamburgerNavbar';
+import Footer from '../components/Footer';
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -54,119 +55,123 @@ export default function ContactPage() {
     };
 
     return (
-        <div className={styles.container}>
-            {isMobile ? (
-                <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
-            ) : (
-                <Navbar show={true} />
-            )}
-            <div className={styles.content}>
-                <div className={styles.header}>
-                    <h1 className={styles.title}>Get in Touch</h1>
-                    <p className={styles.subtitle}>
-                        Have a question or want to work together? We'd love to hear from you.
-                    </p>
-                </div>
-
-                <div className={styles.formContainer}>
-                    <form onSubmit={handleSubmit} className={styles.form}>
-                        <div className={styles.formGroup}>
-                            <label htmlFor="name" className={styles.label}>
-                                Full Name
-                            </label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleInputChange}
-                                required
-                                className={styles.input}
-                                placeholder="Enter your full name"
-                            />
-                        </div>
-
-                        <div className={styles.formGroup}>
-                            <label htmlFor="email" className={styles.label}>
-                                Email Address
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleInputChange}
-                                required
-                                className={styles.input}
-                                placeholder="Enter your email address"
-                            />
-                        </div>
-
-                        <div className={styles.formGroup}>
-                            <label htmlFor="subject" className={styles.label}>
-                                Subject
-                            </label>
-                            <input
-                                type="text"
-                                id="subject"
-                                name="subject"
-                                value={formData.subject}
-                                onChange={handleInputChange}
-                                required
-                                className={styles.input}
-                                placeholder="What's this about?"
-                            />
-                        </div>
-
-                        <div className={styles.formGroup}>
-                            <label htmlFor="message" className={styles.label}>
-                                Message
-                            </label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleInputChange}
-                                required
-                                rows={6}
-                                className={styles.textarea}
-                                placeholder="Tell us more about your inquiry..."
-                            />
-                        </div>
-
-                        <button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className={styles.submitButton}
-                        >
-                            {isSubmitting ? 'Sending...' : 'Send Message'}
-                        </button>
-
-                        {submitStatus === 'success' && (
-                            <div className={styles.successMessage}>
-                                Thank you! Your message has been sent successfully.
-                            </div>
-                        )}
-
-                        {submitStatus === 'error' && (
-                            <div className={styles.errorMessage}>
-                                Sorry, there was an error sending your message. Please try again.
-                            </div>
-                        )}
-                    </form>
-                </div>
-
-                <div className={styles.contactInfo}>
-                    <div className={styles.infoItem}>
-                        <div className={styles.infoIcon}>📧</div>
-                        <div>
-                            <h3 className={styles.infoTitle}>Email</h3>
-                            <p className={styles.infoText}>info@wearehub.org</p>
-                        </div>
+        <>
+            <div className={styles.container}>
+                {isMobile ? (
+                    <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
+                ) : (
+                    <Navbar show={true} />
+                )}
+                <div className={styles.content}>
+                    <div className={styles.header}>
+                        <h1 className={styles.title}>Get in Touch</h1>
+                        <p className={styles.subtitle}>
+                            Have a question or want to work together? We'd love to hear from you.
+                        </p>
                     </div>
 
+                    <div className={styles.formContainer}>
+                        <form onSubmit={handleSubmit} className={styles.form}>
+                            <div className={styles.formGroup}>
+                                <label htmlFor="name" className={styles.label}>
+                                    Full Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                    required
+                                    className={styles.input}
+                                    placeholder="Enter your full name"
+                                />
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label htmlFor="email" className={styles.label}>
+                                    Email Address
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    required
+                                    className={styles.input}
+                                    placeholder="Enter your email address"
+                                />
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label htmlFor="subject" className={styles.label}>
+                                    Subject
+                                </label>
+                                <input
+                                    type="text"
+                                    id="subject"
+                                    name="subject"
+                                    value={formData.subject}
+                                    onChange={handleInputChange}
+                                    required
+                                    className={styles.input}
+                                    placeholder="What's this about?"
+                                />
+                            </div>
+
+                            <div className={styles.formGroup}>
+                                <label htmlFor="message" className={styles.label}>
+                                    Message
+                                </label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleInputChange}
+                                    required
+                                    rows={6}
+                                    className={styles.textarea}
+                                    placeholder="Tell us more about your inquiry..."
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                disabled={isSubmitting}
+                                className={styles.submitButton}
+                            >
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
+                            </button>
+
+                            {submitStatus === 'success' && (
+                                <div className={styles.successMessage}>
+                                    Thank you! Your message has been sent successfully.
+                                </div>
+                            )}
+
+                            {submitStatus === 'error' && (
+                                <div className={styles.errorMessage}>
+                                    Sorry, there was an error sending your message. Please try again.
+                                </div>
+                            )}
+                        </form>
+                    </div>
+
+                    <div className={styles.contactInfo}>
+                        <div className={styles.infoItem}>
+                            <div className={styles.infoIcon}>📧</div>
+                            <div>
+                                <h3 className={styles.infoTitle}>Email</h3>
+                                <p className={styles.infoText}>info@wearehub.org</p>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
+            <Footer />
+        </>
+
     );
 } 

@@ -4,6 +4,7 @@ import Navbar from '../components/navbar';
 import HamburgerNavbar from '../components/HamburgerNavbar';
 import styles from './wellbeingretreats.module.css';
 import { wellbeingretreatsTextsection1 } from './wellbeingretreatsText';
+import Footer from "../components/Footer";
 
 export default function WellbeingRetreatsPage() {
     const [isMobile, setIsMobile] = useState(false);
@@ -36,6 +37,7 @@ export default function WellbeingRetreatsPage() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 } 

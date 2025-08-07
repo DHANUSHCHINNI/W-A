@@ -19,10 +19,10 @@ interface HamburgerNavbarProps {
 
 const HUBS = [
   { label: "Therapy Hub", href: "/therapyhub" },
-  { label: "R&D Hub", href: "/rnd" },
   { label: "Corporate Hub", href: "/corporatehub" },
-  { label: "Innovation Lab", href: "/innovationlab" },
   { label: "Training Hub", href: "/traininghub" },
+  { label: "Innovation Lab", href: "/innovationlab" },
+  { label: "R&D Hub", href: "/rnd" },
 ];
 
 const adminEmails = [

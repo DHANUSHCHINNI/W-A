@@ -6,6 +6,7 @@ import styles from './corporate.module.css';
 import { corporateTextHeading, corporateTextBody } from './corporateText';
 import Carousel from '../components/Carousel';
 import Carousel2Styles from '../components/Carousel2.module.css';
+import Footer from "../components/Footer";
 
 const corporateImages = [
     'https://res.cloudinary.com/djspsll41/image/upload/v1752140073/corporatehub1.jpg',
@@ -70,6 +71,7 @@ export default function CorporateHubPage() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 } 

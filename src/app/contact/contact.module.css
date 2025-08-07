@@ -1,8 +1,13 @@
 .container {
     min-height: 100vh;
     background: #BAB1AB;
+
     /* Navbar color */
     padding: 2rem 1rem;
+    flex-direction: column;
+    align-items: center;
+    /* if you want centered horizontally */
+    justify-content: flex-start;
     display: flex;
     align-items: center;
     justify-content: center;

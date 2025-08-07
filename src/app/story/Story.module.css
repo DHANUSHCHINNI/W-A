@@ -264,20 +264,20 @@
 
     .subheading {
         font-size: 1.18rem;
-        text-align: center;
+        text-align: left;
     }
 
     .smallerSubheading {
         font-size: 0.93rem;
-        text-align: center;
+        text-align: left;
     }
 
     .subheadingWrapper {
         display: flex;
         flex-direction: column;
-        margin: 24px 25px 8px 25px;
-        text-align: center;
-        align-items: center;
+        margin: 32px 25px 26px 8px;
+        text-align: left;
+        align-items: flex-start;
     }
 
     .highlight {

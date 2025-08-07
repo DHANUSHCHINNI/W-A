@@ -8,6 +8,7 @@ import anchorImg from '../assets/anchor.jpg';
 import RnDImage from '../assets/R&DHub1.jpg';
 import { rndTextsection1, rndTextsection2 } from './rndText';
 import LogoCarousel from '../components/LogoCarousel';
+import Footer from "../components/Footer";
 
 export default function RnDPage() {
     const [isMobile, setIsMobile] = useState(false);
@@ -59,6 +60,7 @@ export default function RnDPage() {
                 </div>
             </div>
             <LogoCarousel />
+            < Footer />
         </div>
     );
 } 

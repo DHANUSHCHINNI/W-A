@@ -2,9 +2,9 @@ import React from 'react';
 import Navbar from '../components/navbar';
 import Image from 'next/image';
 import styles from './community.module.css';
-import Silhouette1 from '../components/Silhouette1';
-import Silhouette2 from '../components/Silhouette2';
-import Silhouette6 from '../components/Silhouette6';
+
+import Footer from "../components/Footer";
+
 // Import TMC images to circulate
 import TMC2 from '../assets/TMC2.jpg';
 import CommunityClientPage from './CommunityClientPage';
@@ -36,11 +36,10 @@ export default async function CommunityPage() {
     const pastEvents = events.filter((event: any) => !event.type || event.type.toLowerCase() !== 'upcoming');
 
     return (
-        <CommunityClientPage
+        <><CommunityClientPage
             upcomingEvents={upcomingEvents}
             pastEvents={pastEvents}
             tmcImages={tmcImages}
-            styles={styles}
-        />
+            styles={styles} /><Footer /></>
     );
 } 

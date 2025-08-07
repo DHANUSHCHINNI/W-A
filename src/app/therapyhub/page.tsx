@@ -4,9 +4,10 @@ import Navbar from '../components/navbar';
 import HamburgerNavbar from '../components/HamburgerNavbar';
 import Image from 'next/image';
 import styles from './therapy.module.css';
-import { therapyTextsection1, therapyTextsection1b, therapyTextsection2 } from './therapyText';
+import { therapyTextsection1, therapyTextsection1b, } from './therapyText';
 import couchBg from '../assets/couch.avif';
 import PlanCards from './PlanCards';
+import Footer from "../components/Footer";
 
 export default function TherapyHubPage() {
     const [isMobile, setIsMobile] = useState(false);
@@ -51,6 +52,7 @@ export default function TherapyHubPage() {
                     <PlanCards />
                 </div>
             </div>
+            <Footer />
         </div>
     );
 } 

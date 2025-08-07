@@ -15,10 +15,10 @@ import styles from "./Navbar.module.css";
 
 const HUBS = [
     { label: "Therapy Hub", href: "/therapyhub" },
-    { label: "R&D Hub", href: "/rnd" },
     { label: "Corporate Hub", href: "/corporatehub" },
-    { label: "Innovation Lab", href: "/innovationlab" },
     { label: "Training Hub", href: "/traininghub" },
+    { label: "Innovation Lab", href: "/innovationlab" },
+    { label: "R&D Hub", href: "/rnd" },
 ];
 
 const adminEmails = [
@@ -112,8 +112,9 @@ const Navbar: React.FC<NavbarProps> = ({ show, color = "#1C1610" }) => {
             <AppBar position="static" elevation={0} className={styles.appBar} style={{ backgroundColor: color }}>
                 <Toolbar className={styles.toolbar}>
                     <Box className={styles.logoBox}>
-                        <Image src="/toplogo2.png" alt="Logo" width={55} height={25} />
-
+                        <Link href="/">
+                            <Image src="/toplogo2.png" alt="Logo" width={55} height={22} />
+                        </Link>
                     </Box>
 
                     <Box className={styles.navLinks}>
