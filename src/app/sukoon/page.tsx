@@ -3,8 +3,25 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import HamburgerNavbar from '../components/HamburgerNavbar';
 import styles from './sukoon.module.css';
-import { sukoonTextSection1 } from './sukoonText';
+import { sukoonTextSection1, sukoonTextSection2 } from './sukoonText';
 import Footer from "../components/Footer";
+
+// Define hub cards: Only title and a short description
+const sukoonHubs = [
+    {
+        title: "Why a Subscription?",
+        description: "Because care needs consistency. Sukoon gives you: A monthly rhythm for emotional check-ins.Live, arts-based sessions and community events. Support that grows with you, not just during crisis"
+    },
+    {
+        title: "Why Creativity?",
+        description: "Because creativity is the gym for your emotional health. It regulates. It reconnects. It gives shape to what words often can't. Here, art isn't extra — it's the core. From it grows clarity, calm, and connection."
+    },
+    {
+        title: "What's Included?",
+        description: "Monthly live creative sessions Access to community events like Stories, Dreams & Reflections and Embodied Ease. A safe, supportive space for expression — at your own pace"
+    }
+    // Add more as needed
+];
 
 export default function SukoonPage() {
     const [isMobile, setIsMobile] = useState(false);
@@ -35,9 +52,23 @@ export default function SukoonPage() {
                     <div className={styles.textSection}>
                         {sukoonTextSection1}
                     </div>
+                    {/* --- Begin Hub Card Row --- */}
+                    <div className={isMobile ? styles.hubCardsRowMobile : styles.hubCardsRow}>
+                        {sukoonHubs.map((hub, idx) => (
+                            <div className={styles.hubCard} key={idx}>
+                                <div className={styles.hubCardTitle}>{hub.title}</div>
+                                <div className={styles.hubCardDescription}>{hub.description}</div>
+                                {/* No button */}
+                            </div>
+                        ))}
+                    </div>
+                    {/* --- End Hub Card Row --- */}
+                    <div className={styles.textSection}>
+                        {sukoonTextSection2}
+                    </div>
                 </div>
             </div>
             <Footer />
         </div>
     );
-} 
+}

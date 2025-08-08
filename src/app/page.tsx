@@ -104,7 +104,7 @@ export default function LandingPage() {
       </section>
 
       {/* Testimonials + Footer Section */}
-      <section ref={testimonialsRef} style={{ minHeight: '100vh', width: '100vw', background: "url('/brownlight.svg') center center / cover no-repeat", position: 'relative', zIndex: 1 }}>
+      <section ref={testimonialsRef} style={{ minHeight: '100vh', width: '100vw' }}>
         <motion.div
           style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', zIndex: 5 }}
 

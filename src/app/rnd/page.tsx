@@ -5,10 +5,20 @@ import HamburgerNavbar from '../components/HamburgerNavbar';
 import Image from 'next/image';
 import styles from './rnd.module.css';
 import anchorImg from '../assets/anchor.jpg';
-import RnDImage from '../assets/R&DHub1.jpg';
 import { rndTextsection1, rndTextsection2 } from './rndText';
 import LogoCarousel from '../components/LogoCarousel';
 import Footer from "../components/Footer";
+import Carousel2Styles from '../components/Carousel2.module.css';
+import Carousel from '../components/Carousel';
+
+const rndImages = [
+    'https://res.cloudinary.com/djspsll41/image/upload/v1754671342/ppt3_deep9j.png',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1754671343/ppt1_yobzgj.png',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1754671343/ppt2_jsop6z.png',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1754671342/ppt5_cdtcpn.png',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1754671342/ppt4_c6vrsu.png',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1754671753/R_DHub1_lija81.jpg'
+];
 
 export default function RnDPage() {
     const [isMobile, setIsMobile] = useState(false);
@@ -49,14 +59,8 @@ export default function RnDPage() {
                     {rndTextsection1}
                     {rndTextsection2}
                 </div>
-                <div className={styles.centerImage} style={{ marginTop: '2.5rem' }}>
-                    <Image
-                        src={RnDImage}
-                        alt="R&D Hub"
-                        width={500}
-                        height={300}
-                        className={styles.image}
-                    />
+                <div style={{ marginBottom: '2.5rem' }}>
+                    <Carousel images={rndImages} altPrefix="RnD Hub presentations" styles={Carousel2Styles} />
                 </div>
             </div>
             <LogoCarousel />

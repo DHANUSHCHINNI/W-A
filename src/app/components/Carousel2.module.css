@@ -1,5 +1,5 @@
 .carouselWrapper {
-    max-width: 1200px;
+    max-width: 1450px;
     margin: 40px auto;
     border-radius: 12px;
     padding: 8px;
@@ -38,4 +38,44 @@
 .carouselWrapper :global(.slick-next) {
     right: -30px !important;
     z-index: 3;
+}
+
+.carouselWrapper :global(.slick-dots li button:before) {
+    color: #fff;
+    opacity: 1;
+}
+
+
+.carouselWrapper :global(.slick-dots li.slick-active button:before) {
+    color: #82341A;
+    opacity: 1;
+    font-size: 12px;
+    /* Optional: Make active dot even bigger */
+}
+
+
+@media (max-width: 768px) {
+    .carouselWrapper {
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 4px;
+    }
+
+    .carouselWrapper :global(.slick-slide > div) {
+        height: 300px;
+    }
+
+    .carouselWrapper :global(.slick-center) {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .carouselWrapper :global(.slick-slide) {
+        transform: scale(0.9);
+        opacity: 0.8;
+    }
+
+    .carouselWrapper :global(.slick-arrow) {
+        display: none;
+    }
 }

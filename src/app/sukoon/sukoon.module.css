@@ -140,6 +140,112 @@
     -webkit-text-fill-color: transparent;
 }
 
+.hubCardsRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* center the children */
+    align-items: stretch;
+    gap: 18px;
+    width: 100%;
+    /* full width so auto margins work */
+    max-width: 1540px;
+    /* limit total row width */
+    margin: 32px auto 0 auto;
+    /* <-- auto horizontally centers row */
+    flex-wrap: wrap;
+    /* allow wrapping so they stay centered */
+    min-height: 320px;
+}
+
+.hubCardsRowMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 12px;
+    justify-content: center;
+    /* center cards in mobile scroll area */
+    align-items: stretch;
+    margin: 0 auto 6px auto;
+    /* <-- center horizontally */
+    overflow-x: auto;
+}
+
+
+/* Card styles */
+.hubCard {
+    cursor: pointer;
+    min-height: 285px;
+    min-width: 230px;
+    max-width: 280px;
+    flex: 1 1 0;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.6rem 0.85rem;
+    background: rgba(55, 43, 36, 0.92);
+    border-radius: 15px;
+    transition: background 0.18s;
+}
+
+.hubCardTitle {
+    margin: 0;
+    margin-bottom: 14px;
+    font-size: 21px;
+    text-align: center;
+    font-weight: 600;
+    color: #edd8b5;
+}
+
+.hubCardDescription {
+    font-family: 'PT Serif', serif;
+    color: #ffeedd;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 17px;
+    margin-top: 0;
+    font-weight: 400;
+    line-height: 1.3;
+    min-height: 26px;
+    max-width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hubCardsRow {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .hubCardsRowMobile {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .hubCard {
+        min-height: 200px;
+        min-width: 155px;
+        padding: 1.2rem 0.7rem;
+    }
+
+    .hubCardTitle {
+        font-size: 18px;
+        margin-bottom: 13px;
+    }
+
+    .hubCardDescription {
+        font-size: 14.5px;
+        margin-bottom: 8px;
+        min-height: 18px;
+    }
+
+}
+
+
 @keyframes husshhhWave {
     0% {
         opacity: 0;
@@ -167,7 +273,7 @@
 
 .question {
     font-family: 'Erstoria', serif;
-    font-size: 1.6rem;
+    font-size: 2.6rem;
     color: #82341A;
     font-weight: 600;
     margin: 1.2em 0 0.7em 0;
@@ -184,4 +290,9 @@
 
 .introText .highlight {
     font-size: 2rem;
+}
+
+.highlight2 {
+    font-size: 1.8rem;
+    font-style: 'PT Serif, serif' !important
 }

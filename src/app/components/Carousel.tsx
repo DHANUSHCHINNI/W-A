@@ -7,10 +7,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import defaultStyles from './Carousel.module.css'; // Default CSS module
 
-// Import your corporate hub images
-import corporatehub1 from '../assets/corporatehub1.jpg';
-import corporatehub2 from '../assets/corporatehub2.jpg';
-import corporatehub3 from '../assets/corporatehub3.jpg';
 
 interface CarouselProps {
     images: any[];
@@ -58,7 +54,18 @@ export default function Carousel({ images, altPrefix = 'Image', styles = default
         centerPadding: '300px',
         nextArrow: <NextArrow />,
         prevArrow: <PrevArrow />,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    centerPadding: '50px',
+                    slidesToShow: 1,
+                    arrows: false,
+                }
+            }
+        ]
     };
+
 
     return (
         <div className={styles.carouselWrapper}>
