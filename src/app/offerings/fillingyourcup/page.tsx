@@ -36,15 +36,17 @@ export default function FillingYourCupPage() {
                 <div className={styles.contentWrapper}>
                     <h1
                         className={styles.rndHeading}
-                        style={{ marginBottom: '6rem', fontFamily: 'Erstoria, serif' }}
+                        style={{ marginTop: '6rem', marginBottom: '3rem', fontFamily: 'Erstoria, serif' }}
                     >
                         Filling your Cup
                     </h1>
-                    <div
-                        className={styles.textSection}
-                        style={{ fontFamily: 'PT Serif, serif' }}
-                    >
-                        {fillingyourcupTextsection1}
+                    <div className={styles.hubCardLarge}>
+                        <div
+                            className={styles.textSection}
+                            style={{ fontFamily: 'PT Serif, serif' }}
+                        >
+                            {fillingyourcupTextsection1}
+                        </div>
                     </div>
                 </div>
             </div>

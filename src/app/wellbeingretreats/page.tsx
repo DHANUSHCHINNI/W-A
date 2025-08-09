@@ -32,8 +32,10 @@ export default function WellbeingRetreatsPage() {
             <div className={styles.rndContainer}>
                 <div className={styles.contentWrapper}>
                     <h1 className={styles.rndHeading}>Well-being Retreats</h1>
-                    <div className={styles.textSection}>
-                        {wellbeingretreatsTextsection1}
+                    <div className={styles.hubCardLarge}>
+                        <div className={styles.textSection}>
+                            {wellbeingretreatsTextsection1}
+                        </div>
                     </div>
                 </div>
             </div>

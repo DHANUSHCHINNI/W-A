@@ -162,3 +162,107 @@
     padding: 0.7em 2.2em !important;
     border-radius: 2.5em !important;
 }
+
+/* === Hub cards styling (vertical layout) === */
+.hubCardsColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* center cards horizontally */
+    gap: 20px;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.hubCard {
+    background: rgba(55, 43, 36, 0.92);
+    border-radius: 15px;
+    padding: 1.6rem 1.2rem;
+    max-width: 800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hubCardTitle {
+    margin: 0 0 14px 0;
+    font-size: 21px;
+    font-weight: 600;
+    color: #edd8b5;
+}
+
+.hubCardDescription {
+    font-family: 'PT Serif', serif;
+    color: #ffeedd;
+    font-size: 16px;
+    line-height: 1.5;
+    white-space: pre-line;
+    /* respects \n from description text */
+}
+
+.hubCardsRow2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    gap: 28px;
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.hubCard2 {
+    background: #82341A;
+    border-radius: 15px;
+    padding: 1.6rem 1.2rem;
+    max-width: 380px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.buttonWrapper {
+    display: flex;
+    justify-content: center;
+    /* center horizontally */
+    margin-top: 2rem;
+    /* space above the button */
+}
+
+.buttonWrapper button {
+    /* Optional: if you want extra padding on the button itself */
+    padding: 0.8em 2.5em;
+}
+
+
+@media (max-width: 900px) {
+    .hubCardsRow2 {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .hubCard2 {
+        max-width: 95vw;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .hubCard {
+        padding: 1.2rem;
+        max-width: 100%;
+    }
+
+    .hubCardTitle {
+        font-size: 18px;
+    }
+
+    .hubCardDescription {
+        font-size: 14px;
+    }
+}

@@ -49,28 +49,37 @@
     z-index: 2;
 }
 
-.videoBackground {
+.bgWrapper {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: cover;
-    object-position: center top;
-    z-index: 0;
+    z-index: -1;
+    /* Always behind content */
     pointer-events: none;
 }
 
+.videoBackground {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center top;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .videoOverlay {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background: rgba(30, 20, 20, 0.9);
-    z-index: 1;
-    pointer-events: none;
+    /* You can reduce opacity if you wish */
 }
+
 
 .animatedHeading {
     font-size: 2.2rem;
@@ -158,20 +167,6 @@
     min-height: 320px;
 }
 
-.hubCardsRowMobile {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 0 12px;
-    justify-content: center;
-    /* center cards in mobile scroll area */
-    align-items: stretch;
-    margin: 0 auto 6px auto;
-    /* <-- center horizontally */
-    overflow-x: auto;
-}
-
-
 /* Card styles */
 .hubCard {
     cursor: pointer;
@@ -214,13 +209,6 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .hubCardsRow {
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
-    }
-
-    .hubCardsRowMobile {
-        display: flex;
         flex-direction: column;
         gap: 12px;
         align-items: center;

@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 const sukoonHubs = [
     {
         title: "Why a Subscription?",
-        description: "Because care needs consistency. Sukoon gives you: A monthly rhythm for emotional check-ins.Live, arts-based sessions and community events. Support that grows with you, not just during crisis"
+        description: "Because care needs consistency. Sukoon gives you: A monthly rhythm for emotional check-ins. Live, arts-based sessions and community events. Support that grows with you, not just during crisis."
     },
     {
         title: "Why Creativity?",
@@ -18,7 +18,7 @@ const sukoonHubs = [
     },
     {
         title: "What's Included?",
-        description: "Monthly live creative sessions Access to community events like Stories, Dreams & Reflections and Embodied Ease. A safe, supportive space for expression — at your own pace"
+        description: "Monthly live creative sessions. Access to community events like Stories, Dreams & Reflections and Embodied Ease. A safe, supportive space for expression — at your own pace."
     }
     // Add more as needed
 ];
@@ -36,38 +36,47 @@ export default function SukoonPage() {
 
     return (
         <div className={styles.rndBackground}>
-            <video autoPlay loop muted playsInline className={styles.videoBackground}>
-                <source src="/flower.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <div className={styles.videoOverlay}></div>
+
+            {/* --- Fixed Video Background Layer --- */}
+            <div className={styles.bgWrapper}>
+                <video autoPlay loop muted playsInline className={styles.videoBackground}>
+                    <source src="/flower.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div className={styles.videoOverlay}></div>
+            </div>
+
+            {/* --- Navbar Switch --- */}
             {isMobile ? (
                 <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
             ) : (
                 <Navbar show={true} />
             )}
+
             <div className={styles.rndContainer}>
                 <div className={styles.contentWrapper}>
                     <h1 className={styles.rndHeading}>Sukoon</h1>
                     <div className={styles.textSection}>
                         {sukoonTextSection1}
                     </div>
-                    {/* --- Begin Hub Card Row --- */}
-                    <div className={isMobile ? styles.hubCardsRowMobile : styles.hubCardsRow}>
+
+                    {/* --- Hub Card Row, always present, layout handled by CSS --- */}
+                    <div className={styles.hubCardsRow}>
                         {sukoonHubs.map((hub, idx) => (
                             <div className={styles.hubCard} key={idx}>
                                 <div className={styles.hubCardTitle}>{hub.title}</div>
                                 <div className={styles.hubCardDescription}>{hub.description}</div>
-                                {/* No button */}
                             </div>
                         ))}
                     </div>
-                    {/* --- End Hub Card Row --- */}
+
+                    {/* --- Second Text Section --- */}
                     <div className={styles.textSection}>
                         {sukoonTextSection2}
                     </div>
                 </div>
             </div>
+
             <Footer />
         </div>
     );
