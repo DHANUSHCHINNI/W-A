@@ -10,7 +10,32 @@
     background: #4b2714;
 }
 
+/* Hover styles */
 .myButton:hover {
     color: #a0522d;
     background: #4b2714;
+}
+
+/* Responsive for smaller widths (mobile) */
+@media (max-width: 768px) {
+    .myButton {
+        font-size: 18px;
+        /* Raised from 16px */
+        padding: 0.7rem 1.4rem;
+        /* Raised from 0.5rem 1.2rem */
+        width: 90vw;
+        max-width: 340px;
+        min-width: 220px;
+        /* Ensure a minimum width */
+    }
+}
+
+/* Responsive for short height screens */
+@media (max-height: 700px) {
+    .myButton {
+        font-size: 16px;
+        /* Raised from 14px */
+        padding: 0.6rem 1.2rem;
+        /* Raised from 0.4rem 1rem */
+    }
 }

@@ -8,13 +8,17 @@ import { useRouter } from 'next/navigation';
 
 export default function SecondPage() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isShortHeight, setIsShortHeight] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const checkMobileAndHeight = () => {
+      setIsMobile(window.innerWidth <= 768);
+      setIsShortHeight(window.innerHeight <= 700); // Threshold for short height
+    };
+    checkMobileAndHeight();
+    window.addEventListener('resize', checkMobileAndHeight);
+    return () => window.removeEventListener('resize', checkMobileAndHeight);
   }, []);
 
   return (
@@ -28,7 +32,9 @@ export default function SecondPage() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        paddingTop: isShortHeight ? '1rem' : '0', // reduce vertical padding if height is small
+        paddingBottom: isShortHeight ? '1rem' : '0',
       }}
     >
       <motion.div
@@ -40,9 +46,14 @@ export default function SecondPage() {
         style={{
           width: isMobile ? "320px" : "700px",
           maxWidth: "100%",
+          height: isShortHeight ? (isMobile ? "90px" : "220px") : (isMobile ? "120px" : "300px"), // smaller logo for short height
         } as React.CSSProperties}
       >
-        <ColorLogoFin width={isMobile ? 320 : 700} height={isMobile ? 120 : 300} style={{ fill: "#d1c1b2" }} />
+        <ColorLogoFin
+          width={isMobile ? 320 : 700}
+          height={isShortHeight ? (isMobile ? 90 : 220) : (isMobile ? 120 : 300)}
+          style={{ fill: "#d1c1b2" }}
+        />
       </motion.div>
       <motion.div
         key="buttons"
@@ -56,34 +67,23 @@ export default function SecondPage() {
           gap: isMobile ? "1.2rem" : "2rem",
           justifyContent: "center",
           alignItems: "center",
-          marginTop: isMobile ? 40 : 60,
+          marginTop: isShortHeight ? (isMobile ? 20 : 30) : (isMobile ? 40 : 60), // smaller margin for short height
           zIndex: 6,
           position: "relative",
         } as React.CSSProperties}
       >
         <button
           className={buttonStyles.myButton}
-          style={{
-            fontSize: isMobile ? "0.95rem" : undefined,
-            padding: isMobile ? "0.5rem 1.2rem" : undefined,
-            width: isMobile ? "90vw" : undefined,
-            maxWidth: isMobile ? 340 : undefined,
-          }}
         >
           Book consultation
         </button>
         <button
           className={buttonStyles.myButton}
-          style={{
-            fontSize: isMobile ? "0.95rem" : undefined,
-            padding: isMobile ? "0.5rem 1.2rem" : undefined,
-            width: isMobile ? "90vw" : undefined,
-            maxWidth: isMobile ? 340 : undefined,
-          }}
           onClick={() => router.push('/community')}
         >
           Community events
         </button>
+
       </motion.div>
     </div>
   );

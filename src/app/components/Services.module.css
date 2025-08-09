@@ -11,21 +11,7 @@
   color: #fff;
   padding-top: 60px;
   overflow-x: hidden;
-  /* Add your SVG as background */
   background: url('/scroll5.svg') center center/cover no-repeat;
-}
-
-.servicesContainer {
-  width: 100%;
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-  color: #fff;
-  padding-top: 60px;
-  overflow-x: hidden;
 }
 
 .servicesHeading {
@@ -49,46 +35,35 @@
   }
 }
 
+/* ---------- KEY OFFERINGS BAR ---------- */
 .keyOfferingsBar {
-  width: 62vw;
+  width: 192vw;
+  max-width: 1000px;
+  /* Adjust for less length on desktop */
+  min-width: 300px;
   background: #B1ABAB;
-  padding: 1.7rem 1.3rem;
+  padding: 1.6rem 1rem;
   border-radius: 20px;
-  margin-top: 34px;
-  margin-bottom: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2.1rem;
+  margin-top: 28px;
+  margin-bottom: 28px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1.1rem;
+  place-items: center;
+
   box-shadow: 0 2px 11px rgba(0, 0, 0, 0.09);
 }
 
 @media (max-width: 768px) {
   .keyOfferingsBar {
     width: 97vw;
-    padding: 1.1rem 0.3rem;
-    gap: 0.9rem;
-    margin-top: 24px;
-    margin-bottom: 18px;
+    padding: 1rem 0.2rem;
+    gap: 0.8rem;
+    margin-top: 18px;
+    margin-bottom: 16px;
   }
 }
-
-@media (max-width: 768px) {
-  .keyOfferingsGridMobile {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.7rem 1rem;
-    width: 96vw;
-    background: #B1ABAB;
-    padding: 1.1rem 0.3rem;
-    border-radius: 18px;
-    margin-top: 24px;
-    margin-bottom: 18px;
-    place-items: center;
-    box-shadow: 0 2px 11px rgba(0, 0, 0, 0.09);
-  }
-}
-
 
 .keyOfferingsItem {
   display: flex;
@@ -97,23 +72,20 @@
   background: none;
   border-radius: 10px;
   transition: background 0.18s, box-shadow 0.18s;
-  padding: 0.23rem 1rem;
+  padding: 0.18rem 0.7rem;
   cursor: pointer;
-  min-width: 120px;
-  max-width: 190px;
+  min-width: 94px;
+  max-width: 150px;
 }
 
-@media (max-width: 768px) {
-  .keyOfferingsItem {
-    padding: 0.13rem 0.5rem;
-    min-width: 96px;
-  }
+.keyOfferingsItem:hover {
+  background: #e2d6c7;
 }
 
 .keyOfferingsLabel {
-  margin-top: 11px;
+  margin-top: 9px;
   font-family: 'Erstoria', serif;
-  font-size: 17px;
+  font-size: 15px;
   color: #83351b;
   font-weight: 600;
   text-align: center;
@@ -121,103 +93,127 @@
   letter-spacing: 0.01em;
 }
 
-.keyOfferingsItem:hover {
-  background: #e2d6c7;
-}
-
 @media (max-width: 768px) {
+  .keyOfferingsItem {
+    padding: 0.11rem 0.35rem;
+    min-width: 75px;
+  }
+
   .keyOfferingsLabel {
-    margin-top: 5px;
-    font-size: 12px;
+    margin-top: 4px;
+    font-size: 11px;
   }
 }
 
+@media (max-width: 768px) {
+  .keyOfferingsGridMobile {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 0.8rem;
+    width: 96vw;
+    background: #B1ABAB;
+    padding: 1rem 0.2rem;
+    border-radius: 18px;
+    margin-top: 16px;
+    margin-bottom: 12px;
+    place-items: center;
+    box-shadow: 0 2px 11px rgba(0, 0, 0, 0.09);
+  }
+}
+
+/* ---------- HUB CARDS ---------- */
+
 .hubCardsRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
-  gap: 18px;
-  width: 85vw;
-  max-width: 1540px;
-  margin-top: 12px;
-  flex-wrap: nowrap;
-  min-height: 320px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(120px, 1fr));
+  /* Always 5 columns on desktop/tablet */
+  gap: 28px;
+  width: 94vw;
+  max-width: 1200px;
+  margin: 18px auto 0 auto;
+  min-height: 200px;
+}
+
+@media (max-width: 1050px) and (min-width: 769px) {
+  .hubCardsRow {
+    gap: 7px;
+    max-width: 97vw;
+    width: 97vw;
+  }
+
+  .hubCard {
+    max-width: 120px;
+    /* Smaller cards for tighter fit */
+    min-width: 60px;
+    padding: 0.7rem 0.2rem;
+    min-height: 150px;
+  }
+
+  .hubCardTitle {
+    font-size: 13px;
+  }
+
+  .hubCardDescription {
+    font-size: 9px;
+    margin-bottom: 6px;
+    min-height: 12px;
+  }
 }
 
 @media (max-width: 768px) {
   .hubCardsRowMobile {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 7px;
     width: 100%;
-    padding: 0 12px;
+    padding: 0 10px;
     justify-content: center;
     align-items: stretch;
-    margin: 0 0 6px 0;
-
+    margin: 0 0 4px 0;
   }
 }
 
 .hubCard {
   cursor: pointer;
-  min-height: 285px;
-  min-width: 230px;
-  max-width: 280px;
+  min-height: 260px;
+  min-width: 180px;
+  max-width: 250px;
+  padding: 1.5rem 0.8rem;
   flex: 1 1 0;
   justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.6rem 0.85rem;
   background: rgba(55, 43, 36, 0.92);
-  border-radius: 15px;
+  border-radius: 13px;
   transition: background 0.18s;
 }
 
-@media (max-width: 768px) {
-  .hubCard {
-    min-height: 200px;
-    min-width: 155px;
-    padding: 1.2rem 0.7rem;
-  }
+.hubCard:hover {
+  transform: translateY(-8px) scale(1.03);
+  background: #82341A;
 }
 
 .hubCardTitle {
   margin: 0;
-  margin-bottom: 14px;
-  font-size: 21px;
+  margin-bottom: 10px;
+  font-size: 16px;
   text-align: center;
   font-weight: 600;
   color: #edd8b5;
 }
 
-@media (max-width: 768px) {
-  .hubCardTitle {
-    font-size: 16px;
-    margin-bottom: 7px;
-  }
-}
-
 .hubCardDescription {
   font-family: 'PT Serif', serif;
   color: #ffeedd;
-  font-size: 16px;
+  font-size: 13px;
   text-align: center;
-  margin-bottom: 17px;
+  margin-bottom: 10px;
   margin-top: 0;
   font-weight: 400;
   line-height: 1.3;
-  min-height: 26px;
+  min-height: 20px;
   max-width: 100%;
-}
-
-@media (max-width: 768px) {
-  .hubCardDescription {
-    font-size: 10.5px;
-    margin-bottom: 8px;
-    min-height: 18px;
-  }
 }
 
 .hubCardButtonWrapper {
@@ -228,12 +224,24 @@
 }
 
 @media (max-width: 768px) {
+  .hubCard {
+    min-height: 120px;
+    min-width: 70px;
+    padding: 0.7rem 0.2rem;
+  }
+
+  .hubCardTitle {
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+
+  .hubCardDescription {
+    font-size: 7px;
+    margin-bottom: 4px;
+    min-height: 7px;
+  }
+
   .hubCardButtonWrapper {
     margin-top: 2px;
   }
-}
-
-.hubCard:hover {
-  transform: translateY(-8px) scale(1.03);
-  background: #82341A;
 }
