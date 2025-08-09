@@ -9,14 +9,12 @@ function ServiceHubButton({
 }: {
   label: string,
   href: string,
-  style: React.CSSProperties,
+  style?: React.CSSProperties, // make optional
   customSize?: { width: number, height: number }
 }) {
-  const width = customSize?.width || 300;
-  const height = customSize?.height || 100;
-
+  // Remove fixed width/height
   return (
-    <Link href={href} style={{ textDecoration: 'none' }}>
+    <Link href={href} style={{ textDecoration: 'none', width: '100%', height: '100%' }}>
       <div style={{
         ...style,
         display: 'flex',
@@ -24,16 +22,17 @@ function ServiceHubButton({
         justifyContent: 'center',
         cursor: 'pointer',
         position: 'relative',
-        width,
-        height,
+        width: '100%',
+        height: '100%',
       }}>
         {/* Black grunge border as background */}
         <div style={{
           position: 'absolute',
-          left: 0, top: 0, width: '100%', height: '100%',
+          left: 0, top: 0,
+          width: '100%', height: '100%',
           zIndex: 1,
         }}>
-          <BlackGrungeBorder width={width} height={height} />
+          <BlackGrungeBorder width="100%" height="100%" />
         </div>
         <span style={{
           position: 'relative',

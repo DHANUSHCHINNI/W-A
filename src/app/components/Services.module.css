@@ -122,71 +122,30 @@
 }
 
 /* ---------- HUB CARDS ---------- */
-
+/* ---------- HUB CARDS DESKTOP ---------- */
 .hubCardsRow {
   display: grid;
-  grid-template-columns: repeat(5, minmax(120px, 1fr));
-  /* Always 5 columns on desktop/tablet */
+  grid-template-columns: repeat(5, 1fr);
   gap: 28px;
   width: 94vw;
   max-width: 1200px;
   margin: 18px auto 0 auto;
-  min-height: 200px;
-}
-
-@media (max-width: 1050px) and (min-width: 769px) {
-  .hubCardsRow {
-    gap: 7px;
-    max-width: 97vw;
-    width: 97vw;
-  }
-
-  .hubCard {
-    max-width: 120px;
-    /* Smaller cards for tighter fit */
-    min-width: 60px;
-    padding: 0.7rem 0.2rem;
-    min-height: 150px;
-  }
-
-  .hubCardTitle {
-    font-size: 13px;
-  }
-
-  .hubCardDescription {
-    font-size: 9px;
-    margin-bottom: 6px;
-    min-height: 12px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hubCardsRowMobile {
-    display: flex;
-    flex-direction: row;
-    gap: 7px;
-    width: 100%;
-    padding: 0 10px;
-    justify-content: center;
-    align-items: stretch;
-    margin: 0 0 4px 0;
-  }
 }
 
 .hubCard {
-  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
   min-height: 260px;
-  min-width: 180px;
-  max-width: 250px;
   padding: 1.5rem 0.8rem;
-  flex: 1 1 0;
   justify-content: center;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   background: rgba(55, 43, 36, 0.92);
   border-radius: 13px;
-  transition: background 0.18s;
+  transition: background 0.18s, transform 0.18s;
+  cursor: pointer;
 }
 
 .hubCard:hover {
@@ -195,9 +154,8 @@
 }
 
 .hubCardTitle {
-  margin: 0;
-  margin-bottom: 10px;
-  font-size: 16px;
+  margin: 0 0 10px 0;
+  font-size: 18px;
   text-align: center;
   font-weight: 600;
   color: #edd8b5;
@@ -206,10 +164,9 @@
 .hubCardDescription {
   font-family: 'PT Serif', serif;
   color: #ffeedd;
-  font-size: 13px;
+  font-size: 15px;
   text-align: center;
-  margin-bottom: 10px;
-  margin-top: 0;
+  margin: 0 0 10px 0;
   font-weight: 400;
   line-height: 1.3;
   min-height: 20px;
@@ -223,20 +180,37 @@
   margin-top: 4px;
 }
 
+/* ---------- HUB CARDS MOBILE ---------- */
 @media (max-width: 768px) {
+
+  /* Parent rows */
+  .hubCardsRowMobile {
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+    width: 100%;
+    padding: 0 10px;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 8px;
+  }
+
+  /* Card style for mobile */
   .hubCard {
     min-height: 120px;
-    min-width: 70px;
     padding: 0.7rem 0.2rem;
+    width: 100%;
+    justify-content: center;
+
   }
 
   .hubCardTitle {
-    font-size: 11px;
+    font-size: 14px;
     margin-bottom: 5px;
   }
 
   .hubCardDescription {
-    font-size: 7px;
+    font-size: 10px;
     margin-bottom: 4px;
     min-height: 7px;
   }
