@@ -5,6 +5,9 @@ import { auth } from "@/lib/firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
 import styles from './dashboard.module.css';
 import PaymentDetailsDashboard from "@/app/components/PaymentDetailsDashboard";
+import Navbar from "../components/navbar";
+import HamburgerNavbar from '../components/HamburgerNavbar';
+import Footer from "../components/Footer";
 
 const adminEmails = [
     'admin@example.com',
@@ -20,6 +23,8 @@ const adminEmails = [
 export default function AdminDashboardPage() {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
+    const [isMobile, setIsMobile] = useState(false);
+    const [hamburgerOpen, setHamburgerOpen] = useState(false);
     const [eventForm, setEventForm] = useState({
         title: '',
         description: '',
@@ -30,6 +35,13 @@ export default function AdminDashboardPage() {
         venue: '',
     });
     const [eventMessage, setEventMessage] = useState<string | null>(null);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth <= 900);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     // Auth check
     useEffect(() => {
@@ -79,6 +91,11 @@ export default function AdminDashboardPage() {
 
     return (
         <div className={styles.dashboardBackground}>
+            {isMobile ? (
+                <HamburgerNavbar show={true} open={hamburgerOpen} setOpen={setHamburgerOpen} />
+            ) : (
+                <Navbar show={true} />
+            )}
             <div className={styles.dashboardContainer}>
                 <h1 className={styles.heading}>Admin Dashboard</h1>
                 <section className={styles.section}>
@@ -127,7 +144,7 @@ export default function AdminDashboardPage() {
                             />
                             <input
                                 name="type"
-                                placeholder="Type (e.g. Upcoming or Past)"
+                                placeholder="Type (e.g. Upcoming or closed)"
                                 value={eventForm.type}
                                 onChange={handleEventChange}
                                 className={styles.input}
@@ -157,7 +174,9 @@ export default function AdminDashboardPage() {
                         <PaymentDetailsDashboard />
                     </div>
                 </section>
+                <Navbar show={true} />
             </div>
+            <Footer />
         </div>
     );
 } 

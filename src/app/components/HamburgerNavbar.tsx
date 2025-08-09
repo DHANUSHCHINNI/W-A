@@ -101,7 +101,9 @@ const HamburgerNavbar: React.FC<HamburgerNavbarProps> = ({ show, open, setOpen }
       } as HTMLMotionProps<"nav">["style"]}
     >
       <div style={{ marginRight: "1.5rem", marginLeft: "1rem" }}>
-        <Image src="/toplogo2.png" alt="Logo" width={55} height={25} />
+        <Link href="/">
+          <Image src="/toplogo2.png" alt="Logo" width={55} height={22} />
+        </Link>
 
       </div>
       <IconButton

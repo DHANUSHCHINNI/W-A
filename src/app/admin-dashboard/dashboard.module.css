@@ -10,7 +10,7 @@
 .dashboardContainer {
     max-width: 1200px;
     width: 100%;
-    margin: 60px auto 0 auto;
+    margin: 90px auto 20px auto;
     padding: 32px;
     border-radius: 24px;
     background: #82341A;
@@ -133,21 +133,25 @@
 }
 
 @media (max-width: 900px) {
-  .dashboardContainer {
-    max-width: 98vw;
-    padding: 16px;
-    margin: 24px 1vw 0 1vw;
-    border-radius: 14px;
-  }
-  .heading {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .sectionTitle {
-    font-size: 1.1rem;
-    margin-bottom: 0.7rem;
-  }
-  .formCard {
-    padding: 1rem;
-  }
+    .dashboardContainer {
+        max-width: 98vw;
+        padding: 16px;
+        margin: 65px 1vw 0 1vw;
+        border-radius: 14px;
+        align-items: center;
+    }
+
+    .heading {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
+    }
+
+    .formCard {
+        padding: 1rem;
+    }
 }
