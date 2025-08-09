@@ -41,6 +41,19 @@
     z-index: 2;
 }
 
+.textSection2 {
+    width: 100%;
+    max-width: 100%;
+    color: #ffffff;
+    font-family: 'Erstoria';
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: center;
+    padding-left: 0;
+    position: relative;
+    z-index: 2;
+}
+
 .contentWrapper {
     max-width: 1200px;
     width: 100%;
@@ -215,8 +228,8 @@
     }
 
     .hubCard {
-        min-height: 200px;
-        min-width: 155px;
+        min-height: 300px;
+        min-width: 355px;
         padding: 1.2rem 0.7rem;
     }
 
@@ -229,6 +242,19 @@
         font-size: 14.5px;
         margin-bottom: 8px;
         min-height: 18px;
+    }
+
+    .textSection2 {
+        width: 100%;
+        max-width: 100%;
+        color: #ffffff;
+        font-family: 'Erstoria';
+        font-size: 1.2rem;
+        line-height: 1.5;
+        text-align: center;
+        padding-left: 0;
+        position: relative;
+        z-index: 2;
     }
 
 }

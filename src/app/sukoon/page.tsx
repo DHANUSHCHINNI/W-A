@@ -71,7 +71,7 @@ export default function SukoonPage() {
                     </div>
 
                     {/* --- Second Text Section --- */}
-                    <div className={styles.textSection}>
+                    <div className={styles.textSection2}>
                         {sukoonTextSection2}
                     </div>
                 </div>
