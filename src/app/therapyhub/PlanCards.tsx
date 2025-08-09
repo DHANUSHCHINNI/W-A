@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'; // Import Link
 import buttonStyles from '../components/buttons3.module.css';
 import styles from './PlanCards2.module.css';
 
@@ -13,6 +14,7 @@ const plans = [
             </>
         ),
         button: 'Explore Sukoon →',
+        link: '/sukoon',
     },
     {
         id: 2,
@@ -24,6 +26,7 @@ const plans = [
             </>
         ),
         button: 'Step into Raahat →',
+        link: '/rahaat',
     },
     {
         id: 3,
@@ -35,6 +38,7 @@ const plans = [
             </>
         ),
         button: 'Book Consultation →',
+        link: '/supervision',
     },
 ];
 
@@ -42,12 +46,14 @@ const PlanCards = () => (
     <div className={styles.planSectionWrapper}>
         <h2 className={styles.choosePlanHeading}>Choose your plan</h2>
         <div className={styles.cardsRow}>
-            {plans.map((plan, idx) => (
-                <div className={styles.planCard} key={plan.title}>
+            {plans.map((plan) => (
+                <div className={styles.planCard} key={plan.id}>
                     <h3 className={styles.planTitle}>{plan.title}</h3>
                     <div className={styles.planDescription}>{plan.description}</div>
                     <div className={styles.buttonWrapper}>
-                        <button className={buttonStyles.myButton + ' ' + styles.planButton}>{plan.button}</button>
+                        <Link href={plan.link} className={`${buttonStyles.myButton} ${styles.planButton}`}>
+                            {plan.button}
+                        </Link>
                     </div>
                 </div>
             ))}
@@ -55,4 +61,4 @@ const PlanCards = () => (
     </div>
 );
 
-export default PlanCards; 
+export default PlanCards;

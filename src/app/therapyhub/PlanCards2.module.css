@@ -38,11 +38,13 @@
     padding: 2.5rem 2rem 2rem 2rem;
     display: flex;
     flex-direction: column;
+    /* Ensure cards stretch equally in row */
     margin-bottom: 2rem;
     color: #F5E9E0;
     font-family: 'Erstoria', serif;
     transition: transform 0.18s, box-shadow 0.18s;
     min-height: 500px;
+    box-sizing: border-box;
 }
 
 .planCard:hover {
@@ -64,28 +66,36 @@
     color: #BAB1AB;
     font-family: 'PT Serif', serif;
     flex-grow: 1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
+/* Updated: Center button horizontally! */
 .buttonWrapper {
     width: 100%;
     margin-top: auto;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    /* <---- This makes button center horizontally */
+    align-items: center;
+    /* optional vertical centering */
 }
+
+/* Optional: If you want the button always full-width, use:
+.buttonWrapper {
+    width: 100%;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+*/
 
 .planButton {
     font-size: 1.35rem !important;
     white-space: nowrap;
-}
-
-.planCard {
-    box-sizing: border-box;
-    /* add for proper sizing */
-}
-
-.planDescription {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    /* Remove underline for anchor-styled button. If needed here: */
+    text-decoration: none;
 }
 
 @media (max-width: 900px) {
@@ -119,8 +129,10 @@
         overflow-wrap: break-word;
     }
 
+    /* On mobile, also CENTER the button! */
     .buttonWrapper {
-        justify-content: flex-start;
+        justify-content: center;
+        /* <--- really make sure button centered */
         width: 100%;
         margin-top: 0.4rem;
     }
@@ -131,5 +143,6 @@
         padding: 0.52em 1.02em;
         white-space: normal;
         word-break: break-word;
+        text-decoration: none;
     }
 }
