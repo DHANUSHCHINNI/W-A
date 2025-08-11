@@ -302,28 +302,6 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .hubCardsRow {
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
-    }
-
-    .hubCard {
-        min-height: 300px;
-        min-width: 355px;
-        padding: 1.2rem 0.7rem;
-    }
-
-    .hubCardTitle {
-        font-size: 18px;
-        margin-bottom: 13px;
-    }
-
-    .hubCardDescription {
-        font-size: 14.5px;
-        margin-bottom: 8px;
-        min-height: 18px;
-    }
 
     .textSection2 {
         width: 100%;
@@ -337,13 +315,43 @@
         position: relative;
         z-index: 2;
     }
+}
+
+@media (max-width: 768px) {
+    .hubCardsRow {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .hubCard {
+        width: 90%;
+        /* More responsive width instead of fixed min-width */
+        max-width: 355px;
+        /* Optional: limit very large cards */
+        min-width: unset;
+        /* Remove fixed min-width that breaks centering */
+        padding: 1.2rem 0.7rem;
+        box-sizing: border-box;
+        /* Prevent padding from blowing up width */
+    }
+
+    .hubCardTitle {
+        font-size: 18px;
+        margin-bottom: 13px;
+    }
+
+    .hubCardDescription {
+        font-size: 14.5px;
+        margin-bottom: 8px;
+        min-height: 18px;
+    }
 
     .largeButton {
         font-size: 1rem !important;
         padding: 0.7em 2.2em !important;
         border-radius: 2.5em !important;
     }
-
 }
 
 

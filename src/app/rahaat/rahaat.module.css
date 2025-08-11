@@ -267,9 +267,24 @@
     }
 
     .largeButton {
-        font-size: 1rem !important;
+        font-size: 1.4rem !important;
         padding: 0.7em 2.2em !important;
         border-radius: 2.5em !important;
+    }
+
+    .textSection2 {
+        width: 100%;
+        max-width: 100%;
+        /* limits text width */
+        margin: 0 auto;
+        color: #ffffff;
+        font-family: 'Erstoria';
+        font-size: 0.7rem;
+        line-height: 1.5;
+        text-align: center;
+        padding-left: 0;
+        position: relative;
+        z-index: 2;
     }
 }
 
