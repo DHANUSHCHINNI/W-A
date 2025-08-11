@@ -5,6 +5,8 @@ import HamburgerNavbar from '../components/HamburgerNavbar';
 import styles from './sukoon.module.css';
 import { sukoonTextSection1, sukoonTextSection2 } from './sukoonText';
 import Footer from "../components/Footer";
+import Link from 'next/link';
+import buttonStyles from '../components/Button.module.css';
 
 // Define hub cards: Only title and a short description
 const sukoonHubs = [
@@ -74,7 +76,15 @@ export default function SukoonPage() {
                     <div className={styles.textSection2}>
                         {sukoonTextSection2}
                     </div>
+                    <div className={styles.buttonWrapper}>
+                        <Link href="/contact" style={{ textDecoration: 'none' }}>
+                            <button className={`${buttonStyles.myButton} ${styles.largeButton}`}>
+                                Get Your Sukoon @ ₹999 - Subscribe now!
+                            </button>
+                        </Link>
+                    </div>
                 </div>
+
             </div>
 
             <Footer />

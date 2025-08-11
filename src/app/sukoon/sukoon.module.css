@@ -219,6 +219,87 @@
     max-width: 100%;
 }
 
+.largeButton {
+    font-size: 1.7rem !important;
+    padding: 0.7em 1.2em !important;
+    border-radius: 2.5em !important;
+    background: #82341A !important;
+    /* soft glassy peach */
+    border: none !important;
+    color: #43281c;
+    position: relative;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(255, 127, 80, 0.08),
+        0 1.5px 8px rgba(244, 119, 56, 0.13);
+    /* subtle glow/shadow */
+    overflow: hidden;
+    outline: none;
+    transition: color 0.25s, box-shadow 0.3s, transform 0.18s;
+}
+
+/* Animated gradient border using a :before pseudo-element */
+.largeButton::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 2.5em;
+    padding: 3px;
+    background: linear-gradient(110deg, #ff8765, #ffbb56 80%);
+    background-size: 200% 200%;
+    z-index: 0;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Glassy, elevated look: add a semi-transparent inner overlay for depth */
+.largeButton::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 2.5em;
+    background: rgba(255, 255, 255, 0.18);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Place button content above border & overlay */
+.largeButton>* {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hover state: pop-glass effect */
+.largeButton:hover {
+    box-shadow: 0 8px 32px rgba(255, 127, 80, 0.15),
+        0 3px 16px rgba(244, 119, 56, 0.21);
+    color: #000 !important;
+    transform: scale(1.03) translateY(-2px);
+}
+
+/* Centering wrapper */
+.buttonWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.2rem;
+    width: 100%;
+    /* cover full container */
+    padding: 0;
+    /* prevent unwanted shift */
+    text-align: center;
+}
+
+/* Optional, for extra padding inside wrapper */
+.buttonWrapper button {
+    padding: 0.8em 2.5em;
+}
+
+
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .hubCardsRow {
@@ -255,6 +336,12 @@
         padding-left: 0;
         position: relative;
         z-index: 2;
+    }
+
+    .largeButton {
+        font-size: 1rem !important;
+        padding: 0.7em 2.2em !important;
+        border-radius: 2.5em !important;
     }
 
 }

@@ -160,8 +160,8 @@ const Navbar: React.FC<NavbarProps> = ({ show, color = "#1C1610" }) => {
                         </div>
 
                         <Link
-                            href="/Members"
-                            className={`${styles.navLink} ${pathname === "/Members" ? styles.activeNavLink : ""}`}
+                            href="/members"
+                            className={`${styles.navLink} ${pathname === "/members" ? styles.activeNavLink : ""}`}
                         >
                             Members
                         </Link>

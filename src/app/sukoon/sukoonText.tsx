@@ -25,7 +25,6 @@ export const sukoonTextSection2 = (
     <div style={{ marginTop: '5rem' }}>
         <div className={styles.bodyText}>
             <span className={styles.question}>Who Can Join?</span>
-            <br />
             <span className={styles.highlight}>Sukoon</span> is for anyone seeking a creative way to care:
             <br />
             <span className={styles.highlight2}>

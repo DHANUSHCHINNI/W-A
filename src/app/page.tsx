@@ -87,9 +87,9 @@ export default function LandingPage() {
       >
         <div style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <Paragraphs paragraphs={[
-            "We refuse to believe that being well means being quiet. We're here for your real self – the tired one, the curious one, the one who still dances in the kitchen.",
-            "At Well-being & Arts Hub, we make noise, make art, make space for all the parts of you that don't fit the script.",
-            "Come, celebrate the wild, weird and wonderful ways of being human. Say it messy, say it loud, however it shows up. We'll meet you there."
+            "At Well-being and Arts Hub, we make noise, make art, and make space for all the parts of you that don’t fit the script.",
+            "We are your creative corner for feeling, connecting and belonging.",
+            "Come, celebrate the wild, weird, and wonderful ways of being human. Say it messy, say it loud, say it however it shows up. We’ll meet you there."
           ]} />
         </div>
       </section>

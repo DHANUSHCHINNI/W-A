@@ -17,7 +17,8 @@ const rndImages = [
     'https://res.cloudinary.com/djspsll41/image/upload/v1754671343/ppt2_jsop6z.png',
     'https://res.cloudinary.com/djspsll41/image/upload/v1754671342/ppt5_cdtcpn.png',
     'https://res.cloudinary.com/djspsll41/image/upload/v1754671342/ppt4_c6vrsu.png',
-    'https://res.cloudinary.com/djspsll41/image/upload/v1754671753/R_DHub1_lija81.jpg'
+    'https://res.cloudinary.com/djspsll41/image/upload/v1754671753/R_DHub1_lija81.jpg',
+    'https://res.cloudinary.com/djspsll41/image/upload/v1754932196/ppt6_flpkua.png'
 ];
 
 export default function RnDPage() {

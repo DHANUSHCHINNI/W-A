@@ -33,9 +33,12 @@ export default function SecondPage() {
         transition={{ duration: 0.4 }}
         className={styles.buttonsContainer}
       >
-        <button className={buttonStyles.myButton}>
-          Book consultation
-        </button>
+        <a href="https://forms.gle/HGfFM9Yi8dpLzKDD7" target="_blank" rel="noopener noreferrer">
+          <button className={buttonStyles.myButton}>
+            Book consultation
+          </button>
+        </a>
+
         <button
           className={buttonStyles.myButton}
           onClick={() => router.push('/community')}

@@ -41,7 +41,7 @@ export default function EventCards({ upcomingEvents, pastEvents, tmcImages, styl
     }
 
     function renderCard(event: Event, idx: number, isUpcoming: boolean) {
-        const key = event._id || `${isUpcoming ? 'up' : 'past'}-${idx}`;
+        const key = event._id || `${isUpcoming ? 'Upcoming' : 'closed'}-${idx}`;
         const expandedClass = mobile && expanded[key] ? styles.expanded || 'expanded' : '';
         return (
             <div
@@ -59,6 +59,7 @@ export default function EventCards({ upcomingEvents, pastEvents, tmcImages, styl
                         className={styles.image}
                     />
                 </div>
+
                 <div className={styles.cardContent}>
                     <h2 className={styles.cardTitle}>{event.title}</h2>
                     <p className={styles.cardDescription}>
@@ -76,6 +77,29 @@ export default function EventCards({ upcomingEvents, pastEvents, tmcImages, styl
                             </a>
                         )}
                     </div>
+
+                    {isUpcoming && (
+                        <>
+                            <div className={styles.cardButtonsWrapper}>
+                                <div className={styles.cardButtons}>
+                                    <button className={styles.accessButton}>
+                                        <span className={styles.accessButtonTitle}>
+                                            Get Sukoon Access – ₹999
+                                        </span>
+                                        <span className={styles.accessButtonDesc}>
+                                            All of this month's events + member perks
+                                        </span>
+                                    </button>
+
+                                    <button className={styles.bookButton}>
+                                        Book This Event
+                                    </button>
+                                </div>
+                            </div>
+
+                        </>
+                    )}
+
                 </div>
             </div>
         );

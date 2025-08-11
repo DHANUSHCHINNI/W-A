@@ -32,7 +32,7 @@ export default function Footer() {
                     <div className={styles.footerHeading}>Subscriptions</div>
                     <ul>
                         <li><Link href="/sukoon" className={styles.footerLink}>Sukoon Subscription</Link></li>
-                        <li><Link href="/contact" className={styles.footerLink}>Raahat Subscription</Link></li>
+                        <li><Link href="/rahaat" className={styles.footerLink}>Raahat Subscription</Link></li>
                     </ul>
                 </div>
                 <div className={styles.footerCol}>
@@ -40,7 +40,7 @@ export default function Footer() {
                     <ul>
                         <li><Link href="/innovationlab" className={styles.footerLink}>Project Bhava</Link></li>
                         <li><Link href="/offerings/fillingyourcup" className={styles.footerLink}>Fill Your Cup</Link></li>
-                        <li>Community Events</li>
+                        <li><Link href="/community" className={styles.footerLink}>Community Events</Link></li>
                         <li><Link href="/wellbeingretreats" className={styles.footerLink}>Well-being Retreats</Link></li>
                     </ul>
                 </div>

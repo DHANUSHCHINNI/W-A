@@ -38,7 +38,7 @@ const plans = [
             </>
         ),
         button: 'Book Consultation →',
-        link: '/supervision',
+        link: 'https://forms.gle/HGfFM9Yi8dpLzKDD7',
     },
 ];
 

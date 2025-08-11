@@ -129,12 +129,28 @@
 
 .question {
     font-family: 'Erstoria', serif;
-    font-size: 1.6rem;
+    font-size: 2.6rem;
     color: #82341A;
     font-weight: 600;
     margin: 1.2em 0 0.7em 0;
     display: block;
     text-align: center;
+}
+
+
+.textSection2 {
+    width: 100%;
+    max-width: 100%;
+    /* limits text width */
+    margin: 0 auto;
+    color: #ffffff;
+    font-family: 'Erstoria';
+    font-size: 1.2rem;
+    line-height: 1.5;
+    text-align: center;
+    padding-left: 0;
+    position: relative;
+    z-index: 2;
 }
 
 .introText {

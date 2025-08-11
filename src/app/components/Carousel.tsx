@@ -77,7 +77,7 @@ export default function Carousel({ images, altPrefix = 'Image', styles = default
                             alt={`${altPrefix} ${idx + 1}`}
                             fill
                             style={{
-                                objectFit: 'cover',
+                                objectFit: 'contain',
                                 borderRadius: '8px'
                             }}
                         />

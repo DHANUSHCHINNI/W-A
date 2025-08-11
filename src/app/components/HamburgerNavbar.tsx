@@ -229,7 +229,7 @@ const HamburgerNavbar: React.FC<HamburgerNavbarProps> = ({ show, open, setOpen }
           </div>
 
           <Link
-            href="/Members"
+            href="/members"
             style={{
               color: baseTextColor,
               textDecoration: "none",

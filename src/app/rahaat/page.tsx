@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import HamburgerNavbar from '../components/HamburgerNavbar';
 import styles from './rahaat.module.css';
-import { rahaatTextSection1 } from './rahaatText';
+import { raahatTextSection, rahaatTextSection1 } from './rahaatText';
 import Footer from "../components/Footer";
 import Link from 'next/link';
 import buttonStyles from '../components/Button.module.css';
@@ -28,22 +28,17 @@ const rahaatHubs = [
     {
         title: "Why a Subscription Model?",
         description:
-            "Raahat is a monthly subscription for therapy + community care. It’s designed to make emotional support more sustainable — for both the people seeking care and the people offering it.\n\nYou get:\n Supports budgeting for care — without compromising on quality\n Makes ongoing support sustainable — emotionally and financially\n Therapists and facilitators who offer intentional and paced care, and are not burnt out by volume.\n Access to creative, non-clinical spaces that complement therapy — stories, bodywork, reflection, and more"
+            "Raahat is a monthly subscription for therapy + community care. It’s designed to make emotional support more sustainable for both the people seeking care and the people offering it.\n\nYou get:\n Supports budgeting for care without compromising on quality\n Makes ongoing support sustainable emotionally and financially\n Therapists and facilitators who offer intentional and paced care, and are not burnt out by volume.\n Access to creative, non-clinical spaces that complement therapy and meet different parts of you through stories, bodywork, reflection, and more."
     },
     {
         title: "How is Raahat different from other therapy platforms?",
         description:
-            "Raahat offers more than therapy — it offers context and community.\nAlongside individual support, members also engage in community-based experiences where storytelling, art, and embodiment are central.\n\nNo bots, no overwhelm — just real people, meaningful experiences, and space to breathe."
-    },
-    {
-        title: "Is this going to feel too clinical or intense?",
-        description:
-            "Raahat is built to feel approachable — not intimidating.\nOur therapists are trained to hold space with care, respect, and deep listening.\n\nPlus, the creative spaces available through Sukoon offer gentler, collective ways to ease into reflection and self-expression."
+            "Raahat offers more than therapy — it offers context and community.\nAlongside individual support, members also engage in community-based experiences where storytelling, art, and embodiment are central.\n\nNo bots, no overwhelm, just real people, meaningful experiences, and space to breathe."
     },
     {
         title: "Who is it for?",
         description:
-            "Raahat is for anyone who’s:\n Feeling emotionally stretched or stuck\n Longing for consistent care\n• Needing a safe space to express without judgment\n Caught in the loop of overthinking, self-doubt, or burnout\n Trying to navigate a difficult relationship, breakup, or a life transition"
+            "Raahat is for anyone who’s:\n Feeling emotionally stretched or stuck\n Longing for consistent care\nNeeding a safe space to express without judgment\n Caught in the loop of overthinking, self-doubt, or burnout\n Trying to navigate a difficult relationship, breakup, or a life transition"
     }
 ];
 
@@ -102,13 +97,22 @@ export default function RahaatPage() {
                             </div>
                         ))}
                     </div>
+                    <div className={styles.textSection2}>
+                        {raahatTextSection}
+                    </div>
                     <div className={styles.buttonWrapper}>
-                        <Link href="/contact" style={{ textDecoration: 'none' }}>
+                        <a
+                            href="https://forms.gle/HGfFM9Yi8dpLzKDD7"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ textDecoration: 'none' }}
+                        >
                             <button className={`${buttonStyles.myButton} ${styles.largeButton}`}>
                                 Book consultation today
                             </button>
-                        </Link>
+                        </a>
                     </div>
+
 
                 </div>
             </div>

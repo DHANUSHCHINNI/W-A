@@ -112,6 +112,115 @@
     font-style: italic;
 }
 
+/* Buttons container */
+.cardButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: flex-end;
+    align-items: center;
+    /* Align buttons perfectly center vertically */
+    margin-top: 2rem;
+    /* More space above the buttons group */
+}
+
+
+.bookButton {
+    font-weight: 700;
+    border-radius: 10px;
+    min-width: 200px;
+    /* Make them same width */
+    height: 60px;
+    /* Taller for a more “spacious” feel */
+    display: flex;
+    flex-direction: column;
+    /* allows text + sub text inside yellow button */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.6rem 1.7rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.accessButton {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    min-width: 200px;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    /* allows title + desc inside */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.6rem 1.7rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+/* Main hover effect */
+.accessButton:hover {
+    filter: brightness(1.08);
+    /* Slightly brighter */
+    transform: translateY(-2px) scale(1.02);
+    /* Lift effect */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    /* Stronger shadow */
+}
+
+/* Active (when clicked) */
+.accessButton:active {
+    transform: scale(0.97);
+    /* Subtle press */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    filter: brightness(0.95);
+    /* Slightly dimmed */
+}
+
+/* Inner title */
+.accessButtonTitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Inner subtitle */
+.accessButtonDesc {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #fff8e7;
+    opacity: 0.9;
+    margin-top: 0.2rem;
+    line-height: 1.2;
+}
+
+/* Styles for Book button */
+.bookButton {
+    background: transparent;
+    color: #fff;
+    font-size: 1.05rem;
+    border: 1.5px solid #fff;
+    flex-direction: row;
+    /* resets to single line text in book btn */
+}
+
+.bookButton:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Mobile layout tweaks */
+@media (max-width: 600px) {
+    .cardButtons {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+    }
+}
+
+
 @media (max-width: 600px) {
     .communityContainer {
         padding: 10px;
