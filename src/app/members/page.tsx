@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../components/navbar';
 import HamburgerNavbar from '../components/HamburgerNavbar';
 import Footer from '../components/Footer';
-import styles from './members.module.css'; // you can create this
+import styles from './members.module.css';
 
 export default function WorkInProgressPage() {
     const [isMobile, setIsMobile] = useState(false);
@@ -26,12 +26,12 @@ export default function WorkInProgressPage() {
             )}
 
             {/* Background section */}
-            <div className={styles.background}>
+            <section className={styles.background}>
                 <div className={styles.overlay}></div>
                 <div className={styles.centerText}>
                     Work in progress!
                 </div>
-            </div>
+            </section>
 
             {/* Footer */}
             <Footer />
