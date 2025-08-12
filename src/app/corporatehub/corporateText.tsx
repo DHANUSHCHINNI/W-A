@@ -13,7 +13,7 @@ export const corporateTextBody = [
             <button className={buttonStyles.myButton} style={{ marginTop: '1rem', display: 'inline-block' }}>Bespoke Workshops &amp; Webinars</button> on stress, emotional intelligence, and creative leadership
         </span>
         <br />
-        <Link href="/fillingyourcup" passHref>
+        <Link href="/offerings/fillingyourcup" passHref>
             <button
                 className={buttonStyles.myButton}
                 style={{ marginTop: "1rem", display: "inline-block" }}

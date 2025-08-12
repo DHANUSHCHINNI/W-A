@@ -33,6 +33,7 @@ export default function AdminDashboardPage() {
         type: '',
         link: '',
         venue: '',
+        image: ''
     });
     const [eventMessage, setEventMessage] = useState<string | null>(null);
 
@@ -79,11 +80,12 @@ export default function AdminDashboardPage() {
                     type: eventForm.type,
                     link: eventForm.link,
                     venue: eventForm.venue,
+                    image: eventForm.image
                 }),
             });
             if (!res.ok) throw new Error('Failed to add event');
             setEventMessage('✅ Event added successfully');
-            setEventForm({ title: '', description: '', date: '', price: '', type: '', link: '', venue: '' });
+            setEventForm({ title: '', description: '', date: '', price: '', type: '', link: '', venue: '', image: '' });
         } catch (err) {
             setEventMessage('❌ Error submitting event');
         }
@@ -160,6 +162,13 @@ export default function AdminDashboardPage() {
                                 name="venue"
                                 placeholder="Venue (optional)"
                                 value={eventForm.venue}
+                                onChange={handleEventChange}
+                                className={styles.input}
+                            />
+                            <input
+                                name="Image"
+                                placeholder="Image (optional)"
+                                value={eventForm.image}
                                 onChange={handleEventChange}
                                 className={styles.input}
                             />

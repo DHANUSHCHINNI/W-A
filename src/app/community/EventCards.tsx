@@ -10,6 +10,7 @@ interface Event {
     price?: number;
     venue?: string;
     link?: string;
+    image?: string; // Cloudinary URL (optional, can be null/empty)
 }
 
 interface EventCardsProps {
@@ -43,6 +44,13 @@ export default function EventCards({ upcomingEvents, pastEvents, tmcImages, styl
     function renderCard(event: Event, idx: number, isUpcoming: boolean) {
         const key = event._id || `${isUpcoming ? 'Upcoming' : 'closed'}-${idx}`;
         const expandedClass = mobile && expanded[key] ? styles.expanded || 'expanded' : '';
+
+        // ✅ Choose event image if present -> else fallback to tmcImages
+        const imageSrc =
+            event.image && typeof event.image === 'string' && event.image.trim() !== ''
+                ? event.image
+                : tmcImages[idx % tmcImages.length];
+
         return (
             <div
                 className={`${styles.card} ${expandedClass}`}
@@ -52,7 +60,7 @@ export default function EventCards({ upcomingEvents, pastEvents, tmcImages, styl
             >
                 <div className={styles.cardImage}>
                     <Image
-                        src={tmcImages[idx % tmcImages.length]}
+                        src={imageSrc}
                         alt={event.title}
                         width={220}
                         height={180}
@@ -65,17 +73,15 @@ export default function EventCards({ upcomingEvents, pastEvents, tmcImages, styl
                     <p className={styles.cardDescription}>
                         {(!mobile || expanded[key]) && event.description}
                     </p>
-                    <div className={styles.cardMeta} style={{ display: !mobile || expanded[key] ? undefined : 'none' }}>
+                    <div
+                        className={styles.cardMeta}
+                        style={{ display: !mobile || expanded[key] ? undefined : 'none' }}
+                    >
                         {event.date && <>{event.date}<br /></>}
                         {typeof event.price === 'number' && !isNaN(event.price) && (
                             <span>Price: ₹{event.price}<br /></span>
                         )}
                         {event.venue && <span>Venue: {event.venue}<br /></span>}
-                        {event.link && event.link !== '-' && (
-                            <a href={event.link} target="_blank" rel="noopener noreferrer">
-                                <button>{isUpcoming ? 'Book Now' : 'View Link'}</button>
-                            </a>
-                        )}
                     </div>
 
                     {isUpcoming && (
@@ -90,16 +96,22 @@ export default function EventCards({ upcomingEvents, pastEvents, tmcImages, styl
                                             All of this month's events + member perks
                                         </span>
                                     </button>
-
-                                    <button className={styles.bookButton}>
-                                        Book This Event
-                                    </button>
+                                    {event.link && event.link.trim() !== '' && event.link !== '-' && (
+                                        <a
+                                            href={event.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            <button className={styles.bookButton}>
+                                                Book This Event
+                                            </button>
+                                        </a>
+                                    )}
                                 </div>
                             </div>
-
                         </>
                     )}
-
                 </div>
             </div>
         );
@@ -125,4 +137,4 @@ export default function EventCards({ upcomingEvents, pastEvents, tmcImages, styl
             )}
         </>
     );
-} 
+}

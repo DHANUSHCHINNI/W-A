@@ -48,8 +48,8 @@ export default function CommunityClientPage({ upcomingEvents, pastEvents, tmcIma
                 <h1 className={styles.heading}>Community events</h1>
                 <div className={styles.subheading}>Here's what's been brewing in W&A recently</div>
                 <EventCards
-                    upcomingEvents={upcomingEvents}
-                    pastEvents={pastEvents}
+                    upcomingEvents={[...upcomingEvents].reverse()}
+                    pastEvents={[...pastEvents].reverse()}
                     tmcImages={tmcImages}
                     styles={styles}
                 />
