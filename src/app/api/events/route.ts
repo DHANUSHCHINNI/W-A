@@ -16,7 +16,7 @@ export async function GET() {
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { title, description, date, price } = body;
+        const { title, description, date, price, type, link, venue, image } = body;
 
         if (!title || !description || !date || typeof price !== 'number' || isNaN(price)) {
             return NextResponse.json({ error: 'All fields are required and price must be a number' }, { status: 400 });
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
 
         const client = await clientPromise;
         const db = client.db('WandA1'); // Use your events DB
-        const result = await db.collection('Events').insertOne({ title, description, date, price });
+        const result = await db.collection('Events').insertOne({ title, description, date, price, type, link, venue, image });
 
         return NextResponse.json({ success: true, insertedId: result.insertedId });
     } catch (err) {

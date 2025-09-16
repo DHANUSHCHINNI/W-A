@@ -10,7 +10,6 @@ import HamburgerNavbar from '../components/HamburgerNavbar';
 import Footer from "../components/Footer";
 
 const adminEmails = [
-    'admin@example.com',
     'syedhamadanahmad@gmail.com',
     'dhanushchinni100@gmail.com',
     'amruta@wearehub.org',
@@ -166,7 +165,7 @@ export default function AdminDashboardPage() {
                                 className={styles.input}
                             />
                             <input
-                                name="Image"
+                                name="image"
                                 placeholder="Image (optional)"
                                 value={eventForm.image}
                                 onChange={handleEventChange}
