@@ -7,7 +7,7 @@
     z-index: 1;
 }
 
-#comment .dashboardContainer {
+.dashboardContainer {
     max-width: 1200px;
     width: 100%;
     margin: 90px auto 20px auto;
