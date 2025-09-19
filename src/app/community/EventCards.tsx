@@ -88,14 +88,21 @@ export default function EventCards({ upcomingEvents, pastEvents, tmcImages, styl
                         <>
                             <div className={styles.cardButtonsWrapper}>
                                 <div className={styles.cardButtons}>
-                                    <button className={styles.accessButton}>
-                                        <span className={styles.accessButtonTitle}>
-                                            Get Sukoon Access – ₹999
-                                        </span>
-                                        <span className={styles.accessButtonDesc}>
-                                            All of this month's events + member perks
-                                        </span>
-                                    </button>
+                                    <a
+                                        href="https://forms.gle/cv4tesYaauGGz4ESA"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <button className={styles.accessButton}>
+                                            <span className={styles.accessButtonTitle}>
+                                                Get Sukoon Access – ₹999
+                                            </span>
+                                            <span className={styles.accessButtonDesc}>
+                                                All of this month's events + member perks
+                                            </span>
+                                        </button>
+                                    </a>
                                     {event.link && event.link.trim() !== '' && event.link !== '-' && (
                                         <a
                                             href={event.link}

@@ -77,11 +77,11 @@ export default function SukoonPage() {
                         {sukoonTextSection2}
                     </div>
                     <div className={styles.buttonWrapper}>
-                        <Link href="/contact" style={{ textDecoration: 'none' }}>
+                        <a href="https://forms.gle/cv4tesYaauGGz4ESA" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                             <button className={`${buttonStyles.myButton} ${styles.largeButton}`}>
                                 Get Your Sukoon @ ₹999 - Subscribe now!
                             </button>
-                        </Link>
+                        </a>
                     </div>
                 </div>
 
