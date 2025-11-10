@@ -1,7 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
+// Simple HTML escape function
+function escapeHtml(text: string): string {
+  const map: { [key: string]: string } = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
 export async function POST(request: NextRequest) {
+  // Check if API key is set
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY is not set in environment variables');
+    return NextResponse.json(
+      { error: 'Email service is not configured' },
+      { status: 500 }
+    );
+  }
+
   const resend = new Resend(process.env.RESEND_API_KEY);
   try {
     const { name, email, subject, message } = await request.json();
@@ -101,17 +122,17 @@ export async function POST(request: NextRequest) {
           
           <div class="field">
             <div class="field-label">From</div>
-            <p class="field-value">${name} (${email})</p>
+            <p class="field-value">${escapeHtml(name)} (${escapeHtml(email)})</p>
           </div>
           
           <div class="field">
             <div class="field-label">Subject</div>
-            <p class="field-value">${subject}</p>
+            <p class="field-value">${escapeHtml(subject)}</p>
           </div>
           
           <div class="field">
             <div class="field-label">Message</div>
-            <div class="message-content">${message}</div>
+            <div class="message-content">${escapeHtml(message)}</div>
           </div>
           
           <div class="footer">
@@ -124,31 +145,32 @@ export async function POST(request: NextRequest) {
     `;
 
     // Send email using Resend
-    const { data, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev', // You can change this to your verified domain
-      to: 'website.wearehub@gmail.com', // Your email address
+    const result = await resend.emails.send({
+      from: 'website.wearehub@gmail.com', // You can change this to your verified domain
+      to: 'info@wearehub.org', // Your email address
       subject: `New Contact Form: ${subject}`,
       html: htmlContent,
       replyTo: email, // This allows you to reply directly to the sender
     });
 
-    if (error) {
-      console.error('Resend error:', error);
+    if (result.error) {
+      console.error('Resend error:', JSON.stringify(result.error, null, 2));
       return NextResponse.json(
-        { error: 'Failed to send email' },
+        { error: 'Failed to send email. Please try again later.' },
         { status: 500 }
       );
     }
 
     return NextResponse.json(
-      { message: 'Email sent successfully', data },
+      { message: 'Email sent successfully' },
       { status: 200 }
     );
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('API error:', error);
+    console.error('Error details:', error?.message || error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: 'Internal server error. Please try again later.' },
       { status: 500 }
     );
   }
