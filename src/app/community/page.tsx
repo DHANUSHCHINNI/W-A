@@ -32,8 +32,8 @@ export default async function CommunityPage() {
     const events = await getEvents();
 
     // Separate events
-    const upcomingEvents = events.filter((event: any) => event.type && event.type.toLowerCase() === 'upcoming');
-    const pastEvents = events.filter((event: any) => !event.type || event.type.toLowerCase() !== 'upcoming');
+    const upcomingEvents = events.filter((event: { type?: string }) => event.type && event.type.toLowerCase() === 'upcoming');
+    const pastEvents = events.filter((event: { type?: string }) => !event.type || event.type.toLowerCase() !== 'upcoming');
 
     return (
         <><CommunityClientPage

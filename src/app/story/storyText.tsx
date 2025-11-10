@@ -36,9 +36,9 @@ const storyTextSection3 = [
 const storyTextSection4 = [
     <p key="1"><span className={styles.ptSerif}>It was a dream rooted in justice, joy, and imagination. A dream where arts are not an add-on, but a form of medicine—  a part of a global movement recognising the role of creative expression in healthcare and human flourishing.</span></p>,
     <p key="2"><span className={styles.erstoria}>That dream became the <span className={styles.highlight}> Well-being & Arts Hub </span> — A living, breathing space for creative connection.</span></p>,
-    <p key="3"><span className={styles.ptSerif}>We are artists, therapists, listeners, wanderers. We hold spaces where the personal meets the political, and the playful meets the profound. We're building a modular ecosystem of creative care.</span></p>,
+    <p key="3"><span className={styles.ptSerif}>We are artists, therapists, listeners, wanderers. We hold spaces where the personal meets the political, and the playful meets the profound. We&apos;re building a modular ecosystem of creative care.</span></p>,
     <p key="4"><span className={styles.ptSerif}>Not just for individuals, but for workplaces, communities, and the world.</span></p>,
-    <p key="5"><span className={styles.ptSerif}>Whether you're a seeker, a professional, a wanderer, or simply someone who feels — You're welcome here.</span></p>,
+    <p key="5"><span className={styles.ptSerif}>Whether you&apos;re a seeker, a professional, a wanderer, or simply someone who feels — You&apos;re welcome here.</span></p>,
     <p key="6"><span className={styles.subheading}> <span className={styles.highlight}>Because care, like art, was never meant to be solitary.</span></span></p>
 ];
 

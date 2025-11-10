@@ -22,7 +22,7 @@ const plans = [
         description: (
             <>
                 Includes everything in Sukoon, plus access to 1:1 therapy and group therapy with licensed professionals.<br />
-                Looking for subscription-based therapy, queer-affirmative and trauma-informed therapists, internationally licensed, and embodied professionals? You're in the right place.
+                Looking for subscription-based therapy, queer-affirmative and trauma-informed therapists, internationally licensed, and embodied professionals? You&apos;re in the right place.
             </>
         ),
         button: 'Step into Raahat →',

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 interface Event {
     _id?: string;
@@ -16,7 +16,7 @@ interface Event {
 interface EventCardsProps {
     upcomingEvents: Event[];
     pastEvents: Event[];
-    tmcImages: (string | any)[];
+    tmcImages: (string | StaticImageData)[];
     styles: { [key: string]: string };
 }
 
@@ -99,7 +99,7 @@ export default function EventCards({ upcomingEvents, pastEvents, tmcImages, styl
                                                 Get Sukoon Access – ₹999
                                             </span>
                                             <span className={styles.accessButtonDesc}>
-                                                All of this month's events + member perks
+                                                All of this month&apos;s events + member perks
                                             </span>
                                         </button>
                                     </a>

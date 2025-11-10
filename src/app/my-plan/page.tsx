@@ -73,7 +73,7 @@ export default function MyPlanPage() {
                     </div>
                 </div>
                 <div style={{ marginTop: 24, color: '#fff', fontSize: '1rem', opacity: 0.85, fontStyle: 'italic', textAlign: 'center' }}>
-                    *If you'd like to cancel your current plan, drop us a mail and we'll make sure it's done!
+                    *If you&apos;d like to cancel your current plan, drop us a mail and we&apos;ll make sure it&apos;s done!
                 </div>
             </div>
         </div>

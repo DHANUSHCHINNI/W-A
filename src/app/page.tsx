@@ -17,8 +17,8 @@ export default function LandingPage() {
   // Section refs for in-view animations
   const secondRef = useRef(null);
   const secondInView = useInView(secondRef, { margin: "-40% 0px -40% 0px" });
-  const paraRefs = [useRef(null)];
-  const paraInViews = paraRefs.map(ref => useInView(ref, { margin: "-40% 0px -40% 0px" }));
+  const paraRef = useRef(null);
+  const paraInView = useInView(paraRef, { margin: "-40% 0px -40% 0px" });
   const servicesRef = useRef(null);
   const servicesInView = useInView(servicesRef, { once: true, margin: "-20% 0px" });
   const testimonialsRef = useRef(null);
@@ -33,12 +33,12 @@ export default function LandingPage() {
       setNavbarColor('#1C1610'); // dark
     } else if (servicesInView) {
       setNavbarColor('#1C1610'); // original
-    } else if (paraInViews.some(Boolean)) {
+    } else if (paraInView) {
       setNavbarColor('#1C1610'); // dark
     } else if (secondInView) {
       setNavbarColor('#1C1610'); // original
     }
-  }, [secondInView, paraInViews, servicesInView, testimonialsInView]);
+  }, [secondInView, paraInView, servicesInView, testimonialsInView]);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
@@ -74,7 +74,7 @@ export default function LandingPage() {
 
       {/* Paragraph Section */}
       <section
-        ref={paraRefs[0]}
+        ref={paraRef}
         style={{
           minHeight: '100vh',
           display: 'flex',

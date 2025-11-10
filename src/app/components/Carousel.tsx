@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Slider from 'react-slick';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,12 +9,18 @@ import defaultStyles from './Carousel.module.css'; // Default CSS module
 
 
 interface CarouselProps {
-    images: any[];
+    images: (string | StaticImageData)[];
     altPrefix?: string;
     styles?: { [key: string]: string };
 }
 
-function NextArrow(props: any) {
+interface ArrowProps {
+    className?: string;
+    style?: React.CSSProperties;
+    onClick?: () => void;
+}
+
+function NextArrow(props: ArrowProps) {
     const { className, style, onClick } = props;
     return (
         <div
@@ -27,7 +33,7 @@ function NextArrow(props: any) {
     );
 }
 
-function PrevArrow(props: any) {
+function PrevArrow(props: ArrowProps) {
     const { className, style, onClick } = props;
     return (
         <div

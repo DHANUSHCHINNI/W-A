@@ -9,7 +9,7 @@ export const sukoonTextSection1 = (
             Care needs consistency.
         </div>
         <div className={styles.animatedHeading} style={{ fontSize: '2rem', marginBottom: '0.9rem', animationDelay: '0.6s' }}>
-            Here, art isn't extra — it's the core.
+            Here, art isn&apos;t extra — it&apos;s the core.
         </div>
         <div style={{ marginBottom: '2.5rem' }} />
         <div className={styles.bodyText}>
@@ -28,15 +28,15 @@ export const sukoonTextSection2 = (
             <span className={styles.highlight}>Sukoon</span> is for anyone seeking a creative way to care:
             <br />
             <span className={styles.highlight2}>
-                If you're feeling overwhelmed or just need space
+                If you&apos;re feeling overwhelmed or just need space
                 <br />
-                If you're waiting for the right therapist — this is a meaningful meanwhile
+                If you&apos;re waiting for the right therapist — this is a meaningful meanwhile
                 <br />
-                If you're in therapy, Sukoon complements and deepens the process
+                If you&apos;re in therapy, Sukoon complements and deepens the process
                 <br />
-                If you've completed therapy, it helps you stay connected to yourself
+                If you&apos;ve completed therapy, it helps you stay connected to yourself
                 <br />
-                If you're a therapist, artist, educator, student — or just someone who feels
+                If you&apos;re a therapist, artist, educator, student — or just someone who feels
                 <br />
                 No art skills needed. Just curiosity and presence.
             </span>

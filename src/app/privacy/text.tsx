@@ -24,7 +24,7 @@ export default function PrivacyText() {
                 <li>To provide therapeutic and non-clinical offerings such as group programs, movement workshops, and psychotherapy sessions</li>
                 <li>To process payments and manage subscriptions</li>
                 <li>To improve services based on usage trends</li>
-                <li>To comply with laws under India's Digital Personal Data Protection Act (DPDPA)</li>
+                <li>To comply with laws under India&apos;s Digital Personal Data Protection Act (DPDPA)</li>
             </ul>
             <h3 className={styles.erstoria}>4. Sharing and Storage</h3>
             <ul className={styles.ptserif}>

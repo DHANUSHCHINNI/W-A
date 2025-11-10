@@ -52,7 +52,8 @@ export default function UserPayments({ email }: Props) {
                 } else {
                     throw new Error('Unexpected data format');
                 }
-            } catch (err: any) {
+            } catch (err: unknown) {
+                console.error('Failed to fetch payments:', err);
                 setError('Failed to fetch payments');
             } finally {
                 setLoading(false);

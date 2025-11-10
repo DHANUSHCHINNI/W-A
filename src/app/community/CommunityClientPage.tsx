@@ -4,6 +4,7 @@ import Navbar from '../components/navbar';
 import HamburgerNavbar from '../components/HamburgerNavbar';
 import Silhouette6 from '../components/Silhouette6';
 import EventCards from './EventCards';
+import { StaticImageData } from 'next/image';
 
 interface Event {
     _id?: string;
@@ -19,7 +20,7 @@ interface Event {
 interface CommunityClientPageProps {
     upcomingEvents: Event[];
     pastEvents: Event[];
-    tmcImages: (string | any)[];
+    tmcImages: (string | StaticImageData)[];
     styles: { [key: string]: string };
 }
 
@@ -46,7 +47,7 @@ export default function CommunityClientPage({ upcomingEvents, pastEvents, tmcIma
             )}
             <div className={styles.communityContainer}>
                 <h1 className={styles.heading}>Community events</h1>
-                <div className={styles.subheading}>Here's what's been brewing in W&A recently</div>
+                <div className={styles.subheading}>Here&apos;s what&apos;s been brewing in W&A recently</div>
                 <EventCards
                     upcomingEvents={[...upcomingEvents].reverse()}
                     pastEvents={[...pastEvents].reverse()}

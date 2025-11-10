@@ -145,9 +145,11 @@ export async function POST(request: NextRequest) {
     `;
 
     // Send email using Resend
+    // Note: Using onboarding@resend.dev for testing (works immediately)
+    // To use your own domain (e.g., contact@wearehub.org), verify the domain in Resend first
     const result = await resend.emails.send({
-      from: 'website.wearehub@gmail.com', // You can change this to your verified domain
-      to: 'info@wearehub.org', // Your email address
+      from: 'onboarding@resend.dev', // Resend's test domain (works without verification)
+      to: 'website.wearehub@gmail.com', // Your email address
       subject: `New Contact Form: ${subject}`,
       html: htmlContent,
       replyTo: email, // This allows you to reply directly to the sender
@@ -166,9 +168,10 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     );
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('API error:', error);
-    console.error('Error details:', error?.message || error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error details:', errorMessage);
     return NextResponse.json(
       { error: 'Internal server error. Please try again later.' },
       { status: 500 }
