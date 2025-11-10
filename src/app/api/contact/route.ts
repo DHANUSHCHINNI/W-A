@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: 'onboarding@resend.dev', // You can change this to your verified domain
-      to: 'dhanushchinni100@gmail.com', // Your email address
+      to: 'website.wearehub@gmail.com', // Your email address
       subject: `New Contact Form: ${subject}`,
       html: htmlContent,
       replyTo: email, // This allows you to reply directly to the sender
